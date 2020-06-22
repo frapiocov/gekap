@@ -8,7 +8,7 @@
     <c:forEach items="${prodotti}" var="prodotto">
         <fieldset id="prodotti">
             <h4><c:out value="${prodotto.nome}"/></h4>
-            <h3><c:out value="${prodotto.prezzo}"/></h3>
+            <h3>prezzo</h3>
         </fieldset>
     </c:forEach>
 </section>
