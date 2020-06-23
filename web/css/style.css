@@ -71,20 +71,16 @@ footer {
     color:#cccccc;
 }
 
-.info_footer h5 {
+.info_footer h4 {
     margin:20px;
 }
 
-.info_footer h6 {
-    margin:25px;
-}
-
-.info_footer h3 {
+.info_footer h5 {
     margin:25px;
 }
 
 #contenuto_basso {
-    padding: 30px;
+    padding: 20px;
 }
 
 #goup {
