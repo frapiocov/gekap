@@ -32,9 +32,11 @@
                 <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
             </form>
         </div>
-        <a href="#account" style="float:right"><i id="account" class="material-icons md-36 md-light" onmouseover="inA(this)" onmouseout="outA(this)">account_box</i></a>
-        <a href="#cart" style="float:right"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
-        <a href="#favourite" style="float:right"><i id="preferiti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
+        <div id="loghi">
+            <a href="#account"><i id="account" class="material-icons md-36 md-light" onmouseover="inA(this)" onmouseout="outA(this)">account_box</i></a>
+            <a href="#carrello"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
+            <a href="#preferiti"><i id="preferiti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
+        </div>
     </nav>
 
     <i id="goup" class="material-icons md-48 md-light" onclick="goUp()">keyboard_arrow_up</i>
