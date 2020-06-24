@@ -4,7 +4,6 @@
 <jsp:include page="header.jsp">
     <jsp:param name="pageTitle" value="${prodotto.nome}"></jsp:param>
 </jsp:include>
-<link href="css/prodotto.css" rel="stylesheet" type="text/css">
 
     <section>
         <fieldset class="contenuto_prodotto">
