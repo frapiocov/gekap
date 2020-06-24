@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/header_footer.css" rel="stylesheet" type="text/css">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script/funzioni.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,7 +19,7 @@
 <body>
 <header>
     <nav class="barra">
-        <a href="WEB-INF/results/index.jsp" id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
+        <a href="." id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
 
             <select id="scelta_categorie">
                 <c:forEach items="${categorie}" var="categoria">

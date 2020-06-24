@@ -3,7 +3,9 @@
 <jsp:include page="header.jsp">
     <jsp:param name="pageTitle" value="Errore"/>
 </jsp:include>
-<section>
+
+<section style="padding: 100px">
     <h1><%= exception.getMessage() %></h1>
 </section>
+
 <%@include file="footer.html"%>

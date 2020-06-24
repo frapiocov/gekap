@@ -1,0 +1,20 @@
+section{
+    border: none;
+    padding-top: 50px;
+    width: 100%;
+}
+
+.contenuto_prodotto{
+    padding: 10px;
+    text-align: justify;
+    border: none;
+}
+
+.colonna{
+    padding: 10px;
+}
+
+.im_prodotto{
+    width: 250px;
+    height: 350px;
+}

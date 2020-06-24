@@ -3,7 +3,8 @@
 <jsp:include page="header.jsp">
     <jsp:param name="pageTitle" value="Errore ${requestScope['javax.servlet.error.status_code']}"/>
 </jsp:include>
-<section>
+
+<section style="padding: 100px">
     <h1>Errore ${requestScope['javax.servlet.error.status_code']}</h1>
     <!-- Scegliere una delle due opzioni per stampare l'eccezione:
     la prima per stampa un breve messaggio di errore, la seconda lo stacktrace completo. -->
@@ -15,4 +16,5 @@
         }
     %></pre>
 </section>
+
 <%@include file="footer.html"%>
