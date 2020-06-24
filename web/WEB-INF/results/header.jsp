@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>
-        gekap/${param.pageTitle}
+        ${param.pageTitle}
     </title>
     <link rel="icon" href="images/favicon.png" type="image/png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -20,7 +20,7 @@
         <nav class="barra">
             <a href="WEB-INF/results/index.jsp" id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
 
-                <select id="scelta_categorie">
+                <select id="scelta_categorie" name="cat" onclick="loadDoc()">
                     <c:forEach items="${categorie}" var="categoria">
                         <option value="${categoria.idCat}">${categoria.nome}</option>
                     </c:forEach>

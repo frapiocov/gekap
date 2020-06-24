@@ -11,7 +11,7 @@
         <fieldset>
             <figure onload="prodottiRandom(${prodotti})">
                 <img src="" alt="copertina">
-                <figcaption>""</figcaption>
+                <figcaption>"djbjsbkdskssk"</figcaption>
             </figure>
         </fieldset>
     <% } %>

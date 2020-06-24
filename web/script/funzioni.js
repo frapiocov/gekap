@@ -31,4 +31,3 @@ function prodottiRandom(array) {
     document.getElementsByTagName("img").setAttribute(src,img);
     document.getElementsByTagName("figcaption").innerHTML=desc;
 }
-
