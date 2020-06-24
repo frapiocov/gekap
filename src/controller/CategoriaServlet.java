@@ -4,6 +4,7 @@ import model.Categoria;
 import model.Prodotto;
 import model.ProdottoDAO;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +29,9 @@ public class CategoriaServlet extends HttpServlet {
 
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByCat(cat,10);
         request.setAttribute("prodotti",prodotti);
+
+        RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/results/categoria.jsp");
+        dispatcher.forward(request,response);
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException {

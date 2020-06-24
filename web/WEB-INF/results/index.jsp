@@ -5,20 +5,9 @@
 </jsp:include>
 
 <section id="sezione_prodotti">
-    <% for(int i=0;i<6;i++) { %>
-    <fieldset>
-        <figure onload="prodottiRandom(${prodotti})">
-            <img src="" alt="copertina">
-            <figcaption>""</figcaption>
-        </figure>
-    </fieldset>
-    <% } %>
-</section>
-
-<section id="sezione_prodotti">
     <c:forEach items="${prodotti}" var="prodotto">
         <fieldset id="prodotti">
-            <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>"><c:out value="${prodotto.nome}" /></a>
+            <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}.jpg"/>"><c:out value="${prodotto.nome}" /></a>
             <h3>prezzo</h3>
         </fieldset>
     </c:forEach>

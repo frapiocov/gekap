@@ -21,7 +21,7 @@
     <nav class="barra">
         <a href="." id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
 
-            <select id="scelta_categorie">
+            <select id="scelta_categorie" name="cat" onclick="callServlet()">
                 <c:forEach items="${categorie}" var="categoria">
                     <option value="${categoria.idCat}">${categoria.nome}</option>
                 </c:forEach>

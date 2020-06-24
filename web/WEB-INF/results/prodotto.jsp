@@ -6,12 +6,11 @@
 </jsp:include>
 <link href="css/prodotto.css" rel="stylesheet" type="text/css">
 
-
     <section>
         <fieldset class="contenuto_prodotto">
             <div class="colonna">
                 <h1>${prodotto.nome}</h1>
-                <img class="im_prodotto" src="images/${prodotto.codice}.jpg">
+                <img class="im_prodotto" src="images/${prodotto.listaImmagini}">
                 <p>GENERE: ${prodotto.genere}<br>
                     ANNO: ${prodotto.anno}<br>
                     LINGUA: ${prodotto.lingua}<br>
@@ -22,7 +21,6 @@
                     <p>${prodotto.trama}</p>
             </div>
             <div style="clear:both;"></div>
-
         </fieldset>
     </section>
 
