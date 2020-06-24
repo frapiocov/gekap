@@ -61,6 +61,18 @@ footer {
     color:#cccccc;
 }
 
+.info_footer h3 {
+    margin-left:10px;
+}
+
+.info_footer h4 {
+    margin-left:25px;
+}
+
+.info_footer i {
+    margin-left:25px;
+}
+
 #goup {
     position: fixed;
     bottom: 20px;
