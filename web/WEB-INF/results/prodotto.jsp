@@ -7,12 +7,11 @@
     <jsp:param name="pageTitle" value="${prodotto.nome}"></jsp:param>
 </jsp:include>
 
-
     <section>
         <fieldset class="contenuto_prodotto">
             <div class="colonna">
                 <h1>${prodotto.nome}</h1>
-                <img class="im_prodotto" src="images/${prodotto.codice}.jpg">
+                <img class="im_prodotto" src="images/${prodotto.listaImmagini}">
                 <p>GENERE: ${prodotto.genere}<br>
                     ANNO: ${prodotto.anno}<br>
                     LINGUA: ${prodotto.lingua}<br>
@@ -29,7 +28,6 @@
                 </c:forEach>
             </div>
             <div style="clear:both;"></div>
-
         </fieldset>
     </section>
 
