@@ -27,6 +27,9 @@
                     <h5>${attore.ruolo}</h5>
                 </c:forEach>
             </div>
+            <div>
+                <iframe width="560" height="315" src="${prodotto.trailer}" frameborder="0" allowfullscreen autoplay></iframe>
+            </div>
             <div style="clear:both;"></div>
         </fieldset>
     </section>

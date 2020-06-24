@@ -124,4 +124,38 @@ public class ProdottoDAO {
         }
         return cast;
     }
+
+    /**
+     * Trova il cast del prodotto relativo.
+     */
+    public ArrayList<Prodotto> doRetrieveByCat(int id) {
+            var prodotti = new ArrayList<Prodotto>();
+            ;
+            try (Connection con = ConPool.getConnection()) {
+                PreparedStatement ps = con.prepareStatement("SELECT prodotto.codice, prodotto.nome, prodotto.genere, " +
+                        "prodotto.trama, prodotto.anno, prodotto.prezzo, prodotto.durata, prodotto.lingua, prodotto.listaImmagini, " +
+                        "prodotto.trailer, prodotto.categoria FROM prodotto, categoria where prodotto.categoria = categoria.idCat");
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    var c = new Prodotto();
+                    c.setCodice(rs.getInt(1));
+                    c.setNome(rs.getString(2));
+                    c.setGenere(rs.getString(3));
+                    c.setTrama(rs.getString(4));
+                    c.setAnno(rs.getInt(5));
+                    c.setPrezzoCent(rs.getInt(6));
+                    c.setDurata(rs.getInt(7));
+                    c.setLingua(rs.getString(8));
+                    c.setListaImmagini(rs.getString(9));
+                    c.setTrailer(rs.getString(10));
+                    c.setCategoria(rs.getInt(11));
+
+                    prodotti.add(c);
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            return prodotti;
+        }
 }

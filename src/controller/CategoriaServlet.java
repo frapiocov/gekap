@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/categoria")
+@WebServlet("/servlet_categoria")
 public class CategoriaServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
         @SuppressWarnings("unchecked")
@@ -27,7 +27,7 @@ public class CategoriaServlet extends HttpServlet {
         }
         request.setAttribute("categoriaScelta",c);
 
-        ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByCat(cat,10);
+        ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByCat(cat);
         request.setAttribute("prodotti",prodotti);
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/results/categoria.jsp");
