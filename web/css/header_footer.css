@@ -1,6 +1,6 @@
 .barra {
     width: 100%;
-    height: 58px;
+    height: 50px;
     position: fixed;
     background-color: rgba(0,0,0,0.1);
 }
@@ -10,10 +10,6 @@
     text-align: center;
     padding:5px;
     color: #cccccc;
-}
-
-.barra a:hover {
-    background-color: #424242;
 }
 
 .barra .ricerca {
@@ -47,13 +43,8 @@
     background: #424242;
 }
 
-.barra #logo {
-    width: 48px;
-    height: 48px;
-}
-
 #scelta_categorie {
-    margin: 8px;
+    margin-top: 12px;
     padding: 4px;
     font-size: 18px;
     border: none;
@@ -65,26 +56,9 @@ footer {
     background-color: #212121;
     left: 0;
     bottom: 0;
-    height: 540px;
+    height: 340px;
     width: 100%;
     color:#cccccc;
-}
-
-.info_footer h4 {
-    margin-left:20px;
-}
-
-.info_footer h5 {
-    margin-left:35px;
-}
-
-.info_footer .material-icons.md-light.md-24 {
-    margin-left:10px;
-    font-size:50px;
-}
-
-#contenuto_basso {
-    padding:20px;
 }
 
 #goup {
@@ -118,12 +92,11 @@ footer {
     font-size: 48px;
 }
 
-a .material-icons.md-36.md-light {
-    font-size:30px;
-    margin-top:6px;
-    padding-top:6px;
+.material-icons.md-36.md-light {
+    font-size:36px;
 }
 
-#loghi a {
-    float:right;
+#logo_gekap{
+    width: 48px;
+    height: 48px;
 }
