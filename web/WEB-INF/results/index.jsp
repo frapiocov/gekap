@@ -1,3 +1,5 @@
+<%@ page import="model.Prodotto" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="header.jsp">
@@ -5,11 +7,13 @@
 </jsp:include>
 
 <section id="sezione_prodotti">
-    <c:forEach items="${prodotti}" var="prodotto">
-        <fieldset id="prodotti">
-            <h4><c:out value="${prodotto.nome}"/></h4>
+    <% for(int i=0;i<6;i++) { %>
+        <fieldset>
+            <figure onload="prodottiRandom(${prodotti})">
+                <img src="" alt="copertina">
+                <figcaption>""</figcaption>
+            </figure>
         </fieldset>
-    </c:forEach>
+    <% } %>
 </section>
-
 <%@include file="footer.html" %>

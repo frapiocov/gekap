@@ -16,26 +16,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<header>
-    <nav class="barra">
-        <a href="WEB-INF/results/index.jsp" id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
+    <header>
+        <nav class="barra">
+            <a href="WEB-INF/results/index.jsp" id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
 
-            <select id="scelta_categorie">
-                <c:forEach items="${categorie}" var="categoria">
-                    <option value="${categoria.idCat}">${categoria.nome}</option>
-                </c:forEach>
-            </select>
+                <select id="scelta_categorie">
+                    <c:forEach items="${categorie}" var="categoria">
+                        <option value="${categoria.idCat}">${categoria.nome}</option>
+                    </c:forEach>
+                </select>
 
-        <div class="ricerca">
-            <form action="#">
-                <input type="text" placeholder="Cerca..." name="cerca">
-                <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
-            </form>
-        </div>
-        <a href="#account" style="float: right"><i id="account" class="material-icons md-36 md-light" onmouseover="inA(this)" onmouseout="outA(this)">account_box</i></a>
-        <a href="#cart" style="float: right"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
-        <a href="#favorite" style="float: right"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
-    </nav>
+            <div class="ricerca">
+                <form action="#">
+                    <input type="text" placeholder="Cerca..." name="cerca">
+                    <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
+                </form>
+            </div>
+            <a href="#account" style="float: right"><i id="account" class="material-icons md-36 md-light" onmouseover="inA(this)" onmouseout="outA(this)">account_box</i></a>
+            <a href="#cart" style="float: right"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
+            <a href="#favorite" style="float: right"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
+        </nav>
 
-    <i id="goup" class="material-icons md-48 md-light" onclick="goUp()">keyboard_arrow_up</i>
-</header>
+        <i id="goup" class="material-icons md-48 md-light" onclick="goUp()">keyboard_arrow_up</i>
+    </header>
