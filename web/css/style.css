@@ -6,11 +6,22 @@ body {
 }
 
 #sezione_prodotti {
-    padding-top: 74px;
+    padding-top: 50px;
+    display: inline-block;
+
 }
 
 #prodotti {
-    padding: 5px;
-    width: auto;
+    padding: 15px 25px 15px 30px;
     text-align: center;
+    float: left;
+}
+
+.imm_prod_index{
+    width: 200px;
+    height: 280px;
+}
+
+.imm_prod_index:hover{
+    transform: scale(1.1);
 }

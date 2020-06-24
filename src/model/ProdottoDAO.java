@@ -8,11 +8,13 @@ import java.util.ArrayList;
 public class ProdottoDAO {
 
     //Metodo che ritorna un arraylist con tutti i prodotti presenti nel Database
-    public ArrayList<Prodotto> doRetrieveAll() {
+    public ArrayList<Prodotto> doRetrieveAll(int offset, int limit) {
         var prodotti = new ArrayList<Prodotto>();
 ;
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("SELECT codice, nome, genere, trama, anno, prezzo, durata, lingua, listaImmagini, trailer, categoria FROM prodotto");
+            PreparedStatement ps = con.prepareStatement("SELECT codice, nome, genere, trama, anno, prezzo, durata, lingua, listaImmagini, trailer, categoria FROM prodotto LIMIT ?, ?");
+            ps.setInt(1, offset);
+            ps.setInt(2, limit);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
