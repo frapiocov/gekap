@@ -97,4 +97,31 @@ public class ProdottoDAO {
         }
     }
 
+    /**
+     * Trova il cast del prodotto relativo.
+     */
+    public ArrayList<Attore> doRetrieveCastById(int id) {
+
+        ArrayList<Attore> cast = new ArrayList<Attore>();
+
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select attore.nome, attore.ruolo\n" +
+                    "from attore, prodotto, prodottoCast\n" +
+                    "where prodotto.codice = prodottoCast.prodotto\n" +
+                    "and prodottoCast.attore = attore.id\n" +
+                    "and prodotto.codice = ?;");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Attore a = new Attore();
+                a.setNome(rs.getString(1));
+                a.setRuolo(rs.getString(2));
+                cast.add(a);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cast;
+    }
 }

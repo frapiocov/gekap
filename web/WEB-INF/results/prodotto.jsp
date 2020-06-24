@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Attore" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -19,6 +21,12 @@
             </div>
             <div class="colonna">
                     <p>${prodotto.trama}</p>
+            </div>
+            <div>
+                <c:forEach items="${cast}" var="attore">
+                    <h4>${attore.nome}</h4>
+                    <h5>${attore.ruolo}</h5>
+                </c:forEach>
             </div>
             <div style="clear:both;"></div>
 
