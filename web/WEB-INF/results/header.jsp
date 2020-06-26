@@ -21,12 +21,11 @@
     <nav class="barra">
         <a href="." id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
 
-            <select id="scelta_categorie" name="cat">
+            <select id="scelta_categorie" onchange="cambiaCategoria()" name="cat">
                 <c:forEach items="${categorie}" var="categoria">
                     <option value="${categoria.idCat}">${categoria.nome}</option>
                 </c:forEach>
             </select>
-
         <div class="ricerca">
             <form action="#">
                 <input type="text" placeholder="Cerca..." name="cerca">
@@ -40,3 +39,21 @@
 
     <i id="goup" class="material-icons md-48 md-light" onclick="goUp()">keyboard_arrow_up</i>
 </header>
+
+
+<script>
+
+    $(document).ready( function(){
+        $("#scelta_categorie").onchange(function () {
+            var idcat = $("#scelta_categorie").val();
+
+            $.post('/servlet_categoria',{"categoria": idcat},
+                function() { // on success
+                alert(idcat);
+                })
+                .fail(function() { //on failure
+                });
+        })
+    });
+
+</script>

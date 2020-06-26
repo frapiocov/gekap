@@ -2,16 +2,15 @@ body {
     background-color: #303030;
     color: #cccccc;
     margin: 0;
-    font-family: monospace, "Roboto Thin";
+    font-family: Arial, serif ;
 }
 
-#sezione_prodotti {
+.sezione_prodotti {
     padding-top: 50px;
     display: inline-block;
-
 }
 
-#prodotti {
+.prodotti {
     padding: 15px 25px 15px 30px;
     text-align: center;
     float: left;
@@ -22,6 +21,25 @@ body {
     height: 280px;
 }
 
-.imm_prod_index:hover{
-    transform: scale(1.1);
+.bottone{
+    font-size: 18px;
+    background-color: #212121;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px;
+}
+
+.bottone:hover{
+    background-color: #cccccc;
+    color: #212121;
+}
+
+input[type="number"]{
+    background-color: #424242;
+    color: #cccccc;
+    width: 35px;
+    height: 25px;
+    border: none;
 }

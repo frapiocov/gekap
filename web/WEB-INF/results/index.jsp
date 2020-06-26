@@ -7,14 +7,15 @@
 </jsp:include>
 
 
-<div id="sezione_prodotti">
+<div class="sezione_prodotti">
     <c:forEach items="${prodotti}" var="prodotto">
-        <div id="prodotti">
+        <div class="prodotti">
             <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">
                 <img  class="imm_prod_index" src="images/${prodotto.codice}.jpg">
             </a>
         </div>
     </c:forEach>
 </div>
+
 
 <%@include file="footer.html" %>

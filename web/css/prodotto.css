@@ -1,20 +1,34 @@
 section{
-    border: none;
+    padding-top: 80px;
+}
+
+.contenuto{
     padding-top: 50px;
-    width: 100%;
-}
-
-.contenuto_prodotto{
-    padding: 10px;
     text-align: justify;
-    border: none;
+    display: inline;
 }
 
-.colonna{
+#trama{
+    text-align: justify;
+    font-size: 20px;
+    line-height: 30px;
+    padding: 20px;
+}
+
+.colonna_L{
+    display: inline;
     padding: 10px;
+    float: left;
+    width: auto;
+}
+.colonna_R{
+    display: inline;
+    padding: 10px;
+    float: right;
+    width: 73%;
 }
 
 .im_prodotto{
-    width: 250px;
-    height: 350px;
+    width: 280px;
+    height: 450px;
 }

@@ -1,7 +1,7 @@
 package model;
 
 public class Prodotto {
-    private String nome, trama, listaImmagini, trailer, prezzo, genere, lingua;
+    private String nome, trama, listaImmagini, trailer, genere, lingua, prezzoEuro;
     private int codice, categoria, anno, durata;
     private int prezzoCent;
 
@@ -30,11 +30,9 @@ public class Prodotto {
     public int getCodice() {
         return codice;
     }
-    public int getPrezzoCent() {
-        return prezzoCent;
-    }
-    public String getPrezzo(){
-        return String.format("%.2f", prezzoCent / 100);
+    public int getPrezzoCent() { return prezzoCent;}
+    public String getPrezzoEuro(){
+        return String.valueOf(prezzoCent / 100);
     }
     public int getCategoria() {
         return categoria;
