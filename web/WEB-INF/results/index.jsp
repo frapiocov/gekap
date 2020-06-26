@@ -6,14 +6,26 @@
     <jsp:param name="pageTitle" value="HomePage"></jsp:param>
 </jsp:include>
 
-<div id="sezione_prodotti">
+<div id="sezione_prodotti" onload="random(${prodotti})">
     <c:forEach items="${prodotti}" var="prodotto">
         <div id="prodotti">
             <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">
-                <img  class="imm_prod_index" src="images/${prodotto.listaImmagini}" alt="copertina">
+                <img class="imm_prod_index" src="images/${prodotto.listaImmagini}" alt="copertina">
             </a>
         </div>
     </c:forEach>
 </div>
+
+<script>
+    function random(array) {
+        var n=Math.floor(Math.random()*n);
+
+        var src=array[n]["listaImmagini"];
+        var codice=array[n]["codice"];
+
+        document.getElementsByTagName("img").setAttribute("src",src);
+        document.getElementsByTagName(a).setAttribute("href","\"servlet_prodotto?codice=" + codice);
+    }
+</script>
 
 <%@include file="footer.html" %>
