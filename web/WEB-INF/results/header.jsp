@@ -13,8 +13,7 @@
     <link href="css/header_footer.css" rel="stylesheet" type="text/css">
     <link href="css/prodotto.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="script/funzioni.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript"  src="script/funzioni.js" ></script>
 </head>
 <body>
 <header>
@@ -37,23 +36,5 @@
         <a href="#favorite" style="float: right"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
     </nav>
 
-    <i id="goup" class="material-icons md-48 md-light" onclick="goUp()">keyboard_arrow_up</i>
+    <i id="goup" class="material-icons md-48 md-light">keyboard_arrow_up</i>
 </header>
-
-
-<script>
-
-    $(document).ready( function(){
-        $("#scelta_categorie").onchange(function () {
-            var idcat = $("#scelta_categorie").val();
-
-            $.post('/servlet_categoria',{"categoria": idcat},
-                function() { // on success
-                alert(idcat);
-                })
-                .fail(function() { //on failure
-                });
-        })
-    });
-
-</script>

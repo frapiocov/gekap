@@ -10,7 +10,7 @@
 
     <section id="contenuto">
             <div class="colonna_L">
-                <h1>${prodotto.nome}</h1>
+                <h3>${prodotto.nome}</h3>
                 <img class="im_prodotto" src="images/${prodotto.listaImmagini}">
                 <p>GENERE: ${prodotto.genere}<br>
                     ANNO: ${prodotto.anno}<br>

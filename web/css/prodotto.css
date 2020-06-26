@@ -21,11 +21,13 @@ section{
     float: left;
     width: auto;
 }
+
 .colonna_R{
     display: inline;
     padding: 10px;
     float: right;
-    width: 73%;
+    width: 72%;
+    align-content: center;
 }
 
 .im_prodotto{
