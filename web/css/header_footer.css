@@ -80,12 +80,13 @@ footer {
     z-index: 99; /* Make sure it does not overlap */
     border: none;
     outline: none;
-    background-color: #303030;
+    background-color: #424242;
     color: #cccccc;
     cursor: pointer;
     padding: 6px;
     border-radius: 12px;
     opacity: 0.8;
+    visibility: hidden;
 }
 
 .material-icons.md-light {

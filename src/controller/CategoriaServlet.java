@@ -18,7 +18,7 @@ public class CategoriaServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
         @SuppressWarnings("unchecked")
         ArrayList<Categoria> categorie=(ArrayList<Categoria>) getServletContext().getAttribute("categorie");
-        int cat=Integer.parseInt(request.getParameter("cat"));
+        int cat=Integer.parseInt(request.getParameter("categoria"));
 
         Categoria c=new Categoria();
         for (Categoria x : categorie) {
@@ -28,7 +28,7 @@ public class CategoriaServlet extends HttpServlet {
         request.setAttribute("categoriaScelta",c);
 
         ArrayList<Prodotto> prodotti=prodottoDAO.doRetrieveByCat(cat);
-        request.setAttribute("prodotti",prodotti);
+        request.setAttribute("prodottiCategoria",prodotti);
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("/WEB-INF/results/categoria.jsp");
         dispatcher.forward(request,response);
