@@ -134,7 +134,7 @@ public class ProdottoDAO {
             try (Connection con = ConPool.getConnection()) {
                 PreparedStatement ps = con.prepareStatement("SELECT prodotto.codice, prodotto.nome, prodotto.genere, " +
                         "prodotto.trama, prodotto.anno, prodotto.prezzo, prodotto.durata, prodotto.lingua, prodotto.listaImmagini, " +
-                        "prodotto.trailer, prodotto.categoria FROM prodotto, categoria where prodotto.categoria = categoria.idCat");
+                        "prodotto.trailer, prodotto.categoria FROM prodotto, categoria WHERE prodotto.categoria = categoria.idCat");
                 ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {

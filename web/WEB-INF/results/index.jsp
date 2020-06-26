@@ -10,7 +10,7 @@
     <c:forEach items="${prodotti}" var="prodotto">
         <div id="prodotti">
             <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">
-                <img  class="imm_prod_index" src="images/${prodotto.listaImmagini}">
+                <img  class="imm_prod_index" src="images/${prodotto.listaImmagini}" alt="copertina">
             </a>
         </div>
     </c:forEach>
