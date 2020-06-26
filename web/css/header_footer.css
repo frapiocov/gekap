@@ -3,6 +3,7 @@
     height: 50px;
     position: fixed;
     background-color: #212121;
+    overflow: visible;
 }
 
 .barra a {
@@ -56,33 +57,50 @@ footer {
     background-color: #212121;
     left: 0;
     bottom: 0;
-    height: 340px;
+    height: 220px;
     width: 100%;
     color:#cccccc;
 }
 
-.info_footer h3 {
-    margin-left:10px;
+h4{
+    text-align: center;
 }
 
-.info_footer h4 {
-    margin-left:25px;
+#logo_footer{
+    width: 140px;
+    height: 120px;
+    align-content: center;
 }
 
-.info_footer i {
-    margin-left:25px;
+#footerone{
+ display: inline;
+}
+
+.info_footer1{
+    text-align: justify;
+    padding: 10px;
+    float: left;
+}
+
+.info_footer2{
+    float: right;
+    padding: 30px;
+    margin: 5px;
+}
+
+.info_footer3{
+    margin: 10px;
+    float: left;
 }
 
 #goup {
     position: fixed;
     bottom: 20px;
     right: 30px;
-    z-index: 99; /* Make sure it does not overlap */
+    z-index: 99;
     border: none;
     outline: none;
     background-color: #424242;
-    color: #cccccc;
-    cursor: pointer;
     padding: 6px;
     border-radius: 12px;
     opacity: 0.8;

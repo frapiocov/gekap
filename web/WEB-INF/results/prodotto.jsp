@@ -9,6 +9,7 @@
 </jsp:include>
 
     <section id="contenuto">
+
             <div class="colonna_L">
                 <h3>${prodotto.nome}</h3>
                 <img class="im_prodotto" src="images/${prodotto.listaImmagini}">
@@ -40,6 +41,6 @@
                 <a href="${prodotto.trailer}" target="_blank"><button class="bottone" value="trailer">Trailer</button></a>
             </div>
             <div style="clear:both;"></div>
-    </section>
 
+    </section>
 <%@include file="footer.html" %>

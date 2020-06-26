@@ -8,6 +8,7 @@
         gekap/${param.pageTitle}
     </title>
     <link rel="icon" href="images/favicon.png" type="image/png"/>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/header_footer.css" rel="stylesheet" type="text/css">

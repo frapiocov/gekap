@@ -17,7 +17,7 @@ section{
 
 .colonna_L{
     display: inline;
-    padding: 10px;
+    padding: 8px;
     float: left;
     width: auto;
 }
@@ -33,4 +33,6 @@ section{
 .im_prodotto{
     width: 280px;
     height: 450px;
+    outline: 4px solid #424242;
+    -moz-outline-radius: 6px;
 }
