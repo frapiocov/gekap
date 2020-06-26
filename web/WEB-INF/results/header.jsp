@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/header_footer.css" rel="stylesheet" type="text/css">
-    <link href="css/prodotto.css" rel="stylesheet" type="text/css">
+    <link href="css/MIOprod.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript"  src="script/funzioni.js" ></script>
 </head>
