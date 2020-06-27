@@ -4,7 +4,7 @@
     <jsp:param name="pageTitle" value="Errore"/>
 </jsp:include>
 
-<section style="padding: 100px">
+<section style="padding: 80px">
     <h1><%= exception.getMessage() %></h1>
 </section>
 

@@ -28,8 +28,8 @@
                 </c:forEach>
             </select>
         <div class="ricerca">
-            <form action="#">
-                <input type="text" placeholder="Cerca..." name="cerca">
+            <form action="servlet_ricerca" method="get">
+                <input type="text" placeholder="Cerca..." name="query" onfocus="mettiBordo(this)" onblur="togliBordo(this)">
                 <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
             </form>
         </div>

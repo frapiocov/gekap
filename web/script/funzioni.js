@@ -6,6 +6,13 @@ function outF(obj) { obj.innerHTML = "favorite"; }
 function inA(obj) { obj.innerHTML = "account_circle"; }
 function outA(obj) { obj.innerHTML = "account_box"; }
 
+function mettiBordo(obj){
+    obj.style.borderBottom="solid #cccccc 1px";
+}
+function togliBordo(obj){
+    obj.style.borderBottom="none";
+}
+
 jQuery(document).ready(function() {
 
     var btn = $('#goup');
