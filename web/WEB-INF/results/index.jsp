@@ -18,11 +18,11 @@
 
     <div class="showSlide fade">
         <img src="images/s3.jpg" />
-        <div class="content">Vincitore della Palma d'Oro al Festival di Cannes e Oscar al miglior film straniero: Parasite</div>
+        <div class="content"></div>
     </div>
     <div class="showSlide fade">
         <img src="images/s4.jpg" />
-        <div class="content">Fatti travolgere dall'ultima impresa targata Disney Pixar...Woody e Buzz ti aspettano in Toy Story 4</div>
+        <div class="content">Fatti travolgere dall'ultima impresa targata Disney Pixar</div>
     </div>
     <!-- Navigation arrows -->
     <a class="left" onclick="nextSlide(-1)"><i class="material-icons md-light md-36">keyboard_arrow_left</i></a>
@@ -39,7 +39,10 @@
     </c:forEach>
 </div>
 
+<%@include file="footer.html" %>
+
 <script>
+
     var slide_index = 1;
     displaySlides(slide_index);
 
@@ -62,5 +65,3 @@
         slides[slide_index - 1].style.display = "block";
     }
 </script>
-
-<%@include file="footer.html" %>

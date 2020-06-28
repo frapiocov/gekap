@@ -33,7 +33,7 @@ public class HomeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int casuale = (int)(Math.random()*6);
-        List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(casuale, 10);
+        List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(casuale, 12);
         request.setAttribute("prodotti", prodotti);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/index.jsp");
