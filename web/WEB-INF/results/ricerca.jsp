@@ -5,7 +5,7 @@
     <jsp:param name="pageTitle" value="HomePage"></jsp:param>
 </jsp:include>
 
-<div style="padding-top: 50px"><h3>Parola cercata: ${parolaCercata}</h3></div>
+<div style="padding-top: 40px; padding-left: 10px"><h3>Parola cercata: ${parolaCercata}</h3></div>
 <div class="sezione_prodotti">
     <c:forEach items="${prodotti}" var="prodotto">
         <div class="prodotti">
@@ -15,7 +15,10 @@
         </div>
     </c:forEach>
     <c:if test="${empty prodotti}">
-        <div style="padding: 50px"><h3>Nessun prodotto conforme alla ricerca. :(</h3></div>
+        <div style="padding: 10px">
+            <i class="material-icons md-light md-48">sentiment_very_dissatisfied</i>
+            <h3>Nessun prodotto conforme alla ricerca</h3>
+        </div>
     </c:if>
 </div>
 

@@ -23,13 +23,10 @@
     margin-top: 3px;
     padding: 5px;
     font-size: 18px;
-    border-bottom: #cccccc 2px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
     border-radius: 2px;
     background-color: #212121;
     color: #cccccc;
+    border: none;
 }
 
 .barra .ricerca button {
@@ -90,7 +87,8 @@ h4{
 
 .info_footer3{
     margin: 10px;
-    float: left;
+    align-content: center;
+    text-align: center;
 }
 
 #goup {

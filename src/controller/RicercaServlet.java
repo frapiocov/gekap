@@ -23,6 +23,7 @@ public class RicercaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String parolaCercata = request.getParameter("query");
+
         ArrayList<Prodotto> prodotti = dao.doRetrieveByNomeOrDescrizione( parolaCercata, 0, 10);
 
         request.setAttribute("parolaCercata", parolaCercata);
