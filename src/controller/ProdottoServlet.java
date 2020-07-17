@@ -26,14 +26,13 @@ public class ProdottoServlet extends HttpServlet {
         try{
             codice = Integer.parseInt(request.getParameter("codice"));
         }catch(Exception e){
-            throw new controller.ServletException("ID prodotto non valido :(");
+            throw new controller.ServletException("ID prodotto non valido");
         }
         Prodotto prodotto = dao.doRetrieveById(codice);
-        ArrayList<Attore> cast = dao.doRetrieveCastById(codice);
-
-        if (prodotto == null) {
-            throw new ServletException("Film non presente in catalogo :( ");
+        if(prodotto == null){
+            throw new controller.ServletException("Prodotto non trovato :(");
         }
+        ArrayList<Attore> cast = dao.doRetrieveCastById(codice);
 
         request.setAttribute("prodotto", prodotto);
         request.setAttribute("cast", cast);

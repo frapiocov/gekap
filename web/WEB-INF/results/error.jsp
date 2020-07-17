@@ -6,15 +6,8 @@
 
 <section style="padding-top: 50px">
     <h1>Errore ${requestScope['javax.servlet.error.status_code']}</h1>
-    <!-- Scegliere una delle due opzioni per stampare l'eccezione:
-    la prima per stampa un breve messaggio di errore, la seconda lo stacktrace completo. -->
+
     <pre>${requestScope['javax.servlet.error.exception']}</pre>
-    <pre><%
-        if (exception != null) {
-            out.flush();
-            exception.printStackTrace(response.getWriter());
-        }
-    %></pre>
 </section>
 
 <%@include file="footer.html"%>

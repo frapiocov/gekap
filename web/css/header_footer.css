@@ -42,12 +42,45 @@
 }
 
 #scelta_categorie {
-    margin-top: 12px;
-    padding: 4px;
-    font-size: 18px;
+    position: relative;
+    display: inline-block;
+}
+
+#bottonecategorie{
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 20px;
     border: none;
     background-color: #212121;
     color: #cccccc;
+}
+
+.scelte_dropdown{
+    display: none;
+    position: absolute;
+    background-color: #212121;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.scelte_dropdown a{
+    color: #cccccc;
+    padding: 6px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.scelte_dropdown a:hover {
+    color: darkgoldenrod;
+}
+
+#scelta_categorie:hover .scelte_dropdown{
+    display: block;
+}
+
+#scelta_categorie:hover #bottonecategorie{
+    color: darkgoldenrod;
 }
 
 footer {
@@ -107,6 +140,10 @@ h4{
 
 .material-icons.md-light {
     color: white;
+}
+
+.material-icons.md-yellow{
+    color: darkgoldenrod;
 }
 
 .material-icons.md-light.md-inactive {

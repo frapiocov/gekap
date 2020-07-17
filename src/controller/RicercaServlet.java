@@ -23,6 +23,9 @@ public class RicercaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String parolaCercata = request.getParameter("query");
+    if(parolaCercata == "" || parolaCercata == null){
+            throw new controller.ServletException("Ehy! Non hai inserito nessuna parola...riprova");
+        }
 
         ArrayList<Prodotto> prodotti = dao.doRetrieveByNomeOrDescrizione( parolaCercata, 0, 10);
 

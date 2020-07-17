@@ -33,8 +33,12 @@ public class HomeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int casuale = (int)(Math.random()*6);
-        List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(casuale, 12);
+        List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(casuale ,12);
+
+        List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( 11, 5);
+
         request.setAttribute("prodotti", prodotti);
+        request.setAttribute("prodotti_evidenza", evidenza);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/index.jsp");
         dispatcher.forward(request, response);

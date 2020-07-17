@@ -8,8 +8,7 @@ import java.io.IOException;
 
 @WebServlet(name = "ServletException")
 public class ServletException extends javax.servlet.ServletException {
-    public ServletException() {
-    }
+    private static final long serialVersionUID = 1L;
 
     public ServletException(String message) {
         super(message);
