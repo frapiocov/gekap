@@ -1,6 +1,5 @@
 .contenuto{
     margin-top: 60px;
-    padding-top: 50px;
     text-align: justify;
     display: inline;
 }
@@ -14,7 +13,7 @@
 
 .colonna_L{
     display: inline;
-    padding: 8px;
+    padding: 10px;
     float: left;
     width: auto;
 }

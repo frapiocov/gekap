@@ -42,12 +42,12 @@
 }
 
 #scelta_categorie {
+    margin-top: 3px;
     position: relative;
     display: inline-block;
 }
 
 #bottonecategorie {
-    margin-top: 5px;
     padding: 10px;
     font-size: 20px;
     border: none;
@@ -61,13 +61,14 @@
     background-color: #212121;
     min-width: 160px;
     z-index: 1;
+    border-radius: 4px;
 }
 
 .scelte_dropdown a {
     color: #cccccc;
     padding: 6px 12px;
     text-decoration: none;
-    display: block;
+    display: inline-block;
     font-size: 16px;
 }
 
@@ -81,6 +82,19 @@
 
 #scelta_categorie:hover #bottonecategorie {
     color: darkgoldenrod;
+}
+
+#scelta_account {
+    width: auto;
+    position: relative;
+    display: inline;
+    text-align: center;
+    float: right;
+}
+
+#scelta_account:hover .scelte_dropdown {
+    display: inline;
+    margin-top: 50px;
 }
 
 footer {
@@ -145,4 +159,14 @@ footer {
 #logo_gekap {
     width: 48px;
     height: 48px;
+}
+
+.textform{
+    background-color: #212121;
+    color: #cccccc;
+    padding: 4px;
+    margin: 4px;
+    border: none;
+    border-left: darkgoldenrod 1px solid;
+    font-size: 16px;
 }
