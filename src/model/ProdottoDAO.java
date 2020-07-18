@@ -134,7 +134,9 @@ public class ProdottoDAO {
             try (Connection con = ConPool.getConnection()) {
                 PreparedStatement ps = con.prepareStatement("SELECT prodotto.codice, prodotto.nome, prodotto.genere, " +
                         "prodotto.trama, prodotto.anno, prodotto.prezzo, prodotto.durata, prodotto.lingua, prodotto.listaImmagini, " +
-                        "prodotto.trailer, prodotto.categoria FROM prodotto, categoria WHERE prodotto.categoria = categoria.idCat");
+                        "prodotto.trailer, prodotto.categoria FROM prodotto, categoria WHERE prodotto.categoria = categoria.idCat AND categoria.iDcat = ?");
+                ps.setInt(1, id);
+
                 ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
@@ -157,5 +159,36 @@ public class ProdottoDAO {
                 throw new RuntimeException(e);
             }
             return prodotti;
+        }
+
+        //funzione che fa la ricerca di un prodotto in base al nome e alla trama
+        public ArrayList<Prodotto> doRetrieveByNomeOrDescrizione(String against, int offset, int limit) {
+            try (Connection con = ConPool.getConnection()) {
+                PreparedStatement ps = con.prepareStatement("SELECT codice, nome, genere, trama, anno, prezzo, durata, lingua, listaImmagini, trailer, categoria" +
+                        " FROM prodotto WHERE MATCH(nome, trama) AGAINST(?) LIMIT ?, ?");
+                ps.setString(1, against);
+                ps.setInt(2, offset);
+                ps.setInt(3, limit);
+                ArrayList<Prodotto> prodotti = new ArrayList<>();
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    Prodotto c = new Prodotto();
+                    c.setCodice(rs.getInt(1));
+                    c.setNome(rs.getString(2));
+                    c.setGenere(rs.getString(3));
+                    c.setTrama(rs.getString(4));
+                    c.setAnno(rs.getInt(5));
+                    c.setPrezzoCent(rs.getInt(6));
+                    c.setDurata(rs.getInt(7));
+                    c.setLingua(rs.getString(8));
+                    c.setListaImmagini(rs.getString(9));
+                    c.setTrailer(rs.getString(10));
+                    c.setCategoria(rs.getInt(11));
+                    prodotti.add(c);
+                }
+                return prodotti;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 }

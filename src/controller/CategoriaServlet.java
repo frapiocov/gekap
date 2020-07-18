@@ -18,7 +18,12 @@ public class CategoriaServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
         @SuppressWarnings("unchecked")
         ArrayList<Categoria> categorie=(ArrayList<Categoria>) getServletContext().getAttribute("categorie");
-        int cat=Integer.parseInt(request.getParameter("categoria"));
+        int cat;
+        try{
+            cat = Integer.parseInt(request.getParameter("categoria"));
+        }catch(Exception e){
+            throw new controller.ServletException("ID categoria non valido");
+        }
 
         Categoria c=new Categoria();
         for (Categoria x : categorie) {

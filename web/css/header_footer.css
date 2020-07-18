@@ -2,55 +2,85 @@
     width: 100%;
     height: 50px;
     position: fixed;
+    top: 0;
     background-color: #212121;
-    overflow: visible;
 }
 
 .barra a {
     float: left;
     text-align: center;
-    padding:5px;
+    padding: 5px;
     color: #cccccc;
 }
 
-.barra .ricerca {
+.barra #ricerca {
     float: left;
     padding: 10px;
 }
 
-.barra input[type=text] {
+.barra #q {
     margin-right: 0;
     margin-top: 3px;
     padding: 5px;
     font-size: 18px;
-    border-bottom: #cccccc 2px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
     border-radius: 2px;
     background-color: #212121;
     color: #cccccc;
+    border: none;
 }
 
-.barra .ricerca button {
+.barra #ricerca button:hover {
+    border-bottom: solid 1px darkgoldenrod;
+}
+
+.barra #ricerca button {
     float: right;
     border: none;
     background-color: #212121;
-    padding: 2px;
+    padding: 3px;
     margin-top: 3px;
 }
 
-.barra .ricerca button:hover {
-    background: #424242;
+#scelta_categorie {
+    position: relative;
+    display: inline-block;
 }
 
-#scelta_categorie {
-    margin-top: 12px;
-    padding: 4px;
-    font-size: 18px;
+#bottonecategorie {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 20px;
     border: none;
     background-color: #212121;
     color: #cccccc;
+}
+
+.scelte_dropdown {
+    display: none;
+    position: absolute;
+    background-color: #212121;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.scelte_dropdown a {
+    color: #cccccc;
+    padding: 6px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.scelte_dropdown a:hover {
+    color: darkgoldenrod;
+}
+
+#scelta_categorie:hover .scelte_dropdown {
+    display: block;
+}
+
+#scelta_categorie:hover #bottonecategorie {
+    color: darkgoldenrod;
 }
 
 footer {
@@ -59,42 +89,28 @@ footer {
     bottom: 0;
     height: 220px;
     width: 100%;
-    color:#cccccc;
+    color: #cccccc;
 }
 
-h4{
-    text-align: center;
-}
-
-#logo_footer{
+#logo_footer {
     width: 140px;
     height: 120px;
-    align-content: center;
 }
 
-#footerone{
- display: inline;
+#footerone {
+    display: inline-flex;
 }
 
-.info_footer1{
-    text-align: justify;
+.info {
+    text-align: center;
     padding: 10px;
-    float: left;
-}
-
-.info_footer2{
-    float: right;
-    padding: 30px;
-    margin: 5px;
-}
-
-.info_footer3{
-    margin: 10px;
-    float: left;
+    margin-left: 12px;
+    align-content: center;
 }
 
 #goup {
     position: fixed;
+    display: none;
     bottom: 20px;
     right: 30px;
     z-index: 99;
@@ -104,11 +120,10 @@ h4{
     padding: 6px;
     border-radius: 12px;
     opacity: 0.8;
-    visibility: hidden;
 }
 
 .material-icons.md-light {
-    color: white;
+    color: darkgoldenrod;
 }
 
 .material-icons.md-light.md-inactive {
@@ -124,10 +139,10 @@ h4{
 }
 
 .material-icons.md-36.md-light {
-    font-size:36px;
+    font-size: 36px;
 }
 
-#logo_gekap{
+#logo_gekap {
     width: 48px;
     height: 48px;
 }

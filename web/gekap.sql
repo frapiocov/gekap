@@ -41,7 +41,8 @@ categoria int not null,
 primary key(codice),
 foreign key(categoria) references categoria(idCat)
 on update cascade
-on delete cascade
+on delete cascade,
+fulltext key(nome,trama)
 );
 
 create table attore (
@@ -146,7 +147,9 @@ insert into prodotto values
 (12, "Bohemian Rhapsody", "Biografia", "Il film ripercorre l'ascesa della band attraverso le loro canzoni iconiche e il sound rivoluzionario, la loro implosione quasi totale mentre le spirali del lifestyle di Mercry sfuggono al controllo e la loro trionfante reunion alla vigilia del Live Aid, dove Mercury, mentre affronta una malattia mortale, guida la band in una delle più grandi performance nella storia della musica rock. Nel mentre, rafforza l'eredità di una band che era sempre più simile a una famiglia, e che continua ad ispirare outsiders, sognatori e amanti della musica fino ad oggi.", 2018, 799, 134, "EN, IT", "12.jpg", "https://www.youtube.com/watch?v=1wg8UOWZGp4", 1),
 (13, "Sherlock Holmes", "Giallo", "Nuovo adattamento cinematografico dei racconti di Arthur Conan Doyle, diretto da Guy Ritchie, che rivoluziona look e comportamenti del celebre ispettore e del suo fidato assistente Watson. Il nuovo Sherlock è un donnaiolo, ama fare a pugni ed ha un problema col gioco d'azzardo. La trama del film non è tratta da un singolo racconto di Conan Doyle, ma è una storia originale, in cui Holmes dovrà combattere un nuovo nemico e svelare un pericoloso complotto che potrebbe distruggere il Paese.", 2009, 500, 128, "EN, IT", "13.jpg", "https://www.youtube.com/watch?v=YFLhRlG7Y7I", 1),
 (14, "Aladdin", "Avventura", "L'avvincente storia dell'affascinante furfante Aladdin, la coraggiosa e autonoma Principessa Jasmine e il Genio che potrebbero essere la chiave del loro futuro. Diretto da Guy Ritchie, che porta il suo singolare talento per un'azione frenetica e viscerale nella fittizia città portuale di Agrabah, il film è stato scritto da John August e Ritchie sulla base del classico Disney 'Aladdin'. Nella parte del Genio, che fu dell’indimenticabile Robin Williams, il volto nuovo di Will Smith.", 2019, 1340, 128, "EN, IT", "14.jpg", "https://www.youtube.com/watch?v=FLdEVdFZJgk", 1),
-(15, "Hilarious", "Stand-Up", "Puledri indomabili, amore dopo il divorzio, pericoli dell'autoerotismo...nessun argomento intimorisce questo comico!", 2010, 330, 83, "EN", "15.jpg", "https://www.youtube.com/watch?v=DmKQQboHBzM",3);
+(15, "Hilarious", "Stand-Up", "Puledri indomabili, amore dopo il divorzio, pericoli dell'autoerotismo...nessun argomento intimorisce questo comico!", 2010, 330, 83, "EN", "15.jpg", "https://www.youtube.com/watch?v=DmKQQboHBzM",3),
+(16, "Joker", "Thriller", "La nascita di un cattivo. Creazione di un criminale figlio della sua società. Una faccia che cambia il sorriso in un ghigno malefico. “Joker” ruota intorno alla figura dell'iconico villain ed è una storia originale, mai vista prima sul grande schermo. L’esplorazione di Arthur Fleck (Joaquin Phoenix), un uomo disprezzato dalla società, non è solo la cruda storia di un personaggio, ma un monito per tutti.", 2019, 499, 122, "EN, IT", "16.jpg", "https://www.youtube.com/watch?v=o7nkJDjuSp4",1);
+
 
 insert into attore values 
 (1,"Edward Norton", "Narratore"),
@@ -212,7 +215,13 @@ insert into attore values
 (52, "Mena Massoud", "Aladeen"),
 (53, "Naomi Scott", "Jasmine"),
 (54, "Marwan Kenzari", "Jafar"),
-(55, "Louis CK", " ");
+(55, "Louis CK", " "),
+
+(56, "Todd Phillips", "Regista"),
+(57, "Joaquin Phoenix", "Arthur Fleck"),
+(58, "Robert De Niro", "Murray Franklin"),
+(59, "Zazie Beetz", "Sophie Dumond"),
+(60, "Frances Conroy", "Penny Fleck");
 
 insert into prodottoCast values
 (1, 1),
@@ -278,4 +287,10 @@ insert into prodottoCast values
 (14, 52),
 (14, 53),
 (14, 54),
-(15, 55);
+(15, 55),
+
+(16, 56),
+(16, 57),
+(16, 58),
+(16, 59),
+(16, 60);

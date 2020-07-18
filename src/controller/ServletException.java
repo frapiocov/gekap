@@ -7,12 +7,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "ServletException")
-public class ServletException extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+public class ServletException extends javax.servlet.ServletException {
+    private static final long serialVersionUID = 1L;
 
+    public ServletException(String message) {
+        super(message);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    public ServletException(String message, Throwable rootCause) {
+        super(message, rootCause);
+    }
 
+    public ServletException(Throwable rootCause) {
+        super(rootCause);
     }
 }
