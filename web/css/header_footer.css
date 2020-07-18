@@ -9,16 +9,16 @@
 .barra a {
     float: left;
     text-align: center;
-    padding:5px;
+    padding: 5px;
     color: #cccccc;
 }
 
-.barra .ricerca {
+.barra #ricerca {
     float: left;
     padding: 10px;
 }
 
-.barra input[type=text] {
+.barra #q {
     margin-right: 0;
     margin-top: 3px;
     padding: 5px;
@@ -29,16 +29,16 @@
     border: none;
 }
 
-.barra .ricerca button {
+.barra #ricerca button:hover {
+    border-bottom: solid 1px darkgoldenrod;
+}
+
+.barra #ricerca button {
     float: right;
     border: none;
     background-color: #212121;
-    padding: 2px;
+    padding: 3px;
     margin-top: 3px;
-}
-
-.barra .ricerca button:hover {
-    background: #424242;
 }
 
 #scelta_categorie {
@@ -46,7 +46,7 @@
     display: inline-block;
 }
 
-#bottonecategorie{
+#bottonecategorie {
     margin-top: 5px;
     padding: 10px;
     font-size: 20px;
@@ -55,7 +55,7 @@
     color: #cccccc;
 }
 
-.scelte_dropdown{
+.scelte_dropdown {
     display: none;
     position: absolute;
     background-color: #212121;
@@ -63,7 +63,7 @@
     z-index: 1;
 }
 
-.scelte_dropdown a{
+.scelte_dropdown a {
     color: #cccccc;
     padding: 6px 12px;
     text-decoration: none;
@@ -75,11 +75,11 @@
     color: darkgoldenrod;
 }
 
-#scelta_categorie:hover .scelte_dropdown{
+#scelta_categorie:hover .scelte_dropdown {
     display: block;
 }
 
-#scelta_categorie:hover #bottonecategorie{
+#scelta_categorie:hover #bottonecategorie {
     color: darkgoldenrod;
 }
 
@@ -89,44 +89,28 @@ footer {
     bottom: 0;
     height: 220px;
     width: 100%;
-    color:#cccccc;
+    color: #cccccc;
 }
 
-h4{
-    text-align: center;
-}
-
-#logo_footer{
+#logo_footer {
     width: 140px;
     height: 120px;
-    align-content: center;
 }
 
-#footerone{
- display: inline;
+#footerone {
+    display: inline-flex;
 }
 
-.info_footer1{
-    text-align: justify;
-    padding: 10px;
-    float: left;
-}
-
-.info_footer2{
-    float: right;
-    padding: 30px;
-    margin: 5px;
-}
-
-.info_footer3{
-    margin: 10px;
-    align-content: center;
+.info {
     text-align: center;
+    padding: 10px;
+    margin-left: 12px;
+    align-content: center;
 }
 
 #goup {
     position: fixed;
-    visibility: hidden;
+    display: none;
     bottom: 20px;
     right: 30px;
     z-index: 99;
@@ -139,10 +123,6 @@ h4{
 }
 
 .material-icons.md-light {
-    color: white;
-}
-
-.material-icons.md-yellow{
     color: darkgoldenrod;
 }
 
@@ -159,10 +139,10 @@ h4{
 }
 
 .material-icons.md-36.md-light {
-    font-size:36px;
+    font-size: 36px;
 }
 
-#logo_gekap{
+#logo_gekap {
     width: 48px;
     height: 48px;
 }

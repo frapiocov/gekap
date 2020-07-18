@@ -22,8 +22,10 @@ public class RicercaServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String parolaCercata = request.getParameter("query");
-    if(parolaCercata == "" || parolaCercata == null){
+
+        if(parolaCercata.equals("")){
             throw new controller.ServletException("Ehy! Non hai inserito nessuna parola...riprova");
         }
 

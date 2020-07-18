@@ -23,11 +23,13 @@ public class ProdottoServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int codice;
+
         try{
             codice = Integer.parseInt(request.getParameter("codice"));
         }catch(Exception e){
             throw new controller.ServletException("ID prodotto non valido");
         }
+
         Prodotto prodotto = dao.doRetrieveById(codice);
         if(prodotto == null){
             throw new controller.ServletException("Prodotto non trovato :(");

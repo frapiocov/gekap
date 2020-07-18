@@ -4,9 +4,9 @@ $(document).ready(function() {
 
     $(window).scroll(function() {
         if ($(window).scrollTop() > 300) {
-            btn.css("visibility", "visible");
+            btn.css("display", "block");
         } else {
-            btn.css("visibility", "hidden");
+            btn.css("display", "none");
         }
     });
 
