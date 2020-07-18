@@ -31,8 +31,8 @@ public class Prodotto {
         return codice;
     }
     public int getPrezzoCent() { return prezzoCent;}
-    public String getPrezzoEuro(){
-        return String.valueOf(prezzoCent / 100);
+    public String getPrezzoEuro() {
+        return String.format("%.2f", prezzoCent / 100.00);
     }
     public int getCategoria() {
         return categoria;

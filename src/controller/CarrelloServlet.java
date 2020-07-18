@@ -17,6 +17,7 @@ public class CarrelloServlet extends HttpServlet {
     private final ProdottoDAO dao=new ProdottoDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session=request.getSession();
         Carrello cart=(Carrello) session.getAttribute("carrello");
 
@@ -25,24 +26,26 @@ public class CarrelloServlet extends HttpServlet {
             session.setAttribute("carrello",cart);
         }
 
-        String codProdStr=request.getParameter("codice_prodotto");
+        String codProdStr = request.getParameter("codice_prodotto");
 
         if(codProdStr!=null) {
             int codice=Integer.parseInt(codProdStr);
 
-            String numStr=request.getParameter("quantity");
+            String numStr = request.getParameter("quantity");
             if(numStr!=null) {
-                int num=Integer.parseInt(numStr);
+                int num = Integer.parseInt(numStr);
 
-                Carrello.ProdottoQuantita prodQuant=cart.get(codice);
-                if(prodQuant!=null) {
-                    prodQuant.setQuantita(prodQuant.getQuantita()+num);
+                Carrello.ProdottoQuantita prodQuant = cart.get(codice);
+                if(prodQuant != null) {
+                    prodQuant.setQuantita(prodQuant.getQuantita() + num);
                 }
                 else {
-                    cart.put(dao.doRetrieveById(codice),num);
+                    cart.put(dao.doRetrieveById(codice), num);
                 }
             }
         }
+
+        session.setAttribute("carrello", cart);
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/results/carrello.jsp");
         dispatcher.forward(request,response);

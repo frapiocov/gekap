@@ -98,6 +98,47 @@ public class ProdottoDAO {
     }
 
     /**
+     * Aggiorna i valori di un prodotto nel Database
+     * **/
+    public void doUpdate(Prodotto p) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("UPDATE prodotto SET nome=?, genere=?, trama=?, anno=?, prezzo=?, durata=?, lingua=?, listaImmagini=?, trailer=?, categoria=? WHERE codice=?");
+
+            ps.setString(1, p.getNome());
+            ps.setString(2,p.getGenere());
+            ps.setString(3,p.getTrama());
+            ps.setInt(4, p.getAnno());
+            ps.setInt(5,p.getPrezzoCent());
+            ps.setInt(6,p.getDurata());
+            ps.setString(7, p.getLingua());
+            ps.setString(8,p.getListaImmagini());
+            ps.setString(9,p.getTrailer());
+            ps.setInt(10,p.getCategoria());
+            ps.setInt(11,p.getCodice());
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**Cancella un prodotto dal database*/
+    public void doDelete(int id) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM prodotto WHERE codice=?");
+            ps.setInt(1, id);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("DELETE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * Trova il cast del prodotto relativo.
      */
     public ArrayList<Attore> doRetrieveCastById(int id) {
