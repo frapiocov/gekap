@@ -7,7 +7,6 @@
 </jsp:include>
 
 <section class="sezione_prodotti">
-
     <h1 style="padding-left: 30px">${categoriaScelta.nome}</h1>
 
     <jsp:useBean id="prodottiCategoria" scope="request" type="java.util.List"/>
