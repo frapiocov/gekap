@@ -19,7 +19,7 @@
 
                     <form method="post" action="">
                         <label for="quantity">Quantità:</label>
-                        <input id="quantity" type="number" min="1" max="10" value="1">
+                        <input type="number" name="quantity" id="quantity" min="1" max="10" value="1">
                         <input type="hidden" value="${prodotto.codice}" id="codice_prodotto">
                         <input class="bottone" type="submit" value="Aggiungi al carrello">
                     </form>
