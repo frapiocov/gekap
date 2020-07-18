@@ -7,6 +7,7 @@
     <title>
         gekap/${param.pageTitle}
     </title>
+
     <link rel="icon" href="images/favicon.png" type="image/png"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -23,6 +24,7 @@
         <a href="." id="logo_contenitore"><img id="logo_gekap" src="images/logoBianco.png" alt="logo"></a>
 
             <select id="scelta_categorie" onchange="cambiaCategoria()" name="cat">
+                <option selected disabled>--Categorie--</option>
                 <c:forEach items="${categorie}" var="categoria">
                     <option value="${categoria.idCat}">${categoria.nome}</option>
                 </c:forEach>
