@@ -49,8 +49,8 @@ public class AttoreDAO {
     public void doSave(ArrayList<Attore> attori, int codiceProdotto) {
         try (Connection con = ConPool.getConnection()) {
 
-            for (Attore a:attori) {
-                PreparedStatement ps = con.prepareStatement("INSERT INTO attore (nome,ruolo) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
+            for (Attore a: attori) {
+                PreparedStatement ps = con.prepareStatement("INSERT INTO attore (nome,ruolo) VALUES (?,?)");
 
                 ps.setString(1, a.getNome());
                 ps.setString(2, a.getRuolo());
