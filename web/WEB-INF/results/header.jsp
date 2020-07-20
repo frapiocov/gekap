@@ -14,6 +14,7 @@
     <link href="css/header_footer.css" rel="stylesheet" type="text/css">
     <link href="css/carrello.css" rel="stylesheet" type="text/css">
     <link href="css/prodotto.css" rel="stylesheet" type="text/css">
+    <link href="css/adminprodotto.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script/funzioni.js"></script>
     <script src="script/jquery.js"></script>
@@ -45,7 +46,7 @@
         <a href="servlet_carrello" style="float: right; padding-right: 40px"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
         <a href="#favorite" style="float: right; padding-right: 40px"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
         <div id="scelta_account">
-            <a href="" id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light" onmouseover="inA(this)" onmouseout="outA(this)">account_circle</i></a>
+            <a href="" id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light">account_circle</i></a>
             <c:choose>
                 <c:when test="${utente == null}">
                     <div class="scelte_dropdown">
@@ -64,10 +65,9 @@
                         <hr style="border-color:darkgoldenrod">
 
                         <c:if test="${utente.admin}">
-                            <a style="padding: 4px" href="AdminCategoria">Aggiungi Categoria</a>
-                            <a style="padding: 4px" href="AdminProdotto">Aggiungi Prodotto</a>
+                            <a style="padding: 4px" href="servlet_admin_prodotto">Aggiungi Prodotto</a>
                             <a style="padding: 4px" href="todo">Ordini</a>
-                            <a style="padding: 4px" href="AdminUtenti">Utenti</a>
+                            <a style="padding: 4px" href="servlet_admin_utenti">Utenti</a>
                         </c:if>
                             <a style="padding: 4px" href="todo">Profilo</a>
                             <a style="padding: 4px" href="todo">I miei ordini</a>

@@ -46,22 +46,26 @@ public class AttoreDAO {
         }
     }
 
-    public void doSave(Attore a) {
+    public void doSave(ArrayList<Attore> attori, int codiceProdotto) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO Attore (nome,ruolo) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, a.getNome());
-            ps.setString(2, a.getRuolo());
+            for (Attore a:attori) {
+                PreparedStatement ps = con.prepareStatement("INSERT INTO attore (nome,ruolo) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
 
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("INSERT error.");
+                ps.setString(1, a.getNome());
+                ps.setString(2, a.getRuolo());
+
+                if (ps.executeUpdate() != 1) {
+                    throw new RuntimeException("INSERT error.");
+                }
+
+                ps = con.prepareStatement("INSERT INTO prodottocast (prodotto, attore) VALUES (?,?)");
+                ps.setInt(codiceProdotto, a.getId());
+
+                if (ps.executeUpdate() != 1) {
+                    throw new RuntimeException("INSERT error.");
+                }
             }
-
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-
-            int id = rs.getInt(1);
-            a.setId(id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

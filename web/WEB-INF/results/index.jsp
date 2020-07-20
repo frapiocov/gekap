@@ -10,7 +10,7 @@
         <jsp:useBean id="prodotti_evidenza" scope="request" type="java.util.List"/>
         <c:forEach items="${prodotti_evidenza}" var="prodotto">
                 <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">
-                    <img class="imm_prod_ev" src="images/${prodotto.codice}.jpg" alt="immagine_prodotto">
+                    <img class="imm_prod_ev" src="images/${prodotto.listaImmagini}" alt="immagine_prodotto">
                 </a>
         </c:forEach>
         <h3>Le ultime novit&agrave; aggiunte in Catalogo</h3>
@@ -22,7 +22,7 @@
     <c:forEach items="${prodotti}" var="prodotto">
         <div class="prodotti">
             <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">
-                <img class="imm_prod_index" src="images/${prodotto.codice}.jpg" alt="immagine_prodotto">
+                <img class="imm_prod_index" src="images/${prodotto.listaImmagini}" alt="immagine_prodotto">
             </a>
         </div>
     </c:forEach>

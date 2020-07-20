@@ -1,0 +1,49 @@
+#contenitore_admin{
+    padding: 20px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+#contenitore_admin label{
+    padding-bottom: 8px;
+}
+
+.textform{
+    width: 120px;
+    background-color: #212121;
+    color: #cccccc;
+    border: none;
+    border-bottom: darkgoldenrod 1px solid;
+    padding: 4px 6px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 450px;
+    height: 150px;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+input[type="number"] {
+    background-color: #212121;
+    color: #cccccc;
+    width: 80px;
+    height: 30px;
+    border: solid 2px #424242;
+    border-radius: 3px;
+    padding: 6px;
+}
+
+#tleft{
+    float: left;
+}
+
+#tright{
+    float: right;
+}

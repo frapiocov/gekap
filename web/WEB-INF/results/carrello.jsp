@@ -5,13 +5,12 @@
     <jsp:param name="pageTitle" value="Carrello"/>
 </jsp:include>
 
-<section>
-    <h1>Carrello</h1>
+<div id="carrello_contenitore">
+    <h1>Carrello <i class="material-icons md-48 md-light">shopping_cart</i></h1>
 
     <jsp:useBean id="carrello" scope="session" type="model.Carrello"/>
-
-    <c:forEach items="${carrello.prodotti}" var="prodQuant">
-        <div>
+    <div>
+        <c:forEach items="${carrello.prodotti}" var="prodQuant">
             <a href="servlet_prodotto?codice=${prodQuant.prodotto.codice}">
                 <img class="imm_prod_ev" src="images/${prodQuant.prodotto.listaImmagini}" alt="immagine prodotto">
             </a>
@@ -34,23 +33,23 @@
                 <input type="hidden" name="numRim" value="0">
                 <input  type="submit" class="bottone" value="Rimuovi">
             </form>
-        </div>
     </c:forEach>
-
+    </div>
+    <div>
     <c:if test="${empty carrello.prodotti}">
         <h3 style="padding: 50px">Nessun prodotto nel carrello.</h3>
     </c:if>
-</section>
 
-<section>
-    <c:if test="${not empty carrello.prodotti}">
-        <h2>TOTALE: ${carrello.totEuro} &euro; </h2>
+        <c:if test="${not empty carrello.prodotti}">
+            <h2>TOTALE: ${carrello.totEuro} &euro; </h2>
 
-        <form action="#">
-            <input class="bottone" type="submit" value="Acquista">
-        </form>
-    </c:if>
-</section>
+            <form action="#">
+                <input class="bottone" type="submit" value="Acquista">
+            </form>
+        </c:if>
+    </div>
+
+</div>
 
 <div style="clear: both"></div>
 

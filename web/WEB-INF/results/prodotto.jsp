@@ -46,6 +46,15 @@
         </a>
     </div>
 
+    <c:if test="${utente.admin}">
+        <form action="servlet_admin_prodotto" method="post">
+            <input type="hidden" name="id" value="${prodotto.codice}">
+            <input type="submit" class="bottone" value="Modifica">
+            <input type="submit" class="bottone" name="rimuovi" value="Rimuovi">
+        </form>
+    </c:if>
+
+
     <div style="clear:both"></div>
 </div>
 

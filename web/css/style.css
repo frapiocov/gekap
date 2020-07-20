@@ -40,15 +40,6 @@ body {
     color: #212121;
 }
 
-input[type="number"] {
-    background-color: #303030;
-    color: #cccccc;
-    width: 35px;
-    height: 25px;
-    border: solid 2px #424242;
-    border-radius: 3px;
-    padding: 6px;
-}
 
 #evidenza{
     margin-top: 45px;
