@@ -11,7 +11,9 @@
         <h1>${operazione} prodotto</h1>
         <h2>${notifica}</h2>
         <c:if test="${param.rimuovi == null}">
-            <form action="servlet_admin_prodotto" method="post" enctype="multipart/form-data" autocomplete="on">
+            <c:if test="${notifica == null}">
+
+            <form action="servlet_modifica_inserimento_prodotto" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id" value="${prodotto.codice}">
 
                 <table id="tleft">
@@ -40,10 +42,6 @@
                         <td><input type="text" class="textform" name="lingua" value="${prodotto.lingua}" required></td>
                     </tr>
                     <tr>
-                        <td><h3>Immagine</h3></td>
-                        <td><input type="file" name="foto"></td>
-                    </tr>
-                    <tr>
                         <td> <h3>Path Trailer (url completo)</h3></td>
                         <td><input type="text" class="textform" name="trailer" value="${prodotto.trailer}" required></td>
                     </tr>
@@ -57,6 +55,10 @@
 
                 <c:if test="${operazione.equals('Aggiungi')}">
                 <table id="tright">
+                    <tr>
+                        <td><h3>Immagine</h3></td>
+                        <td><input type="file" name="foto" value="${prodotto.listaImmagini}"></td>
+                    </tr>
                     <tr>
                         <th>RUOLO</th>
                         <th>ATTORE</th>
@@ -89,11 +91,8 @@
 
                 <input type="submit" class="bottone" value="${operazione}"><br>
 
-                <c:if test="${prodotto != null}">
-                    <h3>Rimuovi il prodotto dal Database:</h3>
-                    <input type="submit" class="bottone" name="rimuovi" value="Rimuovi">
-                </c:if>
             </form>
+            </c:if>
         </c:if>
     </div>
     <div style="clear: both"></div>

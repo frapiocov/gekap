@@ -44,8 +44,6 @@
         <a href="${prodotto.trailer}" target="_blank">
             <button class="bottone" value="trailer">Trailer</button>
         </a>
-    </div>
-
     <c:if test="${utente.admin}">
         <form action="servlet_admin_prodotto" method="post">
             <input type="hidden" name="id" value="${prodotto.codice}">
@@ -53,7 +51,7 @@
             <input type="submit" class="bottone" name="rimuovi" value="Rimuovi">
         </form>
     </c:if>
-
+    </div>
 
     <div style="clear:both"></div>
 </div>

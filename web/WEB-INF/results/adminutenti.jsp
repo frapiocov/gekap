@@ -11,6 +11,7 @@
             <th>Username</th>
             <th>Nome</th>
             <th>Cognome</th>
+            <th>Data di Nascita</th>
             <th>Email</th>
             <th>Admin</th>
             <th>Ordini</th>

@@ -76,7 +76,7 @@ public class ProdottoDAO {
      * **/
     public void doSave(Prodotto p) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO prodotto (nome, genere, trama, anno, prezzo, durata, lingua, trailer, categoria) VALUES(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO prodotto (nome, genere, trama, anno, prezzo, durata, lingua, listaImmagini, trailer, categoria) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
             ps.setString(1, p.getNome());
             ps.setString(2,p.getGenere());
@@ -85,6 +85,7 @@ public class ProdottoDAO {
             ps.setInt(5,p.getPrezzoCent());
             ps.setInt(6,p.getDurata());
             ps.setString(7, p.getLingua());
+            ps.setString(8,p.getListaImmagini());
             ps.setString(9,p.getTrailer());
             ps.setInt(10,p.getCategoria());
 
@@ -92,6 +93,23 @@ public class ProdottoDAO {
                 throw new RuntimeException("INSERT error.");
             }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //restituisce il codice del prodotto in base al nome
+    public int returnMaxCodice(){
+        int value = 0;
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT MAX(codice) FROM prodotto");
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Prodotto c = new Prodotto();
+                value = rs.getInt(1);
+            }
+            return value;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
