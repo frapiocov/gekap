@@ -31,6 +31,7 @@
             <form action="servlet_carrello" method="post">
                 <input type="hidden" name="codice_prodotto" value="${prodQuant.prodotto.codice}">
                 <input type="hidden" name="numRim" value="0">
+                <button class="material-icons md-36 md-light"></button>
                 <input  type="submit" class="bottone" value="Rimuovi">
             </form>
     </c:forEach>

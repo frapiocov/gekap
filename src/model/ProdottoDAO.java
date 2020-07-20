@@ -51,6 +51,7 @@ public class ProdottoDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Prodotto c = new Prodotto();
+                
                 c.setCodice(rs.getInt(1));
                 c.setNome(rs.getString(2));
                 c.setGenere(rs.getString(3));

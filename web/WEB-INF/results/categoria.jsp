@@ -16,9 +16,9 @@
                 <img alt="immagine prodotto" class="imm_prod_index" src="images/${prodotto.listaImmagini}">
             </a>
             <p style="text-align: left">
-                GENERE: ${prodotto.genere}<br>
-                DURATA: ${prodotto.durata} min<br>
-                PREZZO: ${prodotto.prezzoEuro} &euro;
+                <b>GENERE:</b> ${prodotto.genere}<br>
+                <b>DURATA:</b> ${prodotto.durata} min<br>
+                <b>PREZZO:</b> ${prodotto.prezzoEuro} &euro;
             </p>
         </div>
     </c:forEach>

@@ -50,7 +50,7 @@
             <c:choose>
                 <c:when test="${utente == null}">
                     <div class="scelte_dropdown">
-                        <form action="servlet_login" method="post">
+                        <form action="servlet_login" method="post" autocomplete="on">
                             <input class="textform" type="text" name="username" placeholder="Username"><br>
                             <input class="textform" type="password" name="password" placeholder="Password"><br>
                             <input class="bottone" type="submit" value="Login">

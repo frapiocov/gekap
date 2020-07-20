@@ -11,7 +11,7 @@
         <h1>${operazione} prodotto</h1>
         <h2>${notifica}</h2>
         <c:if test="${param.rimuovi == null}">
-            <form action="servlet_admin_prodotto" method="post" enctype="multipart/form-data">
+            <form action="servlet_admin_prodotto" method="post" enctype="multipart/form-data" autocomplete="on">
                 <input type="hidden" name="id" value="${prodotto.codice}">
 
                 <table id="tleft">
