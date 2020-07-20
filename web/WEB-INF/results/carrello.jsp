@@ -29,10 +29,10 @@
                 </c:otherwise>
             </c:choose>
 
-            <form action="#" method="post">
-                <input type="hidden" name="codiceP" value="${prodQuant.prodotto.codice}">
-                <input type="hidden" name="num" value="0">
-                <input class="bottone" type="submit" value="Rimuovi">
+            <form action="servlet_carrello" method="post">
+                <input type="hidden" name="codice_prodotto" value="${prodQuant.prodotto.codice}">
+                <input type="hidden" name="numRim" value="0">
+                <input  type="submit" class="bottone" value="Rimuovi">
             </form>
         </div>
     </c:forEach>

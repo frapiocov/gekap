@@ -9,6 +9,7 @@ function outA(obj) { obj.innerHTML = "account_box"; }
 function mettiBordo(obj){
     obj.style.borderBottom="solid darkgoldenrod 1px";
 }
+
 function togliBordo(obj){
     obj.style.borderBottom="none";
 }
