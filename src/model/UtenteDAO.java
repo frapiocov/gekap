@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class UtenteDAO {
     public void doSave(Utente u) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO Utente (username,passwordhash,email,nome,cognome,dataDiNascita,sesso,via,nCivico,città,provincia,CAP,admin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement("INSERT INTO utente (username,passwordhash,email,nome,cognome,dataDiNascita,sesso,via,nCivico,città,provincia,CAP,admin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             ps.setString(1, u.getUsername());
             ps.setString(2, u.getPasswordhash());
@@ -17,7 +17,7 @@ public class UtenteDAO {
             ps.setString(7, u.getSesso());
             ps.setString(8, u.getVia());
             ps.setInt(9, u.getnCivico());
-            ps.setString(10, u.getCittà());
+            ps.setString(10, u.getCitta());
             ps.setString(11, u.getProvincia());
             ps.setString(12, u.getCAP());
             ps.setBoolean(13, u.isAdmin());
@@ -58,12 +58,59 @@ public class UtenteDAO {
                 ut.setSesso(rs.getString(7));
                 ut.setVia(rs.getString(8));
                 ut.setnCivico(rs.getInt(9));
-                ut.setCittà(rs.getString(10));
+                ut.setCitta(rs.getString(10));
                 ut.setProvincia(rs.getString(11));
                 ut.setCAP(rs.getString(12));
                 ut.setAdmin(rs.getBoolean(13));
 
                 return ut;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //ritorna l'utente in base all'username
+    public Utente doRetrieveByUsername(String username) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT idUser, username, passwordhash, nome, email, admin FROM utente WHERE username=?");
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Utente p = new Utente();
+                p.setIdUser(rs.getInt(1));
+                p.setUsername(rs.getString(2));
+                p.setPasswordHash(rs.getString(3));
+                p.setNome(rs.getString(4));
+                p.setEmail(rs.getString(5));
+                p.setAdmin(rs.getBoolean(6));
+                return p;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Utente doRetrieveByEmail(String email) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT idUser, username, passwordhash, nome, email, admin FROM utente WHERE email=?");
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Utente p = new Utente();
+                p.setIdUser(rs.getInt(1));
+                p.setUsername(rs.getString(2));
+                p.setPasswordHash(rs.getString(3));
+                p.setNome(rs.getString(4));
+                p.setEmail(rs.getString(5));
+                p.setAdmin(rs.getBoolean(6));
+                return p;
             }
             return null;
         } catch (SQLException e) {
@@ -90,7 +137,7 @@ public class UtenteDAO {
                 ut.setSesso(rs.getString(7));
                 ut.setVia(rs.getString(8));
                 ut.setnCivico(rs.getInt(9));
-                ut.setCittà(rs.getString(10));
+                ut.setCitta(rs.getString(10));
                 ut.setProvincia(rs.getString(11));
                 ut.setCAP(rs.getString(12));
                 ut.setAdmin(rs.getBoolean(13));

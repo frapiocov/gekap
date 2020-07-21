@@ -7,7 +7,7 @@
     <jsp:param name="pageTitle" value="${operazione} prodotto"/>
 </jsp:include>
 
-    <div id="contenitore_admin">
+    <div class="contenitore_admin">
         <h1>${operazione} prodotto</h1>
         <h2>${notifica}</h2>
         <c:if test="${param.rimuovi == null}">

@@ -13,6 +13,8 @@
             <th>Cognome</th>
             <th>Data di Nascita</th>
             <th>Email</th>
+            <th>Sesso</th>
+            <th>Indirizzo</th>
             <th>Admin</th>
             <th>Ordini</th>
             <th>Azioni</th>
@@ -28,12 +30,13 @@
                 <td>${utente.cognome}</td>
                 <td>${utente.dataDiNascita}</td>
                 <td>${utente.email}</td>
+                <td>${utente.sesso}</td>
+                <td>Via ${utente.via} ${utente.nCivico}, ${utente.citta} (${utente.provincia})</td>
                 <td>${utente.admin ? "Si" : "No"}</td>
                 <td><a href="todo?id=${utente.idUser}"><button class="bottone">Dettagli</button></a></td>
                 <td>
                     <form action="todo" method="post">
                         <input type="hidden" name="id" value="${utente.idUser}">
-                        <input type="submit" class="bottone" value="Modifica">
                         <input type="submit" class="bottone" name="rimuovi" value="Rimuovi">
                     </form>
                 </td>

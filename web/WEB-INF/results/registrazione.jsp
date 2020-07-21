@@ -5,21 +5,77 @@
     <jsp:param name="pageTitle" value="Registrati"/>
 </jsp:include>
 
-<div>
+<div class="contenitore_admin">
     <h1>Registrazione utente</h1>
     <h5>Riempi tutti i campi</h5>
-    <form name="registrazione" action="servlet_registrazione" method="post">
-        <label>Username (almeno 6 caratteri, solo lettere e numeri, non utilizzato da altri utenti)</label>
-        <input type="text" name="username" oninput="validaUsername()">
-        <label>Password (almeno 8 caratteri, deve contenere: una lettera maiuscola, una minuscola, un numero)</label>
-        <input type="password" name="password" oninput="validaPassword()">
-        <label>Password (conferma)</label>
-        <input type="password" name="passwordConferma" oninput="validaPassword()">
-        <label>Nome (solo lettere e spazi)</label>
-        <input type="text" name="nome" oninput="validaNome()">
-        <label>Email (<b>TODO:</b> diversa da quella di utenti esistenti)</label>
-        <input type="text" name="email" oninput="validaEmail()">
-        <input id="registrami" type="submit" value="Registrami" disabled><span id="registramimessaggio"></span>
+    <form name="registrazione" action="servlet_registra_utente" method="post">
+
+        <table>
+            <tr>
+                <td><label>Username (almeno 6 caratteri, solo lettere e numeri)</label></td>
+                <td><input type="text" name="username" class="textform" oninput="validaUsername()"></td>
+            </tr>
+            <tr>
+                <td><label>Password (almeno 8 caratteri, deve contenere: una lettera maiuscola, una minuscola, un numero)</label></td>
+                <td><input type="password" name="password" class="textform" oninput="validaPassword()"></td>
+            </tr>
+            <tr>
+                <td><label>Conferma Password</label></td>
+                <td><input type="password" name="passwordConferma" class="textform" oninput="validaPassword()"></td>
+            </tr>
+            <tr>
+                <td> <label>Nome</label></td>
+                <td><input type="text" name="nome" class="textform" oninput="validaNome()"></td>
+            </tr>
+            <tr>
+                <td><label>Cognome</label></td>
+                <td><input type="text" name="cognome" class="textform" oninput="validaCognome()"></td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="text" name="email" class="textform" oninput="validaEmail()"></td>
+            </tr>
+            <tr>
+                <td><label>Data di nascita</label></td>
+                <td><input type="date" class="textform" name="ddn"></td>
+            </tr>
+            <tr>
+                <td> <label>Sesso</label>
+                    <input type="radio" value="M" name="sex">
+                    <label>UOMO</label>
+                    <input type="radio" value="F" name="sex">
+                    <label>DONNA</label></td>
+                <td></td>
+            </tr>
+        </table>
+        <fieldset style="width: auto">
+            <legend>INDIRIZZO</legend>
+            <table>
+                <tr>
+                    <td><label style="margin-right: 10px"> Via (solo lettere e spazi)</label></td>
+                    <td><input type="text" name="via" class="textform" oninput="validaVia()"></td>
+                </tr>
+                <tr>
+                    <td><label> Numero Civico</label></td>
+                    <td><input type="number" name="nc"><br></td>
+                </tr>
+                <tr>
+                    <td><label> Citt&agrave; </label></td>
+                    <td><input type="text" class="textform" name="citta" oninput="validaCitta()"></td>
+                </tr>
+                <tr>
+                    <td><label> Provincia</label></td>
+                    <td><input type="text" name="prov" class="textform" maxlength="2" oninput="validaProv()"></td>
+                </tr>
+                <tr>
+                    <td><label>CAP</label></td>
+                    <td><input type="text" name="cap" class="textform" maxlength="5" oninput="validaCap()"></td>
+                </tr>
+            </table>
+        </fieldset>
+
+        <input id="registrami" class="bottone" type="submit" value="Registrami" disabled>
+        <span id="registramimessaggio"></span>
     </form>
 
 </div>

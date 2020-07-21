@@ -35,7 +35,8 @@ public class HomeServlet extends HttpServlet {
         int casuale = (int)(Math.random()*6);
         List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(casuale ,12);
 
-        List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( 11, 5);
+        int max = prodottoDAO.returnMaxCodice();
+        List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( max - 5, 5);
 
         request.setAttribute("prodotti", prodotti);
         request.setAttribute("prodotti_evidenza", evidenza);

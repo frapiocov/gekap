@@ -59,16 +59,17 @@
     display: none;
     position: absolute;
     background-color: #212121;
-    min-width: 180px;
+    min-width: 160px;
     z-index: 1;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .scelte_dropdown a {
     color: #cccccc;
-    padding: 6px 12px;
+    padding: 4px 10px;
     text-decoration: none;
     font-size: 16px;
+    display: inline-block;
 }
 
 .scelte_dropdown a:hover {
