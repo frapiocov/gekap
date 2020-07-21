@@ -298,4 +298,4 @@ insert into prodottoCast values
 insert into Utente values
 (1, "admin1", SHA1("admin1"), "admin1@gekap.it", "Angelica", "Proietto", "1999-03-07", "F", "San Bernardino", 91, "Lioni", "AV", "83047", true),
 (2, "admin2", SHA1("admin2"), "admin2@gekap.it", "Francesco Pio", "Covino", "1999-02-19", "M", "Gramsci", 6, "Morra De Sanctis", "AV", "83040", true),
-(3, "gscotti", SHA1("milionario"), "gerryscotti@gmail.com", "Virginio", "Scotti", "1956-07-08", "M", "San Marco", 34, "Miradolo Terme", "MI", "80900", false);
+(3, "gscotti", SHA1("milionario"), "gerryscotti@gmail.com", "Virginio", "Scotti", "1956-07-08", "M", "Cristoforo Colombo", 34, "Miradolo Terme", "MI", "80900", false);
