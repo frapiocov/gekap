@@ -93,12 +93,12 @@ public class Utente {
         this.nCivico = nCivico;
     }
 
-    public String getCittà() {
-        return città;
+    public String getCitta() {
+        return citta;
     }
 
-    public void setCittà(String città) {
-        this.città = città;
+    public void setCitta(String citta) {
+        this.citta = citta;
     }
 
     public String getProvincia() {
@@ -135,7 +135,7 @@ public class Utente {
     private String sesso;
     private String via;
     private int nCivico;
-    private String città;
+    private String citta;
     private String provincia;
     private String CAP;
     private boolean admin;
