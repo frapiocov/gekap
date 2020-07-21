@@ -37,12 +37,18 @@ public class AdminProdottoServlet extends HttpServlet {
             if(codice != null){
                 if(request.getParameter("rimuovi") != null){
                     pdao.doDelete(Integer.parseInt(codice));
+
+                    request.setAttribute("operazione","Rimozione");
                     request.setAttribute("notifica", "Prodotto rimosso con successo.");
                 }
                 else{   //modifica in quanto codice non nullo
                     Prodotto p = dao.doRetrieveById(Integer.parseInt(codice));
+
                     request.setAttribute("prodotto", p);
+                    request.setAttribute("operazione","Modifica");
                 }
+            } else {
+                request.setAttribute("operazione","Inserimento");
             }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/adminprodotto.jsp");
         requestDispatcher.forward(request,response);

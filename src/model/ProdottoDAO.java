@@ -100,13 +100,13 @@ public class ProdottoDAO {
 
     //restituisce il codice del prodotto in base al nome
     public int returnMaxCodice(){
-        int value = 0;
         try (Connection con = ConPool.getConnection()) {
+            int value = 0;
+
             PreparedStatement ps = con.prepareStatement("SELECT MAX(codice) FROM prodotto");
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Prodotto c = new Prodotto();
                 value = rs.getInt(1);
             }
             return value;

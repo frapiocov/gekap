@@ -39,13 +39,23 @@ public class CarrelloServlet extends HttpServlet {
                 } else {
                     cart.put(dao.doRetrieveById(codice), num);
                 }
+
+                String dest = request.getHeader("referer");
+                if(dest == null || dest.contains("/servlet_carrello") || dest.trim().isEmpty()){
+                    dest = ".";
+                }
+                response.sendRedirect(dest);
+
             } else {
                 cart.remove(codice);
-            }
-        }
 
-        RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/results/carrello.jsp");
-        dispatcher.forward(request,response);
+                RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/results/carrello.jsp");
+                dispatcher.forward(request,response);
+            }
+        } else {
+            RequestDispatcher dispatcher=request.getRequestDispatcher("WEB-INF/results/carrello.jsp");
+            dispatcher.forward(request,response);
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

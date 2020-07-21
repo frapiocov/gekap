@@ -28,6 +28,7 @@
         <div id="scelta_categorie">
             <button id="bottonecategorie">Categorie</button>
             <div class="scelte_dropdown">
+                <jsp:useBean id="categorie" scope="application" type="java.util.List"/>
                 <c:forEach items="${categorie}" var="categoria">
                     <a href="servlet_categoria?categoria=${categoria.idCat}">${categoria.nome}</a>
                 </c:forEach>
@@ -101,7 +102,7 @@
 
         btn.on("click", function (e) {
             e.preventDefault();
-            $("html, body").animate({scrollTop: 0}, '300');
+            $("html,body").animate({scrollTop: 0}, '300');
         });
     });
 </script>

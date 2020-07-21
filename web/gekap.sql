@@ -57,10 +57,8 @@ prodotto int not null,
 attore int not null,
 primary key(prodotto,attore),
 foreign key(prodotto) references prodotto(codice)
-on update cascade 
 on delete cascade,
 foreign key(attore) references attore(id)
-on update cascade
 on delete cascade
 );
 

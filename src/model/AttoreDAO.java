@@ -60,12 +60,29 @@ public class AttoreDAO {
                 }
 
                 ps = con.prepareStatement("INSERT INTO prodottocast (prodotto, attore) VALUES (?,?)");
-                ps.setInt(codiceProdotto, a.getId());
+                ps.setInt(1,codiceProdotto);
+                ps.setInt(2,AttoreDAO.returnMaxCodice());
 
                 if (ps.executeUpdate() != 1) {
                     throw new RuntimeException("INSERT error.");
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static int returnMaxCodice(){
+        try (Connection con = ConPool.getConnection()) {
+            int value = 0;
+
+            PreparedStatement ps = con.prepareStatement("SELECT MAX(id) FROM attore");
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                value = rs.getInt(1);
+            }
+            return value;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

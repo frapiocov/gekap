@@ -5,19 +5,23 @@ import model.AttoreDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 
+import javax.servlet.http.Part;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
+@MultipartConfig
 @WebServlet("/servlet_modifica_inserimento_prodotto")
 public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
 
@@ -29,10 +33,10 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
     private final AttoreDAO adao = new AttoreDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Prodotto p = new Prodotto();
 
-        String codice = request.getParameter("id");
+        String codice = request.getParameter("id"); //serve solo per la modifica
+        String listaImm = request.getParameter("listaIm"); //serve solo per la modifica
         String nome = request.getParameter("nome");
         String genere = request.getParameter("genere");
         String trama = request.getParameter("trama");
@@ -53,14 +57,11 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
         p.setTrailer(trailer);
         p.setCategoria(Integer.parseInt(cat));
 
+        String op=request.getParameter("operazione");
 
-        if (codice == null) { //inserimento
+        if (op.equalsIgnoreCase("inserimento")) { //inserimento
+            String fileName=aggiuntaFoto(request);
 
-            Part part = request.getPart("foto");    //prendo l'immagine
-            String fileName = part.getSubmittedFileName();  //prendo il nome del file
-            String path = "C:\\Users\\Francesco Pio\\Desktop\\progetto_gekap\\web\\images" + File.separator + fileName;
-            InputStream is = part.getInputStream();
-            uploadFoto(is, path);
             p.setListaImmagini(fileName);
 
             Attore a1, a2, a3, a4, a5;
@@ -100,13 +101,12 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
             cast.add(a5);
 
             pdao.doSave(p);
-            adao.doSave(cast, pdao.returnMaxCodice());
+            adao.doSave(cast,pdao.returnMaxCodice());
+
             request.setAttribute("notifica", "Prodotto aggiunto con successo.");
-        } else {//aggiornamento prodotto
-            if(true){
-                throw new controller.ServletException(codice);
-            }
+        } else {    //aggiornamento prodotto
             p.setCodice(Integer.parseInt(codice));
+            p.setListaImmagini(listaImm);
 
             pdao.doUpdate(p);
             request.setAttribute("notifica", "Prodotto modificato con successo.");
@@ -116,17 +116,28 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
 
+    private String aggiuntaFoto(HttpServletRequest request) throws IOException, ServletException {
+        String CARTELLA_UPLOAD = "gekap\\web\\images";
 
-    public void uploadFoto(InputStream is, String path) throws controller.ServletException {
-        try {
-            byte[] bytes = new byte[is.available()];
-            is.read();
-            FileOutputStream fos = new FileOutputStream(path);
-            fos.write(bytes);
-            fos.flush();
-            fos.close();
-        } catch (Exception e) {
-            throw new controller.ServletException("Upload immagine fallito");
+        Part filePart = request.getPart("foto");
+        String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+
+        String destinazione = CARTELLA_UPLOAD + File.separator + fileName;
+        Path pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
+
+        // se un file con quel nome esiste già, gli cambia nome
+        for (int i = 2; Files.exists(pathDestinazione); i++) {
+            destinazione = CARTELLA_UPLOAD + File.separator + i + "_" + fileName;
+            pathDestinazione = Paths.get(getServletContext().getRealPath(destinazione));
         }
+
+        InputStream fileInputStream = filePart.getInputStream();
+        // crea CARTELLA_UPLOAD, se non esiste
+        Files.createDirectories(pathDestinazione.getParent());
+        // scrive il file
+        Files.copy(fileInputStream, pathDestinazione);
+
+        return fileName;
     }
 }
+
