@@ -5,6 +5,8 @@
     <jsp:param name="pageTitle" value="Carrello"/>
 </jsp:include>
 
+<jsp:useBean id="carrello" scope="session" type="model.Carrello"/>
+
 <div id="carrello_contenitore">
     <h1>Carrello <i class="material-icons md-48 md-light">shopping_cart</i></h1>
 
@@ -13,12 +15,13 @@
             <h3>Nessun prodotto nel carrello.</h3>
         </div>
     </c:if>
-
     <c:if test="${not empty carrello.prodotti}">
+
         <div id="acquisto">
             <h2><b>TOTALE:</b>${carrello.totEuro} &euro; </h2>
 
-            <form action="#">
+            <form action="servlet_acquisto">
+                <input type="hidden" name="prodottiC" value="${carrello.prodotti}">
                 <input class="bottone" type="submit" value="Acquista">
             </form>
         </div>
