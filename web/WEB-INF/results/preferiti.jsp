@@ -7,7 +7,7 @@
 <div style="padding: 20px; margin-top: 20px">
     <h1>WISHLIST</h1>
     <i class="material-icons md-48 md-light">favorite</i>
-    <h3>Tutti i prodotti che hai intenzione di acquistare o a cui semplicemente sei interessato</h3>
+    <h3>Tutti i prodotti che hai intenzione di acquistare o a cui semplicemente sei interessato.</h3>
     <c:forEach items="${preferiti}" var="prodotto">
         <div class="prodotti">
             <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">

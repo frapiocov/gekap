@@ -40,7 +40,7 @@ public class PreferitiServlet extends HttpServlet {
                 request.getSession().setAttribute("preferiti", preferiti);
             }
             else{
-                ArrayList<Prodotto> pref2 = (ArrayList<Prodotto>)(request.getSession().getAttribute("preferiti"));
+                ArrayList<Prodotto> pref2 = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
                 pref2.add(p);
                 request.getSession().setAttribute("preferiti", pref2);
             }
