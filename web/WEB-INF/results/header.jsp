@@ -45,7 +45,7 @@
         </div>
 
         <a href="servlet_carrello" style="float: right; padding-right: 40px"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
-        <a href="#favorite" style="float: right; padding-right: 40px"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
+        <a href="servlet_preferiti" style="float: right; padding-right: 40px"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
         <div id="scelta_account">
             <a href="" id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light">account_circle</i></a>
             <c:choose>
@@ -66,12 +66,11 @@
                         <hr style="border-color:darkgoldenrod">
 
                         <c:if test="${utente.admin}">
-                            <a style="padding: 4px" href="servlet_admin_prodotto">Aggiungi Prodotto</a>
-                            <a style="padding: 4px" href="todo">Ordini</a>
-                            <a style="padding: 4px" href="servlet_admin_utenti">Utenti</a>
+                            <a style="padding-left: 8px" href="servlet_admin_prodotto">Aggiungi Prodotto</a>
+                            <a style="padding-left: 8px" href="todo">Ordini</a>
+                            <a style="padding-left: 8px" href="servlet_admin_utenti">Utenti</a>
                         </c:if>
-                            <a style="padding: 4px" href="todo">Profilo</a>
-                            <a style="padding: 4px" href="todo">I miei ordini</a>
+                            <a style="padding-left: 8px" href="servlet_profilo">Il mio Profilo</a>
 
                             <form action="servlet_logout" style="text-align: center">
                                 <input class="bottone" type="submit" value="Logout">

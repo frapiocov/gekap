@@ -7,8 +7,8 @@
 </jsp:include>
 
 <div id="contenuto">
-
-    <div class="colonna_L">
+<div id="lr">
+    <div>
         <h3 style="margin-top:40px;">${prodotto.nome}</h3>
         <img class="im_prodotto" alt="immagine prodotto" src="images/${prodotto.listaImmagini}">
         <p>GENERE: ${prodotto.genere}<br>
@@ -28,7 +28,7 @@
 
     </div>
 
-    <div class="colonna_R">
+    <div>
         <p id="trama">${prodotto.trama}</p>
 
         <table>
@@ -44,6 +44,13 @@
         <a href="${prodotto.trailer}" target="_blank">
             <button class="bottone" value="trailer">Trailer</button>
         </a>
+
+        <form action="servlet_preferiti" method="get">
+            <input type="hidden" name="id" value="${prodotto.codice}">
+            <input type="submit" class="bottone" value="Aggiungi ai Preferiti">
+        </form>
+
+
     <c:if test="${utente.admin}">
         <form action="servlet_admin_prodotto" method="post">
             <input type="hidden" name="id" value="${prodotto.codice}">
@@ -52,7 +59,7 @@
         </form>
     </c:if>
     </div>
-
+</div>
     <div style="clear:both"></div>
 </div>
 
