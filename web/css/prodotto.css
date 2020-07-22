@@ -1,29 +1,20 @@
 .contenuto{
     margin-top: 60px;
-    text-align: justify;
-    display: inline;
+    width: 90%;
+    text-align: center;
+}
+
+#lr div{
+    float: left;
+    width: 45%;
+    padding: 15px;
 }
 
 #trama{
     text-align: justify;
     font-size: 20px;
     line-height: 30px;
-    padding: 20px;
-}
-
-.colonna_L{
-    display: inline;
-    padding: 10px;
-    float: left;
-    width: auto;
-}
-
-.colonna_R{
-    display: inline;
-    padding: 10px;
-    float: right;
-    width: 72%;
-    align-content: center;
+    padding-top: 50px;
 }
 
 .im_prodotto{
