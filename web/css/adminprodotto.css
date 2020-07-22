@@ -1,7 +1,11 @@
-.contenitore_admin{
+#contenitore_admin{
     padding: 20px;
     margin-top: 50px;
     text-align: left;
+}
+
+.contenitore_admin h1 {
+    margin-top:50px;
 }
 
 .contenitore_admin label{

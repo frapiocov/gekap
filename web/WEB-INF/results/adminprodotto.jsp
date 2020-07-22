@@ -6,8 +6,10 @@
 </jsp:include>
 
 <div id="contenitore_admin">
-    <h1>${operazione} prodotto</h1>
-    <h2>${notifica}</h2>
+    <c:if test="${notifica != null}">
+        <h1>${operazione}</h1>
+        <h2>${notifica}</h2>
+    </c:if>
 
     <c:if test="${notifica == null}">
 
@@ -44,7 +46,7 @@
                 </tr>
                 <tr>
                     <td><h3>Path Trailer (url completo)</h3></td>
-                    <td><input type="text" class="textform" name="trailer" value="${prodotto.trailer}" required></td>
+                    <td><input type="url" class="textform" name="trailer" value="${prodotto.trailer}" required></td>
                 </tr>
                 <tr>
                     <td><h3>Scegli la Categoria</h3></td>
@@ -64,7 +66,7 @@
                 <table id="tright">
                     <tr>
                         <td><h3>Immagine</h3></td>
-                        <td><input type="file" name="foto"></td>
+                        <td><input type="file" name="foto" class="bottone"></td>
                     </tr>
                     <tr>
                         <th>RUOLO</th>

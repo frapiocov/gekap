@@ -27,7 +27,9 @@ public class AdminProdottoServlet extends HttpServlet {
     }
 
     private final ProdottoDAO dao = new ProdottoDAO();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String op="";
 
         Utente u = (Utente) request.getSession().getAttribute("utente");    //controllo se l'utente è un admin e se è autorizzato
         if (u == null || !u.isAdmin()) {
@@ -38,18 +40,20 @@ public class AdminProdottoServlet extends HttpServlet {
                 if(request.getParameter("rimuovi") != null){
                     pdao.doDelete(Integer.parseInt(codice));
 
-                    request.setAttribute("operazione","Rimozione");
+                    op="Rimozione";
                     request.setAttribute("notifica", "Prodotto rimosso con successo.");
                 }
                 else{   //modifica in quanto codice non nullo
                     Prodotto p = dao.doRetrieveById(Integer.parseInt(codice));
 
+                    op="Modifica";
                     request.setAttribute("prodotto", p);
-                    request.setAttribute("operazione","Modifica");
                 }
             } else {
-                request.setAttribute("operazione","Inserimento");
+                op="Inserimento";
             }
+
+        request.setAttribute("operazione",op);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/adminprodotto.jsp");
         requestDispatcher.forward(request,response);
     }
