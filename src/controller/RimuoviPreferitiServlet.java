@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @WebServlet("/servlet_rimuovi_preferiti")
 public class RimuoviPreferitiServlet extends HttpServlet {
     @SuppressWarnings("unchecked")
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,CloneNotSupportedException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
@@ -30,7 +30,6 @@ public class RimuoviPreferitiServlet extends HttpServlet {
         String strcod = request.getParameter("id");
         int codice=0;
         Prodotto p;
-        ArrayList<Prodotto> newpref;
 
         if(strcod == null && request.getParameter("svuota") != null){
            request.getSession().removeAttribute("preferiti");
@@ -40,13 +39,10 @@ public class RimuoviPreferitiServlet extends HttpServlet {
                 codice = Integer.parseInt(strcod);
                 p = dao.doRetrieveById(codice);
 
-                try {
-                    newpref=(Object) request.getSession().getAttribute("preferiti").clone(p);
-                    newpref.remove(p);
-                    request.getSession().setAttribute("preferiti", );
-                } catch(Exception e) {
-                    throw new controller.ServletException(e);
-                }
+                ArrayList<Prodotto> newpref = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
+                newpref.remove(p);
+                request.getSession().setAttribute("preferiti", newpref);
+            }
         }
 
         String dest = request.getHeader("referer");

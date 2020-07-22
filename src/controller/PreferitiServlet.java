@@ -33,7 +33,7 @@ public class PreferitiServlet extends HttpServlet {
             int id = Integer.parseInt(codice);
             Prodotto p = dao.doRetrieveById(id);
 
-            ArrayList<Prodotto> preferiti = new ArrayList<Prodotto>();
+            ArrayList<Prodotto> preferiti = new ArrayList<>();
 
             if(request.getSession().getAttribute("preferiti") == null){
                 preferiti.add(p);
