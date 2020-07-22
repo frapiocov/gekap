@@ -7,13 +7,13 @@
 
 <div id="contenitore_admin">
     <c:if test="${notifica != null}">
-        <h1>${operazione}</h1>
+        <h1>${operazione} prodotto</h1>
         <h2>${notifica}</h2>
     </c:if>
 
     <c:if test="${notifica == null}">
 
-        <form action="servlet_modifica_inserimento_prodotto" method="post" enctype="multipart/form-data" autocomplete="on">
+        <form action="servlet_modifica_inserimento_prodotto" method="post" enctype="multipart/form-data" autocomplete="on" accept-charset="UTF-8">
             <input type="hidden" name="id" value="${prodotto.codice}">
             <input type="hidden" name="listaIm" value="${prodotto.listaImmagini}">
             <input type="hidden" name="operazione" value="${operazione}">

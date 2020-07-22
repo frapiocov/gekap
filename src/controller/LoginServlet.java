@@ -21,6 +21,7 @@ public class LoginServlet extends HttpServlet {
         String u = request.getParameter("username");
         String p = request.getParameter("password");
         Utente utente = null;
+
         if(u != null && p !=null){
             utente = dao.doRetrieveByUsernamePassword(u,p);
         }

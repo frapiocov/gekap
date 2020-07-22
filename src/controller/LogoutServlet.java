@@ -1,5 +1,7 @@
 package controller;
 
+import model.Utente;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +16,19 @@ public class LogoutServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().removeAttribute("utente");
+        Utente u=(Utente) request.getSession().getAttribute("utente");
 
         String dest = request.getHeader("referer");
+
+        if(u.isAdmin()) {
+            dest = ".";
+        }
+        request.getSession().removeAttribute("utente");
+
         if(dest == null || dest.contains("/servlet_logout") || dest.trim().isEmpty()){
             dest = ".";
         }
+
         response.sendRedirect(dest);
     }
 }

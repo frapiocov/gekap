@@ -106,7 +106,7 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
             pdao.doSave(p);
             adao.doSave(cast,pdao.returnMaxCodice());
 
-            request.setAttribute("notifica", "Prodotto aggiunto con successo.");
+            request.setAttribute("notifica", "Prodotto inserito con successo.");
         } else {    //aggiornamento prodotto
             operazione="Modifica";
 
