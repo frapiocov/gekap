@@ -34,6 +34,7 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Prodotto p = new Prodotto();
+        String operazione="";
 
         String codice = request.getParameter("id"); //serve solo per la modifica
         String listaImm = request.getParameter("listaIm"); //serve solo per la modifica
@@ -60,6 +61,8 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
         String op=request.getParameter("operazione");
 
         if (op.equalsIgnoreCase("inserimento")) { //inserimento
+            operazione="Inserimento";
+
             String fileName=aggiuntaFoto(request);
 
             p.setListaImmagini(fileName);
@@ -105,6 +108,8 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
 
             request.setAttribute("notifica", "Prodotto aggiunto con successo.");
         } else {    //aggiornamento prodotto
+            operazione="Modifica";
+
             p.setCodice(Integer.parseInt(codice));
             p.setListaImmagini(listaImm);
 
@@ -112,12 +117,13 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
             request.setAttribute("notifica", "Prodotto modificato con successo.");
         }
 
+        request.setAttribute("operazione",operazione);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/adminprodotto.jsp");
         requestDispatcher.forward(request, response);
     }
 
     private String aggiuntaFoto(HttpServletRequest request) throws IOException, ServletException {
-        String CARTELLA_UPLOAD = "gekap\\web\\images";
+        String CARTELLA_UPLOAD = "images";
 
         Part filePart = request.getPart("foto");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
