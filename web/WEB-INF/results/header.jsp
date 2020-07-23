@@ -38,8 +38,7 @@
         <div id="ricerca">
             <form action="servlet_ricerca" method="get">
                 <label for="q"></label>
-                <input id="q" type="text" placeholder="Cerca..." name="query" onfocus="mettiBordo(this)"
-                       onblur="togliBordo(this)">
+                <input id="q" type="text" placeholder="Cerca..." name="query" onfocus="mettiBordo(this)" onblur="togliBordo(this)">
                 <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
             </form>
         </div>
@@ -67,7 +66,6 @@
 
                         <c:if test="${utente.admin}">
                             <a style="padding-left: 8px" href="servlet_admin_prodotto">Aggiungi Prodotto</a>
-                            <a style="padding-left: 8px" href="todo">Ordini</a>
                             <a style="padding-left: 8px" href="servlet_admin_utenti">Utenti</a>
                         </c:if>
                             <a style="padding-left: 8px" href="servlet_profilo">Il mio Profilo</a>

@@ -98,7 +98,7 @@
             <h3>Trama</h3>
             <textarea name="trama" placeholder="Aggiungi una descrizione..." required>${prodotto.trama}</textarea><br>
 
-            <input type="submit" class="bottone" value="${operazione}"><br>
+            <input style="margin-top: 30px; margin-left: 140px" type="submit" class="bottone" value="${operazione}"><br>
 
         </form>
     </c:if>

@@ -118,6 +118,20 @@ public class UtenteDAO {
         }
     }
 
+    /**Cancella un utente dal database*/
+    public void doDelete(int id) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM utente WHERE idUser = ?");
+            ps.setInt(1, id);
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("DELETE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public ArrayList<Utente> doRetrieveAll() {
         try(Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT idUser,username,email,nome,cognome,dataDiNascita,sesso,via,nCivico,città,provincia,CAP,admin FROM Utente");

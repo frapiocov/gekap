@@ -35,7 +35,7 @@
                 <td>${utente.admin ? "Si" : "No"}</td>
                 <td><a href="todo?id=${utente.idUser}"><button class="bottone">Dettagli</button></a></td>
                 <td>
-                    <form action="todo" method="post">
+                    <form action="servlet_rimuovi_utente" method="post">
                         <input type="hidden" name="id" value="${utente.idUser}">
                         <input type="submit" class="bottone" name="rimuovi" value="Rimuovi">
                     </form>

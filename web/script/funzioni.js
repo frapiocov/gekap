@@ -184,3 +184,7 @@ function cambiaStatoRegistrami() {
         document.getElementById('registramimessaggio').innerHTML = 'Verifica che tutti i campi siano in verde.';
     }
 }
+
+
+
+//funzione per i suggerimenti la ricerca con ajax
