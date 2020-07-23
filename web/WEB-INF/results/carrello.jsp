@@ -16,7 +16,6 @@
         </div>
     </c:if>
     <c:if test="${not empty carrello.prodotti}">
-
         <div id="acquisto">
             <h2><b>TOTALE:</b>${carrello.totEuro} &euro; </h2>
 
@@ -26,8 +25,7 @@
             </form>
         </div>
     </c:if>
-    
-    <jsp:useBean id="carrello" scope="session" type="model.Carrello"/>
+
     <c:forEach items="${carrello.prodotti}" var="prodQuant">
         <div id="prodotti_carrello">
             <a href="servlet_prodotto?codice=${prodQuant.prodotto.codice}">
