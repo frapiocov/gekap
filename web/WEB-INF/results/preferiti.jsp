@@ -14,7 +14,7 @@
                 <img class="imm_prod_index" src="images/${prodotto.listaImmagini}" alt="immagine prodotto">
             </a>
             <form method="get" action="servlet_rimuovi_preferiti">
-                <input type="hidden" name="id" value="${prodotto.codice}">
+                <input type="hidden" name="codiceProdotto" value="${prodotto.codice}">
                 <input type="submit" class="bottone" value="Rimuovi">
             </form>
         </div>
