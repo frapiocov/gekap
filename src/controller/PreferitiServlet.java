@@ -21,10 +21,9 @@ public class PreferitiServlet extends HttpServlet {
 
     ProdottoDAO dao = new ProdottoDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Utente ut = (Utente) request.getSession().getAttribute("utente");
         if(ut == null){
-            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati");
+            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati.");
         }
 
         String codice = request.getParameter("id");
@@ -35,15 +34,12 @@ public class PreferitiServlet extends HttpServlet {
 
             ArrayList<Prodotto> preferiti = new ArrayList<>();
 
-            if(request.getSession().getAttribute("preferiti") == null){
+            if(request.getSession().getAttribute("preferiti") != null){
+
+                preferiti = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
                 preferiti.add(p);
-                request.getSession().setAttribute("preferiti", preferiti);
             }
-            else{
-                ArrayList<Prodotto> pref2 = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
-                pref2.add(p);
-                request.getSession().setAttribute("preferiti", pref2);
-            }
+            request.getSession().setAttribute("preferiti", preferiti);
         }
 
         RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/preferiti.jsp");

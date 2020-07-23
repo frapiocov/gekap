@@ -30,6 +30,7 @@ public class RimuoviPreferitiServlet extends HttpServlet {
         String strcod = request.getParameter("id");
         int codice=0;
         Prodotto p;
+        ArrayList<Prodotto> newpref=new ArrayList<>();
 
         if(strcod == null && request.getParameter("svuota") != null){
            request.getSession().removeAttribute("preferiti");
@@ -39,7 +40,7 @@ public class RimuoviPreferitiServlet extends HttpServlet {
                 codice = Integer.parseInt(strcod);
                 p = dao.doRetrieveById(codice);
 
-                ArrayList<Prodotto> newpref = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
+                newpref = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
                 newpref.remove(p);
                 request.getSession().setAttribute("preferiti", newpref);
             }
