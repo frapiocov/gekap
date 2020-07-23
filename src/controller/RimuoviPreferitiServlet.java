@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet("/servlet_rimuovi_preferiti")
 public class RimuoviPreferitiServlet extends HttpServlet {
+    @SuppressWarnings("unchecked")
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -26,20 +28,21 @@ public class RimuoviPreferitiServlet extends HttpServlet {
         }
 
         String strcod = request.getParameter("id");
+        int codice=0;
+        Prodotto p;
 
         if(strcod == null && request.getParameter("svuota") != null){
            request.getSession().removeAttribute("preferiti");
         }
         else{
-            int codice = 0;
             if (strcod != null) {
                 codice = Integer.parseInt(strcod);
-            }
-            Prodotto p = dao.doRetrieveById(codice);
+                p = dao.doRetrieveById(codice);
 
-            ArrayList<Prodotto> newpref = (ArrayList<Prodotto>)(request.getSession().getAttribute("preferiti"));
-            newpref.remove(p);
-            request.getSession().setAttribute("preferiti", newpref);
+                ArrayList<Prodotto> newpref = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
+                newpref.remove(p);
+                request.getSession().setAttribute("preferiti", newpref);
+            }
         }
 
         String dest = request.getHeader("referer");
