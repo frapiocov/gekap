@@ -64,6 +64,11 @@
     border-radius: 4px;
 }
 
+datalist{
+    background-color: #212121;
+    color: #cccccc;
+}
+
 .scelte_dropdown a {
     color: #cccccc;
     padding: 4px 10px;
