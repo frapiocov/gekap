@@ -47,6 +47,7 @@ input[type="number"] {
 #tleft{
     float: left;
     padding: 20px;
+    margin-left:20px;
 }
 
 #tright{

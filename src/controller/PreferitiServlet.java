@@ -26,7 +26,7 @@ public class PreferitiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente ut = (Utente) request.getSession().getAttribute("utente");
         if(ut == null){
-            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati");
+            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati.");
         }
 
         String codProdotto = request.getParameter("id");

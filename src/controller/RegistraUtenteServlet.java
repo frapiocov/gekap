@@ -90,7 +90,7 @@ public class RegistraUtenteServlet extends HttpServlet {
         dao.doSave(utente);
         request.getSession().setAttribute("utente", utente);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/results/registrazioneSuccesso.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/results/profiloutente.jsp");
         requestDispatcher.forward(request, response);
     }
 }

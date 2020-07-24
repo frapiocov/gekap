@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="header.jsp">
+<jsp:include page="/WEB-INF/results/header.jsp">
     <jsp:param name="pageTitle" value="Preferiti"/>
 </jsp:include>
 

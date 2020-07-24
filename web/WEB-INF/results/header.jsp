@@ -18,6 +18,7 @@
     <link href="css/adminutenti.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script/funzioni.js"></script>
+    <script src="script/jquery.js"></script>
     <script src="script/jquery-3.5.1.min.js"></script>
 </head>
 <body>
@@ -38,7 +39,8 @@
         <div id="ricerca">
             <form action="servlet_ricerca" method="get">
                 <label for="q"></label>
-                <input id="q" type="text" placeholder="Cerca..." name="query" onfocus="mettiBordo(this)" onblur="togliBordo(this)">
+                <input id="q" type="text" placeholder="Cerca..." name="query" onfocus="mettiBordo(this)"
+                       onblur="togliBordo(this)">
                 <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
             </form>
         </div>
@@ -46,7 +48,7 @@
         <a href="servlet_carrello" style="float: right; padding-right: 40px"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
         <a href="servlet_preferiti" style="float: right; padding-right: 40px"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
         <div id="scelta_account">
-            <a href="" id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light">account_circle</i></a>
+            <a href="servlet_profilo" id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light">account_circle</i></a>
             <c:choose>
                 <c:when test="${utente == null}">
                     <div class="scelte_dropdown">
@@ -68,25 +70,30 @@
                             <a style="padding-left: 8px" href="servlet_admin_prodotto">Aggiungi Prodotto</a>
                             <a style="padding-left: 8px" href="servlet_admin_utenti">Utenti</a>
                         </c:if>
-                            <a style="padding-left: 8px" href="servlet_profilo">Il mio Profilo</a>
+                        <a style="padding-left: 8px" href="servlet_profilo">Il mio Profilo</a>
 
-                            <form action="servlet_logout" style="text-align: center">
-                                <input class="bottone" type="submit" value="Logout">
-                            </form>
+                        <form action="servlet_logout" style="text-align: center">
+                            <input class="bottone" type="submit" value="Logout">
+                        </form>
                     </div>
                 </c:otherwise>
             </c:choose>
         </div>
-
-
     </nav>
 
     <button id="goup"><i class="material-icons md-48 md-light">keyboard_arrow_up</i></button>
+
+    <c:if test="${utente != null}">
+        <br><br>
+        <div id="alert">
+            <span id="closebtn" onclick="nascondiElemento()">&times;</span>
+            <h3>Ciao ${utente.nome}!</h3>
+        </div>
+    </c:if>
 </header>
 
 <script>
     $(document).ready(function () {
-
         var btn = $("#goup");
 
         $(window).scroll(function () {
@@ -102,4 +109,6 @@
             $("html,body").animate({scrollTop: 0}, '300');
         });
     });
+
+
 </script>

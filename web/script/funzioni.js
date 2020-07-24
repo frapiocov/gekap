@@ -185,6 +185,8 @@ function cambiaStatoRegistrami() {
     }
 }
 
-
+function nascondiElemento() {
+    document.getElementById("alert").style.display = "none";
+}
 
 //funzione per i suggerimenti la ricerca con ajax

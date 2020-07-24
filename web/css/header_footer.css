@@ -102,6 +102,32 @@ datalist{
     margin-top: 50px;
 }
 
+#alert {
+    padding-top:20px;
+    background-color:darkgoldenrod;
+    color: black;
+    margin:50px auto;
+    width:30%;
+    height:50px;
+}
+
+#alert h3 {
+    text-align:center;
+    margin:auto;
+}
+
+#closebtn {
+    margin-right: 15px;
+    color:black;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+}
+
+#closebtn:hover {
+    color: white;
+}
+
 footer {
     background-color: #212121;
     left: 0;

@@ -1,7 +1,7 @@
 <%@ page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="header.jsp">
+<jsp:include page="/WEB-INF/results/header.jsp">
     <jsp:param name="pageTitle" value="Utenti"/>
 </jsp:include>
 
@@ -11,7 +11,7 @@
             <th class="bordi">id</th>
             <th class="bordi">Username</th>
             <th class="bordi">Nome</th>
-            <th class="bordi>"Cognome</th>
+            <th class="bordi">Cognome</th>
             <th class="bordi">Data di Nascita</th>
             <th class="bordi">Email</th>
             <th class="bordi">Sesso</th>

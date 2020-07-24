@@ -3,7 +3,7 @@
 
 <jsp:useBean id="prodotto" scope="request" type="model.Prodotto"/>
 
-<jsp:include page="header.jsp">
+<jsp:include page="/WEB-INF/results/header.jsp">
     <jsp:param name="pageTitle" value="${prodotto.nome}"/>
 </jsp:include>
 

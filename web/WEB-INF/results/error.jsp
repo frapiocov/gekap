@@ -1,7 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isErrorPage="true"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true"%>
 
-<jsp:include page="header.jsp">
+<jsp:include page="/WEB-INF/results/header.jsp">
     <jsp:param name="pageTitle" value="Errore ${requestScope['javax.servlet.error.status_code']}"/>
 </jsp:include>
 
