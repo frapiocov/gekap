@@ -42,19 +42,12 @@ public class CarrelloServlet extends HttpServlet {
                 }
             } else { //rimuovo in quanto non ho la quantita
 
-                String setNumStr = request.getParameter("numRim");
-                if (setNumStr != null) {
-                    int setNum = Integer.parseInt(setNumStr);
-                    if (setNum <= 0) {
-                        carrello.remove(prodId);
-                    } else {
-                        Carrello.ProdottoQuantita prodQuant = carrello.get(prodId);
-                        if (prodQuant != null) {
-                            prodQuant.setQuantita(setNum);
-                        } else {
-                            carrello.put(pdao.doRetrieveById(prodId), setNum);
-                        }
-                    }
+                Carrello.ProdottoQuantita prodQuant = carrello.get(prodId);
+
+                if(prodQuant.getQuantita()>1) { //controllo se esiste già il prodotto nel carrello
+                    prodQuant.setQuantita(prodQuant.getQuantita() - 1);
+                } else {
+                    carrello.remove(prodId);
                 }
             }
         }

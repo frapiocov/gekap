@@ -106,7 +106,7 @@ datalist{
     padding-top:20px;
     background-color:darkgoldenrod;
     color: black;
-    margin:50px auto;
+    margin:50px auto auto;
     width:30%;
     height:50px;
 }
