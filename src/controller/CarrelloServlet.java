@@ -10,36 +10,57 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Collection;
 
 @WebServlet("/servlet_carrello")
 public class CarrelloServlet extends HttpServlet {
-    private final CarrelloDAO cdao = new CarrelloDAO();
+
+    private final ProdottoDAO pdao = new ProdottoDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String codice = request.getParameter("codice_prodotto");
+        String quantita = request.getParameter("quantity");
         HttpSession session = request.getSession();
+        Carrello carrello = (Carrello) session.getAttribute("carrello");
 
-        Carrello cartS;
-        Utente u = (Utente) session.getAttribute("utente");
+        if (carrello == null) {
+            carrello = new Carrello();
+            session.setAttribute("carrello", carrello);
+        }
 
-        if (u != null) {        //utente ha effettuato accesso
-            cartS = (Carrello) session.getAttribute("carrello");
+        if (codice != null) {   //inserimento o rimozione
+            int prodId = Integer.parseInt(codice);
 
-            if(!cartS.isEmpty()) {
-                Collection<Carrello.ProdottoQuantita> prodotti = cartS.getProdotti();
+            if (quantita != null) { //inserisco
+                int addNum = Integer.parseInt(quantita);
 
-                for(Carrello.ProdottoQuantita pr : prodotti) {
-                    if (!cdao.checkUtenteProdotto(u.getIdUser(), pr.getProdotto().getCodice()))
-                        cdao.doSave(u.getIdUser(), pr.getProdotto().getCodice(), pr.getQuantita(), (int) pr.getTotCent());
+                Carrello.ProdottoQuantita prodQuant = carrello.get(prodId);
+                if (prodQuant != null) { //controllo se esiste già il prodotto nel carrello
+                    prodQuant.setQuantita(prodQuant.getQuantita() + addNum);
+                } else {
+                    carrello.put(pdao.doRetrieveById(prodId), addNum);
+                }
+            } else { //rimuovo in quanto non ho la quantita
+
+                String setNumStr = request.getParameter("numRim");
+                if (setNumStr != null) {
+                    int setNum = Integer.parseInt(setNumStr);
+                    if (setNum <= 0) {
+                        carrello.remove(prodId);
+                    } else {
+                        Carrello.ProdottoQuantita prodQuant = carrello.get(prodId);
+                        if (prodQuant != null) {
+                            prodQuant.setQuantita(setNum);
+                        } else {
+                            carrello.put(pdao.doRetrieveById(prodId), setNum);
+                        }
+                    }
                 }
             }
-        } else {
-            cartS = (Carrello) session.getAttribute("carrello");
         }
-        session.setAttribute("carrello", cartS);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/carrello.jsp");
-        dispatcher.forward(request,response);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/carrello.jsp");
+        requestDispatcher.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -19,10 +19,11 @@
                 Indirizzo di spedizione : Via ${utenteLoggato.via} ${utenteLoggato.nCivico}, ${utenteLoggato.citta}
                 (${utenteLoggato.provincia})</p>
         </fieldset>
+        <section id="ordini">
+            <h1>Ordini effettuati</h1>
 
-        <h2>Cambia Password:</h2>
-        <input type="text" class="textform" placeholder="Attuale Password">
-        <input type="text" class="textform" placeholder="Nuova Password">
+        </section>
+
     </div>
 </div>
 

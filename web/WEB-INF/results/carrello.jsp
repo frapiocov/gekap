@@ -23,7 +23,7 @@
             <h5>QUANTITA': ${prodQuant.quantita}<br>
                 PREZZO SINGOLO: ${prodQuant.prodotto.prezzoEuro} &euro;<br>
                 PREZZO TOTALE: ${prodQuant.totEuro} &euro; </h5>
-            <form action="servlet_aggiungi_rimuovi_carrello" method="post">
+            <form action="servlet__carrello" method="post">
                 <input type="hidden" name="codice_prodotto" value="${prodQuant.prodotto.codice}">
                 <input type="hidden" name="numRim" value="0">
                 <input type="submit" class="bottone" value="Rimuovi">

@@ -36,17 +36,17 @@ public class UtenteDAO {
         }
     }
 
-    public Utente doRetrieveByUsernamePassword(String u,String p) {
-        try(Connection con = ConPool.getConnection()) {
-            PreparedStatement ps=con.prepareStatement("SELECT idUser,username,email,nome,cognome,dataDiNascita,sesso,via,nCivico,città,provincia,CAP,admin FROM Utente WHERE username=? AND passwordhash=SHA1(?)");
+    public Utente doRetrieveByUsernamePassword(String u, String p) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT idUser,username,email,nome,cognome,dataDiNascita,sesso,via,nCivico,città,provincia,CAP,admin FROM Utente WHERE username=? AND passwordhash=SHA1(?)");
 
-            ps.setString(1,u);
-            ps.setString(2,p);
+            ps.setString(1, u);
+            ps.setString(2, p);
 
-            ResultSet rs=ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                Utente ut=new Utente();
+                Utente ut = new Utente();
 
                 ut.setIdUser(rs.getInt(1));
                 ut.setUsername(u);
@@ -95,6 +95,30 @@ public class UtenteDAO {
         }
     }
 
+    //ritorna l'utente in base all'id
+    public Utente doRetrieveByUseId(int id) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "SELECT idUser, username, passwordhash, nome, email, admin FROM utente WHERE idUser=?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Utente p = new Utente();
+                p.setIdUser(rs.getInt(1));
+                p.setUsername(rs.getString(2));
+                p.setPasswordHash(rs.getString(3));
+                p.setNome(rs.getString(4));
+                p.setEmail(rs.getString(5));
+                p.setAdmin(rs.getBoolean(6));
+                return p;
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Utente doRetrieveByEmail(String email) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(
@@ -118,7 +142,9 @@ public class UtenteDAO {
         }
     }
 
-    /**Cancella un utente dal database*/
+    /**
+     * Cancella un utente dal database
+     */
     public void doDelete(int id) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("DELETE FROM utente WHERE idUser = ?");
@@ -131,16 +157,33 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * Aggiorna il campo admin dell'utente passato
+     */
+    public void updateAdmin(int utente, boolean var) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("UPDATE utente SET admin = ? WHERE idUser = ?");
+            ps.setBoolean(1,var);
+            ps.setInt(2, utente);
+
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("UPDATE error.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public ArrayList<Utente> doRetrieveAll() {
-        try(Connection con = ConPool.getConnection()) {
+        try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT idUser,username,email,nome,cognome,dataDiNascita,sesso,via,nCivico,città,provincia,CAP,admin FROM Utente");
             ResultSet rs = ps.executeQuery();
 
-            ArrayList<Utente> l=new ArrayList<Utente>();
+            ArrayList<Utente> l = new ArrayList<Utente>();
 
-            while(rs.next()) {
-                Utente ut=new Utente();
+            while (rs.next()) {
+                Utente ut = new Utente();
 
                 ut.setIdUser(rs.getInt(1));
                 ut.setUsername(rs.getString(2));
@@ -159,7 +202,7 @@ public class UtenteDAO {
                 l.add(ut);
             }
             return l;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
