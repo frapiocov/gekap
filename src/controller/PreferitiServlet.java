@@ -31,14 +31,13 @@ public class PreferitiServlet extends HttpServlet {
         if(codice != null){
             int id = Integer.parseInt(codice);
             Prodotto p = dao.doRetrieveById(id);
+            ArrayList<Prodotto> preferiti = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
 
-            ArrayList<Prodotto> preferiti = new ArrayList<>();
-
-            if(request.getSession().getAttribute("preferiti") != null){
-
-                preferiti = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
-                preferiti.add(p);
+            if(preferiti == null) {
+                preferiti= new ArrayList<>();
             }
+
+            preferiti.add(p);
             request.getSession().setAttribute("preferiti", preferiti);
         }
 

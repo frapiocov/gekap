@@ -30,20 +30,19 @@ public class RimuoviPreferitiServlet extends HttpServlet {
         String strcod = request.getParameter("id");
         int codice=0;
         Prodotto p;
-        ArrayList<Prodotto> newpref=new ArrayList<>();
+        ArrayList<Prodotto> newpref;
 
-        if(strcod == null && request.getParameter("svuota") != null){
-           request.getSession().removeAttribute("preferiti");
-        }
-        else{
-            if (strcod != null) {
-                codice = Integer.parseInt(strcod);
-                p = dao.doRetrieveById(codice);
+        newpref=(ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
 
-                newpref = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
-                newpref.remove(p);
-                request.getSession().setAttribute("preferiti", newpref);
-            }
+        if(strcod!=null) {
+            codice = Integer.parseInt(strcod);
+            p = dao.doRetrieveById(codice);
+
+            newpref.remove(p);
+
+            request.getSession().setAttribute("preferiti", newpref);
+        } else {
+            request.getSession().removeAttribute("preferiti");
         }
 
         String dest = request.getHeader("referer");
