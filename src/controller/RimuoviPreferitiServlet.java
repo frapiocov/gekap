@@ -1,9 +1,11 @@
 package controller;
 
+import model.PreferitiDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 import model.Utente;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,40 +17,38 @@ import java.util.ArrayList;
 
 @WebServlet("/servlet_rimuovi_preferiti")
 public class RimuoviPreferitiServlet extends HttpServlet {
-    @SuppressWarnings("unchecked")
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
     private final ProdottoDAO dao = new ProdottoDAO();
+    private final PreferitiDAO prefdao = new PreferitiDAO();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente ut = (Utente) request.getSession().getAttribute("utente");
-        if(ut == null){
+        if (ut == null) {
             throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati");
         }
 
-        String strcod = request.getParameter("id");
-        int codice=0;
-        Prodotto p;
-        ArrayList<Prodotto> newpref;
+        int codiceUtente = ut.getIdUser();
 
-        newpref=(ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
-
-        if(strcod!=null) {
-            codice = Integer.parseInt(strcod);
-            p = dao.doRetrieveById(codice);
-
-            newpref.remove(p);
-
-            request.getSession().setAttribute("preferiti", newpref);
-        } else {
-            request.getSession().removeAttribute("preferiti");
+        if(request.getParameter("svuota") != null) {
+          prefdao.doDeleteAll(codiceUtente);
         }
+        else{
+            String codStringa = request.getParameter("codiceProdotto");
+            int codiceProdotto = Integer.parseInt(codStringa);
+            prefdao.doDeleteLista(codiceProdotto, codiceUtente);
+            }
 
-        String dest = request.getHeader("referer");
-        if(dest == null || dest.contains("/servlet_rimuovi_preferiti") || dest.trim().isEmpty()){
-            dest = ".";
+        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(codiceUtente);
+        ArrayList<Prodotto> preferiti = new ArrayList<>();
+        for (Integer i:lista) {
+            Prodotto p = dao.doRetrieveById(i);
+            preferiti.add(p);
         }
-        response.sendRedirect(dest);
+        request.setAttribute("preferiti", preferiti);
+        RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/preferiti.jsp");
+        disp.forward(request, response);
     }
 }

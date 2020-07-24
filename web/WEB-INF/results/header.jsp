@@ -18,7 +18,6 @@
     <link href="css/adminutenti.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="script/funzioni.js"></script>
-    <script src="script/jquery.js"></script>
     <script src="script/jquery-3.5.1.min.js"></script>
 </head>
 <body>

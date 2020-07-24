@@ -1,5 +1,6 @@
 package controller;
 
+import model.PreferitiDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 import model.Utente;
@@ -19,28 +20,36 @@ public class PreferitiServlet extends HttpServlet {
         doGet(request, response);
     }
 
-    ProdottoDAO dao = new ProdottoDAO();
+    private final ProdottoDAO dao = new ProdottoDAO();
+    private final PreferitiDAO prefdao = new PreferitiDAO();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente ut = (Utente) request.getSession().getAttribute("utente");
         if(ut == null){
-            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati.");
+            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati");
         }
 
-        String codice = request.getParameter("id");
+        String codProdotto = request.getParameter("id");
+        ArrayList<Prodotto> preferiti = new ArrayList<>();
+        int idUtente = ut.getIdUser();
 
-        if(codice != null){
-            int id = Integer.parseInt(codice);
-            Prodotto p = dao.doRetrieveById(id);
-            ArrayList<Prodotto> preferiti = (ArrayList<Prodotto>) request.getSession().getAttribute("preferiti");
+        if(codProdotto != null) {
+            int idProdotto = Integer.parseInt(codProdotto);
 
-            if(preferiti == null) {
-                preferiti= new ArrayList<>();
+            if(prefdao.existProdotto(idUtente, idProdotto) == 0){
+                if (prefdao.ListaExist(idUtente) == 0) {
+                    prefdao.doSaveLista(idUtente);
+                }
+                prefdao.doSaveProdotto(idProdotto, idUtente);
             }
-
-            preferiti.add(p);
-            request.getSession().setAttribute("preferiti", preferiti);
         }
+        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(idUtente);
 
+        for (Integer i:lista) {
+            Prodotto p = dao.doRetrieveById(i);
+            preferiti.add(p);
+        }
+        request.setAttribute("preferiti", preferiti);
         RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/preferiti.jsp");
         disp.forward(request, response);
     }
