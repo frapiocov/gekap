@@ -29,7 +29,6 @@
     <c:if test="${empty preferiti}">
         <div style="padding: 10px">
             <h3>Nessun prodotto nella WishList.</h3>
-            <a href="."><button class="bottone">Torna alla HOME</button></a>
         </div>
     </c:if>
 </div>

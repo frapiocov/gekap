@@ -18,7 +18,7 @@
                 DURATA: ${prodotto.durata} min<br>
                 PREZZO: ${prodotto.prezzoEuro} &euro;</p>
 
-            <form action="servlet_aggiungi_rimuovi_carrello" method="get">
+            <form action="servlet_carrello" method="post">
                 <label for="quantity">Quantità:</label>
                 <input type="number" name="quantity" id="quantity" min="1" max="10" value="1">
                 <input type="hidden" value="${prodotto.codice}" id="codice_prodotto" name="codice_prodotto">

@@ -5,7 +5,7 @@
     <jsp:param name="pageTitle" value="Registrati"/>
 </jsp:include>
 
-<div class="contenitore_admin">
+<div style="padding: 20px; margin-top: 50px">
     <h1>Registrazione utente</h1>
     <h3>Riempi tutti i campi!</h3>
     <form name="registrazione" action="servlet_registra_utente" method="post">
