@@ -27,7 +27,7 @@ public class RimuoviPreferitiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente ut = (Utente) request.getSession().getAttribute("utente");
         if (ut == null) {
-            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati");
+            throw new controller.ServletException("Utente non loggato. Per accedere alla WishList fai il login o registrati.");
         }
 
         int codiceUtente = ut.getIdUser();

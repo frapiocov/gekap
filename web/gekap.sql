@@ -62,20 +62,6 @@ foreign key(attore) references attore(id)
 on delete cascade
 );
 
-create table carrello (
-utente int not null,
-prodotto int not null,
-quantitaP int not null,
-prezzoTot int not null,
-primary key(utente,prodotto),
-foreign key(utente) references utente(idUser)
-on update cascade
-on delete cascade,
-foreign key(prodotto) references prodotto(codice)
-on update cascade
-on delete cascade
-);
-
 create table ordine (
 idOrdine int not null auto_increment,
 utente int not null,
@@ -288,4 +274,7 @@ insert into prodottoCast values
 insert into Utente values
 (1, "admin1", SHA1("admin1"), "admin1@gekap.it", "Angelica", "Proietto", "1999-03-07", "F", "San Bernardino", 91, "Lioni", "AV", "83047", true),
 (2, "admin2", SHA1("admin2"), "admin2@gekap.it", "Francesco Pio", "Covino", "1999-02-19", "M", "Gramsci", 6, "Morra De Sanctis", "AV", "83040", true),
-(3, "gscotti", SHA1("milionario"), "gerryscotti@gmail.com", "Virginio", "Scotti", "1956-07-08", "M", "Cristoforo Colombo", 34, "Miradolo Terme", "MI", "80900", false);
+(3, "gscotti", SHA1("milionario"), "gerryscotti@gmail.com", "Virginio", "Scotti", "1956-07-08", "M", "Cristoforo Colombo", 34, "Miradolo Terme", "MI", "80900", false),
+(4, "dombini", SHA1("tuttomale"), "domenicobini@tiscali.it", "Domenico", "Bini", "1960-06-24", "M", "Vulcano", 54, "Trani", "BT", "76125", false),
+(5, "hsimpson", SHA1("simpson"), "homersimpson@gmail.com", "Homer Jay", "Simpson", "1956-05-12", "M", "Evergreen Terrace", 742, "Springfield", "US", "12345", false),
+(6, "mmaionchi", SHA1("maallora"), "maramaionchi@hotmail.com", "Mara", "Maionchi", "1941-04-22", "F", "Guglielmo Marconi", 14, "Bologna", "BO", "40120", false);

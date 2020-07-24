@@ -1,0 +1,18 @@
+#contenitore_utenti {
+    margin-top: 70px;
+    padding: 10px;
+}
+
+#utenti {
+    border:solid 2px darkgoldenrod;
+    border-collapse:collapse;
+    text-align:center;
+}
+
+.bordi {
+    border-right:solid 2px darkgoldenrod;
+}
+
+th.bordi {
+    border:solid 2px darkgoldenrod;
+}

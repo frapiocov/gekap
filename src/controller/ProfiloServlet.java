@@ -19,12 +19,12 @@ public class ProfiloServlet extends HttpServlet {
 
     private final UtenteDAO dao = new UtenteDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Utente ut = (Utente) request.getSession().getAttribute("utente");
         if(ut == null){
             throw new controller.ServletException("Utente non loggato");
         }
-        request.setAttribute("utenteLoggato", ut);
+
+        request.getSession().setAttribute("utente", ut);
         RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/profiloutente.jsp");
         disp.forward(request, response);
     }

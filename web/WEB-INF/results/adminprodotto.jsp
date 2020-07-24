@@ -1,7 +1,7 @@
 <%@ page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="header.jsp">
+<jsp:include page="/WEB-INF/results/header.jsp">
     <jsp:param name="pageTitle" value="${operazione} prodotto"/>
 </jsp:include>
 
@@ -12,8 +12,8 @@
     </c:if>
 
     <c:if test="${notifica == null}">
-
-        <form action="servlet_modifica_inserimento_prodotto" method="post" enctype="multipart/form-data" autocomplete="on" accept-charset="UTF-8">
+        <h3>Riempi tutti i campi!</h3>
+        <form action="servlet_modifica_inserimento_prodotto" method="post" enctype="multipart/form-data" autocomplete="on">
             <input type="hidden" name="id" value="${prodotto.codice}">
             <input type="hidden" name="listaIm" value="${prodotto.listaImmagini}">
             <input type="hidden" name="operazione" value="${operazione}">
@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td><h3>Prezzo (in centesimi)</h3></td>
-                    <td><input type="number" class="textform" name="prezzo" value="${prodotto.prezzoCent}" min="0"></td>
+                    <td><input type="number" class="textform" name="prezzo" min="0" value="${prodotto.prezzoCent}" required></td>
                 </tr>
                 <tr>
                     <td><h3>Durata (in minuti)</h3></td>
@@ -41,12 +41,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><h3>Lingua (pattern: EN, IT, FR)</h3></td>
-                    <td><input type="text" class="textform" name="lingua" value="${prodotto.lingua}" required></td>
+                    <td><h3>Lingua</h3></td>
+                    <td><input type="text" class="textform" name="lingua" placeholder="EN,IT" pattern="[A-Z]{2}" title="Devi inserire due lettere maiuscole!" value="${prodotto.lingua}" required></td>
                 </tr>
                 <tr>
                     <td><h3>Path Trailer (url completo)</h3></td>
-                    <td><input type="url" class="textform" name="trailer" value="${prodotto.trailer}" required></td>
+                    <td><input type="url" class="textform" name="trailer" placeholder="http://ilmiosito.com" value="${prodotto.trailer}" required></td>
                 </tr>
                 <tr>
                     <td><h3>Scegli la Categoria</h3></td>
@@ -99,7 +99,6 @@
             <textarea name="trama" placeholder="Aggiungi una descrizione..." required>${prodotto.trama}</textarea><br>
 
             <input style="margin-top: 30px; margin-left: 140px" type="submit" class="bottone" value="${operazione}"><br>
-
         </form>
     </c:if>
 
