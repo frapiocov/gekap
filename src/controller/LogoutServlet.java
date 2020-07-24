@@ -19,10 +19,6 @@ public class LogoutServlet extends HttpServlet {
         Utente u=(Utente) request.getSession().getAttribute("utente");
 
         String dest = request.getHeader("referer");
-
-        if(u.isAdmin()) {
-            dest = ".";
-        }
         request.getSession().removeAttribute("utente");
 
         if(dest == null || dest.contains("/servlet_logout") || dest.trim().isEmpty()){

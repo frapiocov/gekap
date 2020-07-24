@@ -64,19 +64,11 @@ on delete cascade
 
 create table carrello (
 utente int not null,
-quantità int not null,
-prezzoTot int not null,
-primary key(utente),
-foreign key(utente) references utente(idUser)
-on update cascade
-on delete cascade
-);
-
-create table carrelloProdotto (
-carrello int not null,
 prodotto int not null,
-primary key(carrello,prodotto),
-foreign key(carrello) references carrello(utente)
+quantitaP int not null,
+prezzoTot int not null,
+primary key(utente,prodotto),
+foreign key(utente) references utente(idUser)
 on update cascade
 on delete cascade,
 foreign key(prodotto) references prodotto(codice)

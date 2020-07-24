@@ -135,7 +135,7 @@ public class ProdottoDAO {
             ps.setInt(11,p.getCodice());
 
             if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("INSERT error.");
+                throw new RuntimeException("UPDATE error.");
             }
 
         } catch (SQLException e) {

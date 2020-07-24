@@ -1,5 +1,7 @@
 package controller;
 
+import model.Carrello;
+import model.CarrelloDAO;
 import model.Utente;
 import model.UtenteDAO;
 
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collection;
 
 @WebServlet("/servlet_login")
 public class LoginServlet extends HttpServlet {
@@ -29,6 +32,7 @@ public class LoginServlet extends HttpServlet {
         if(utente == null){
             throw new controller.ServletException("Username e/o Password non validi");
         }
+
         request.getSession().setAttribute("utente", utente);
 
         String dest = request.getHeader("referer");

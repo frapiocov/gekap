@@ -1,7 +1,6 @@
 package controller;
 
-import model.Carrello;
-import model.ProdottoDAO;
+import model.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,41 +10,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Collection;
 
 @WebServlet("/servlet_carrello")
 public class CarrelloServlet extends HttpServlet {
-    private final ProdottoDAO dao = new ProdottoDAO();
+    private final CarrelloDAO cdao = new CarrelloDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Carrello cart = (Carrello) session.getAttribute("carrello");
 
-        if (cart == null) {
-            cart = new Carrello();
-            session.setAttribute("carrello", cart);
-        }
+        Carrello cartS;
+        Utente u = (Utente) session.getAttribute("utente");
 
-        String codProdStr = request.getParameter("codice_prodotto");
-        if (codProdStr != null) {                                              //inserire prodotto nel carrello
-            int codice = Integer.parseInt(codProdStr);
+        if (u != null) {        //utente ha effettuato accesso
+            cartS = (Carrello) session.getAttribute("carrello");
 
-            String numStr = request.getParameter("quantity");
-            if (numStr != null) {
-                int num = Integer.parseInt(numStr);
+            if(!cartS.isEmpty()) {
+                Collection<Carrello.ProdottoQuantita> prodotti = cartS.getProdotti();
 
-                Carrello.ProdottoQuantita prodQuant = cart.get(codice);
-                if (prodQuant != null) {
-                    prodQuant.setQuantita(prodQuant.getQuantita() + num);
-                } else {
-                    cart.put(dao.doRetrieveById(codice), num);
+                for(Carrello.ProdottoQuantita pr : prodotti) {
+                    if (!cdao.checkUtenteProdotto(u.getIdUser(), pr.getProdotto().getCodice()))
+                        cdao.doSave(u.getIdUser(), pr.getProdotto().getCodice(), pr.getQuantita(), (int) pr.getTotCent());
                 }
-
-            } else {
-                cart.remove(codice);
             }
+        } else {
+            cartS = (Carrello) session.getAttribute("carrello");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/results/carrello.jsp");
-        dispatcher.forward(request, response);
+        session.setAttribute("carrello", cartS);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/carrello.jsp");
+        dispatcher.forward(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

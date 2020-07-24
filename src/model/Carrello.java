@@ -4,8 +4,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 
 public class Carrello {
-        //sottoclasse di Carrello
-     public static class ProdottoQuantita {
+     public static class ProdottoQuantita {     //sottoclasse di Carrello
          private Prodotto prodotto;
          private int quantita;
 
@@ -56,5 +55,9 @@ public class Carrello {
 
      public String getTotEuro() {
          return String.format("%.2f",getTotCent()/100.);
+     }
+
+     public boolean isEmpty() {
+         return prodotti.isEmpty();
      }
 }
