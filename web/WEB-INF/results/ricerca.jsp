@@ -5,7 +5,10 @@
     <jsp:param name="pageTitle" value="${parolaCercata}"/>
 </jsp:include>
 
-<div style="padding-top: 40px; padding-left: 10px"><h3>Parola cercata: ${parolaCercata}</h3></div>
+<div style="padding-top: 50px; padding-left: 10px">
+    <h3>Parola cercata: ${parolaCercata}</h3>
+</div>
+
 <div class="sezione_prodotti">
     <jsp:useBean id="prodotti" scope="request" type="java.util.List"/>
     <c:forEach items="${prodotti}" var="prodotto">
@@ -23,6 +26,5 @@
         </div>
     </c:if>
 </div>
-
 
 <%@include file="footer.html" %>

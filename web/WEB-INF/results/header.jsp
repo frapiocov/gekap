@@ -37,9 +37,8 @@
 
         <div id="ricerca">
             <form action="servlet_ricerca" method="get">
-                <label for="q"></label>
-                <input id="q" type="text" placeholder="Cerca..." name="query" onfocus="mettiBordo(this)"
-                       onblur="togliBordo(this)">
+                <input type="text" placeholder="Cerca..." name="query" id="q" list="ricerca_datalist" onkeyup="ricerca(this.value)" onfocus="mettiBordo(this)" onblur="togliBordo(this)" value="<c:out value='${param.query}'/>">
+                <datalist id="ricerca_datalist"></datalist>
                 <button type="submit"><i class="material-icons md-24 md-light">search</i></button>
             </form>
         </div>
@@ -81,14 +80,6 @@
     </nav>
 
     <button id="goup"><i class="material-icons md-48 md-light">keyboard_arrow_up</i></button>
-
-    <c:if test="${utente != null}">
-        <br><br>
-        <div id="alert">
-            <span id="closebtn" onclick="nascondiElemento()">&times;</span>
-            <h3>Ciao ${utente.nome}!</h3>
-        </div>
-    </c:if>
 </header>
 
 <script>
@@ -108,6 +99,5 @@
             $("html,body").animate({scrollTop: 0}, '300');
         });
     });
-
-
 </script>
+

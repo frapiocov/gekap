@@ -40,10 +40,10 @@
             </tr>
             <tr>
                 <td> <label>Sesso</label>
+                    <input type="radio" value="F" name="sex" checked>
+                    <label>DONNA</label>
                     <input type="radio" value="M" name="sex">
-                    <label>UOMO</label>
-                    <input type="radio" value="F" name="sex">
-                    <label>DONNA</label></td>
+                    <label>UOMO</label></td>
                 <td></td>
             </tr>
         </table>
@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td><label> Numero Civico</label></td>
-                    <td><input type="number" name="nc"><br></td>
+                    <td><input type="number" class="textform" name="nc"><br></td>
                 </tr>
                 <tr>
                     <td><label> Citt&agrave; </label></td>

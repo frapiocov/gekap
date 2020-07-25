@@ -122,6 +122,7 @@ datalist{
     font-weight: bold;
     float: right;
     cursor: pointer;
+    font-size: 25px;
 }
 
 #closebtn:hover {
