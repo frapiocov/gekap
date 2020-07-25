@@ -1,7 +1,5 @@
 package controller;
 
-import model.UtenteDAO;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +14,6 @@ public class RegistrazioneServlet extends HttpServlet {
         doGet(request, response);
     }
 
-    private final UtenteDAO dao = new UtenteDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getSession().getAttribute("utente") != null){
             throw new controller.ServletException("Utente Loggato");

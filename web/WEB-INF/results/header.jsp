@@ -17,9 +17,8 @@
     <link href="css/adminprodotto.css" rel="stylesheet" type="text/css">
     <link href="css/adminutenti.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
     <script src="script/funzioni.js"></script>
-    <script src="script/jquery.js"></script>
-    <script src="script/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <header>
