@@ -5,8 +5,8 @@
     <jsp:param name="pageTitle" value="Utenti"/>
 </jsp:include>
 
-<div id="contenitore_admin">
-    <table id="#utenti">
+<div id="contenitore_utenti">
+    <table id="tutenti">
         <tr>
             <th class="bordi">id</th>
             <th class="bordi">Username</th>

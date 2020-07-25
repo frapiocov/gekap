@@ -141,7 +141,8 @@ function validaProv() {
 function validaCap() {
     var input = document.forms['registrazione']['cap'];
     if (input.value.trim().length > 0
-        && input.value.match(/[0-9]/)) {
+        && input.value.match(/[0-9]/)
+    && input.value.trim().length === 5) {
         input.style.border = borderOk;
         capOk = true;
     } else {
