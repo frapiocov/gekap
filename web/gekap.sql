@@ -42,6 +42,7 @@ primary key(codice),
 foreign key(categoria) references categoria(idCat)
 on update cascade
 on delete cascade,
+fulltext key(nome),
 fulltext key(nome,trama)
 );
 

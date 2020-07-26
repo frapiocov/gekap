@@ -166,7 +166,7 @@ function validaEmail() {
                 emailOk = false;
             }
             cambiaStatoRegistrami();
-        }
+        };
         xmlHttpReq2.open("GET", "servlet_verifica_email?email=" + encodeURIComponent(input.value), true);
         xmlHttpReq2.send();
     }else {
@@ -177,7 +177,7 @@ function validaEmail() {
 }
 
 function cambiaStatoRegistrami() {
-    if (usernameOk && passwordOk && nomeOk && emailOk && cognomeOk && viaOk && provOk && cittaOk && capOk) {
+    if (usernameOk && passwordOk && nomeOk && emailOk && cognomeOk && viaOk && provOk && cittaOk && capOk && dateOk) {
         document.getElementById('registrami').disabled = false;
         document.getElementById('registramimessaggio').innerHTML = '';
     } else {
@@ -191,3 +191,26 @@ function nascondiElemento() {
 }
 
 //funzione per i suggerimenti la ricerca con ajax
+function ricerca(valore) {
+    var datalist = document.getElementById("ricerca_datalist");
+    if(valore.length == 0) {        //nessun suggerimento, l'utente ha iniziato a digitare e poi ha cancellato
+        datalist.innerHTML = "";
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.responseType = "json";
+    xhttp.onreadystatechange = function () {
+        if(this.readyState == 4 && this.status == 200) {
+            datalist.innerHTML = "";        //cancello contenuto attuale del datalist
+
+            for(var i in this.response) {
+                var option = document.createElement("option");
+                option.value = this.response[i];
+                datalist.appendChild(option);
+            }
+        }
+    };
+    xhttp.open("GET","servlet_ricerca_ajax?query=" +encodeURIComponent(valore),true);
+    xhttp.send();
+}

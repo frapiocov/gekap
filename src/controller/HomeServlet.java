@@ -32,8 +32,7 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int casuale = (int)(Math.random()*6);
-        List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(casuale ,12);
+        List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(0,14);
 
         int max = prodottoDAO.returnMaxCodice();
         List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( max - 5, 5);

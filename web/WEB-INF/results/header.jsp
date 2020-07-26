@@ -47,7 +47,7 @@
         <a href="servlet_carrello" style="float: right; padding-right: 40px"><i id="carrello" class="material-icons md-36 md-light" onmouseover="inC(this)" onmouseout="outC(this)">shopping_cart</i></a>
         <a href="servlet_preferiti" style="float: right; padding-right: 40px"><i id="favoriti" class="material-icons md-36 md-light" onmouseover="inF(this)" onmouseout="outF(this)">favorite</i></a>
         <div id="scelta_account">
-            <a id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light">account_circle</i></a>
+            <a href="servlet_profilo" id="account" style="float: right; padding-right: 50px"><i class="material-icons md-36 md-light">account_circle</i></a>
             <c:choose>
                 <c:when test="${utente == null}">
                     <div class="scelte_dropdown">
@@ -108,4 +108,6 @@
             $("html,body").animate({scrollTop: 0}, '300');
         });
     });
+
+
 </script>

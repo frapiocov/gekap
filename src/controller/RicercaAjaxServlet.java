@@ -20,12 +20,14 @@ public class RicercaAjaxServlet extends HttpServlet {
 
     private final ProdottoDAO dao = new ProdottoDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String query = request.getParameter("query") + "*";
-        ArrayList<Prodotto> prodotti = dao.doRetrieveByNome(query, 0,0);
-
         JSONArray prodJson = new JSONArray();
-        for(Prodotto p:prodotti){
-            prodJson.put(p.getNome());
+        String query = request.getParameter("query");
+
+        if(query != null) {
+            ArrayList<Prodotto> prodotti = dao.doRetrieveByNome(query + "*", 0,10);
+            for(Prodotto p:prodotti){   //creo array JSON
+                prodJson.put(p.getNome());
+            }
         }
         response.setContentType("application/json");
         response.getWriter().append(prodJson.toString());
