@@ -36,6 +36,7 @@
         <h2><b>TOTALE:</b>${carrello.totEuro} &euro; </h2>
 
         <form action="servlet_acquisto" method="post">
+            <input type="hidden" name="prezTot" value="${carrello.totCent}">
             <input class="bottone" type="submit" value="Acquista">
         </form>
     </div>

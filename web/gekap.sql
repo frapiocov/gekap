@@ -65,6 +65,8 @@ on delete cascade
 create table ordine (
 idOrdine int not null auto_increment,
 utente int not null,
+data date not null,
+prezzo int not null,
 primary key(idOrdine),
 foreign key(utente) references utente(idUser)
 on update cascade
@@ -101,6 +103,15 @@ on delete cascade,
 foreign key(prodotto) references prodotto(codice)
 on update cascade
 on delete cascade
+);
+
+create table login (
+id char(36) not null,
+idutente int not null,
+token char(36) not null,
+time timestamp not null,
+primary key(id),
+constraint foreign key (idutente) references utente(idUser)
 );
 
 insert into categoria values

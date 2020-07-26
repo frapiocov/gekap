@@ -1,21 +1,24 @@
 package controller;
 
-import model.Carrello;
-import model.CarrelloDAO;
-import model.Utente;
-import model.UtenteDAO;
+import model.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Collection;
+import java.util.UUID;
 
 @WebServlet("/servlet_login")
 public class LoginServlet extends HttpServlet {
     private final UtenteDAO dao = new UtenteDAO();
+    private final LoginDAO ldao = new LoginDAO();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -32,8 +35,18 @@ public class LoginServlet extends HttpServlet {
         if(utente == null){
             throw new controller.ServletException("Username e/o Password non validi");
         }
-
         request.getSession().setAttribute("utente", utente);
+
+        Login login = new Login();
+        login.setIdutente(utente.getIdUser());
+        login.setToken(UUID.randomUUID().toString());
+        login.setTime(Timestamp.from(Instant.now()));
+
+        ldao.doSave(login);
+
+        Cookie cookie = new Cookie("login", login.getId() + "_" + login.getToken());
+        cookie.setMaxAge(30 * 24 * 60 * 60); // 30 giorni
+        response.addCookie(cookie);
 
         String dest = request.getHeader("referer");
         if(dest == null || dest.contains("/servlet_login") || dest.trim().isEmpty()){

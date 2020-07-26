@@ -11,22 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("/servlet_profilo")
-public class ProfiloServlet extends HttpServlet {
+@WebServlet("/servlet_dettagli")
+public class DettagliServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
-    private final ProdottoDAO pdao = new ProdottoDAO();
-    private final OrdineDAO odao = new OrdineDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente ut = (Utente) request.getSession().getAttribute("utente");
         if(ut == null){
             throw new controller.ServletException("Utente non loggato");
         }
+        if(!ut.isAdmin()){
+            throw new controller.ServletException("Pagina accessibile solo agli admin");
+        }
+        int id = Integer.parseInt(request.getParameter("idUtente"));
+        OrdineDAO odao = new OrdineDAO();
+        ProdottoDAO pdao = new ProdottoDAO();
 
-        ArrayList<Ordine> ordiniUtente = odao.doRetrieveByUtenteAll(ut.getIdUser());
+        ArrayList<Ordine> ordiniUtente = odao.doRetrieveByUtenteAll(id);
         if(ordiniUtente != null){
             for (Ordine e: ordiniUtente) {
                 ArrayList<Integer> codiciProdotti = new ArrayList<>();
@@ -44,7 +47,7 @@ public class ProfiloServlet extends HttpServlet {
         request.setAttribute("ordini", ordiniUtente);
 
         request.getSession().setAttribute("utente", ut);
-        RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/profiloutente.jsp");
+        RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/admindettagli.jsp");
         disp.forward(request, response);
     }
 }

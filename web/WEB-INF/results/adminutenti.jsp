@@ -33,7 +33,7 @@
                 <td class="bordi">${utente.sesso}</td>
                 <td class="bordi">Via ${utente.via} ${utente.nCivico}, ${utente.citta} (${utente.provincia})</td>
                 <td class="bordi">${utente.admin ? "Si" : "No"}</td>
-                <td class="bordi"><a href="servlet_profilo?utente=${utente}">
+                <td class="bordi"><a href="servlet_dettagli?idUtente=${utente.idUser}">
                     <button class="bottone">Dettagli</button></a>
                 </td>
                 <td class="bordi">
