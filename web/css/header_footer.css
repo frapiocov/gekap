@@ -192,3 +192,28 @@ footer {
     width: 48px;
     height: 48px;
 }
+
+.barra .icon{
+    display: none;
+}
+
+#menu_responsive{
+    display: none;
+    float: left;
+}
+
+@media screen and (max-width: 700px) {
+
+    #i2{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 580px) {
+
+    #i3{
+        display: none;
+    }
+
+}

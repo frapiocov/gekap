@@ -23,3 +23,23 @@
     outline: 4px solid #424242;
     -moz-outline-radius: 6px;
 }
+
+@media screen and (max-width: 700px) {
+
+}
+
+@media screen and (max-width: 580px) {
+    #lr div{
+        float: none;
+        width: 90%;
+        padding: 10px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #cast{
+        text-align: center;
+        font-size: 20px;
+    }
+
+}

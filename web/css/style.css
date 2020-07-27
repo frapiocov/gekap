@@ -40,9 +40,8 @@ body {
     color: #212121;
 }
 
-
 #evidenza{
-    margin-top: 45px;
+    margin-top: 30px;
     text-align: center;
     background-color: #424242;
     padding: 5px;
@@ -63,4 +62,28 @@ body {
 
 .imm_prod_ev:hover{
     box-shadow: 3px 3px 10px 4px #000000;
+}
+
+
+@media screen and (max-width: 700px) {
+    .imm_prod_ev{
+        padding: 10px;
+        width: 280px;
+        height: 410px;
+    }
+
+    .sezione_prodotti{
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .imm_prod_index{
+        width: 280px;
+        height: 410px;
+    }
+
+    .bottone{
+        font-size: 25px;
+    }
 }

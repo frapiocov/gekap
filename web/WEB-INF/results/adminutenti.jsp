@@ -6,6 +6,10 @@
 </jsp:include>
 
 <div id="contenitore_utenti">
+
+
+
+    <div style="overflow-x: auto;">
     <table id="tutenti">
         <tr>
             <th class="bordi">id</th>
@@ -19,7 +23,7 @@
             <th class="bordi">Admin</th>
             <th class="bordi">Ordini</th>
             <th class="bordi">Azioni</th>
-
+            <th></th>
         </tr>
         <jsp:useBean id="utenti" scope="request" type="java.util.List"/>
         <c:forEach items="${utenti}" var="utente">
@@ -55,6 +59,7 @@
             </tr>
         </c:forEach>
     </table>
+    </div>
 </div>
 
 <div style="clear:both "></div>

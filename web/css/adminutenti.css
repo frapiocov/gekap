@@ -1,20 +1,19 @@
 #contenitore_utenti {
-    margin-top:20px;
-    margin-left:80px;
+    margin-top: 20px;
 }
 
 #tutenti {
-    border:solid 2px darkgoldenrod;
-    text-align:center;
-    border-collapse:collapse;
+    text-align: center;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 2%;
+    border: darkgoldenrod 1px solid;
 }
 
-.bordi {
-    border-right: solid 2px darkgoldenrod;
+.bordi{
+    border-right: darkgoldenrod 1px solid;
 }
 
-th.bordi {
-    border-bottom: 2px solid darkgoldenrod;
+th.bordi{
+    border-bottom: darkgoldenrod 1px solid;
 }
-
-

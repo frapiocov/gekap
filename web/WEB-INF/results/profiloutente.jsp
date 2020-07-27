@@ -9,7 +9,7 @@
     <div id="profilo" style="margin-top: 50px; padding: 20px">
 
             <h1>Benvenuta/o ${utente.nome}</h1>
-            <fieldset style="width: 60%">
+            <fieldset style="width: 90%">
                 <legend>DATI</legend>
                 <p style="font-size: 20px">Username: ${utente.username}<br>
                     E-mail: ${utente.email}<br>
