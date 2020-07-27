@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
             throw new controller.ServletException("Username e/o Password non validi");
         }
         request.getSession().setAttribute("utente", utente);
-
+ 
         Login login = new Login();
         login.setIdutente(utente.getIdUser());
         login.setToken(UUID.randomUUID().toString());
