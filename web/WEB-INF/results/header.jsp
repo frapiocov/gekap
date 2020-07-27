@@ -78,14 +78,22 @@
             </c:choose>
         </div>
 
-       <button id="menu" onclick="apriMenu()"><i class="material-icons md-light md-36">menu</i></button>
+        <div style="float: left">
+            <button id="menu" onclick="apriMenu()"><i class="material-icons md-light md-36">menu</i></button>
+        </div>
+
         <div class="barra_responsive">
 
             <c:forEach items="${categorie}" var="categoria">
                 <a href="servlet_categoria?categoria=${categoria.idCat}">${categoria.nome}</a>
             </c:forEach>
 
-            <a><input type="text" placeholder="Cerca..." name="query" onkeyup="ricerca(this.value)" onfocus="mettiBordo(this)" onblur="togliBordo(this)" value="<c:out value='${param.query}'/>"></a>
+            <a>
+                <form action="servlet_ricerca" method="get">
+                    <input type="text" placeholder="Cerca..." name="query" class="textform">
+                    <button type="submit" style="background-color: #212121; border:none"><i class="material-icons md-24 md-light">search</i></button>
+                </form>
+            </a>
 
             <a href="servlet_carrello">Carrello</a>
             <a href="servlet_preferiti">Wishlist</a>
@@ -109,7 +117,6 @@
                 </c:otherwise>
             </c:choose>
         </div>
-
     </nav>
 
     <button id="goup"><i class="material-icons md-48 md-light">keyboard_arrow_up</i></button>

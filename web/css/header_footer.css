@@ -222,7 +222,6 @@ footer {
 
 #menu{
     display: none;
-    float:right;
     background-color: #212121;
     border:none;
     padding: 5px;
@@ -236,7 +235,7 @@ footer {
         width: 100%;
         float: none;
         display: block;
-        text-align: left;
+        text-align: center;
         font-size: 20px;
     }
 
