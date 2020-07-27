@@ -60,6 +60,8 @@ public class CookieLoginFilter extends HttpFilter {
             }
         }
 
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         chain.doFilter(request, response);
     }
 
