@@ -77,9 +77,46 @@
                 </c:otherwise>
             </c:choose>
         </div>
-        <a href="javascript:void(0);" class="icon" onclick="sottomenu()">
-            <i class="material-icons md-36 md-light">menu</i>
-        </a>
+
+        <div style="float: left">
+            <button id="menu" onclick="apriMenu()"><i class="material-icons md-light md-36">menu</i></button>
+        </div>
+
+        <div class="barra_responsive">
+
+            <c:forEach items="${categorie}" var="categoria">
+                <a href="servlet_categoria?categoria=${categoria.idCat}">${categoria.nome}</a>
+            </c:forEach>
+
+            <a>
+                <form action="servlet_ricerca" method="get">
+                    <input type="text" placeholder="Cerca..." name="query" class="textform">
+                    <button type="submit" style="background-color: #212121; border:none"><i class="material-icons md-24 md-light">search</i></button>
+                </form>
+            </a>
+
+            <a href="servlet_carrello">Carrello</a>
+            <a href="servlet_preferiti">Wishlist</a>
+            <c:choose>
+                <c:when test="${utente == null}">
+                    <form action="servlet_login" method="post" autocomplete="off">
+                        <input class="textform" type="text" name="username" placeholder="Username"><br>
+                        <input class="textform" type="password" name="password" placeholder="Password"><br>
+                        <input class="bottone" type="submit" value="Login">
+                    </form>
+                    <a href="servlet_registrazione">Registrati</a>
+                </c:when>
+                <c:otherwise>
+                    <c:if test="${utente.admin}">
+                        <a href="servlet_admin_prodotto">Aggiungi Prodotto</a>
+                        <a href="servlet_admin_utenti">Utenti</a>
+                    </c:if>
+                    <a href="servlet_profilo">Il mio Profilo</a>
+
+                    <a href="servlet_logout">Logout</a>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </nav>
 
     <button id="goup"><i class="material-icons md-48 md-light">keyboard_arrow_up</i></button>
@@ -113,4 +150,9 @@
         });
     });
 
+    $(document).ready(function () {
+        $("#menu").click(function () {
+            $(".barra_responsive").toggle();
+        });
+    })
 </script>
