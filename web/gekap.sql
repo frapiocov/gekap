@@ -115,6 +115,7 @@ primary key(id),
 constraint foreign key (idutente) references utente(idUser)
 );
 
+
 insert into categoria values
 (1, "Film"),
 (2, "Documentario"),
