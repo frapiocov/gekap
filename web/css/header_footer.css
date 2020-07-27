@@ -197,17 +197,58 @@ footer {
     display: none;
 }
 
-#menu_responsive{
+.barra_responsive{
     display: none;
+    overflow: hidden;
+    background-color: #212121;
+    color: #cccccc;
+    padding: 20px 10px;
+}
+
+.barra_responsive a {
     float: left;
+    color: #cccccc;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.barra_responsive a:hover{
+    color:darkgoldenrod;
+}
+
+#menu{
+    display: none;
+    float:right;
+    background-color: #212121;
+    border:none;
+    padding: 5px;
 }
 
 @media screen and (max-width: 700px) {
 
+    #menu{display: block}
+
+    .barra_responsive a {
+        width: 100%;
+        float: none;
+        display: block;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    #carrello{display: none}
+    #scelta_categorie{display: none}
+    #scelta_account{display: none}
+    #favoriti{display: none}
+    #ricerca{display: none}
+
     #i2{
         display: none;
     }
-
 }
 
 @media screen and (max-width: 580px) {

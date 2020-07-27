@@ -214,3 +214,7 @@ function ricerca(valore) {
     xhttp.open("GET","servlet_ricerca_ajax?query=" +encodeURIComponent(valore),true);
     xhttp.send();
 }
+
+function apriMenu() {
+    document.getElementsByClassName("barra_responsive").style.display = "block";
+}
