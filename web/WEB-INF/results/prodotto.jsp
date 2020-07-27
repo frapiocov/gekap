@@ -10,7 +10,7 @@
 <div id="contenuto">
     <div id="lr">
         <div>
-            <h3 style="margin-top:40px;">${prodotto.nome}</h3>
+            <h1>${prodotto.nome}</h1>
             <img class="im_prodotto" alt="immagine prodotto" src="images/${prodotto.listaImmagini}">
             <p>GENERE: ${prodotto.genere}<br>
                 ANNO: ${prodotto.anno}<br>
@@ -29,7 +29,7 @@
         <div>
             <p id="trama">${prodotto.trama}</p>
 
-            <table>
+            <table id="cast">
                 <jsp:useBean id="cast" scope="request" type="java.util.List"/>
                 <c:forEach items="${cast}" var="attore">
                     <tr>

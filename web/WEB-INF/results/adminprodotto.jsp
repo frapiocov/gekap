@@ -45,8 +45,8 @@
                     <td><input type="text" class="textform" name="lingua" placeholder="EN,IT" pattern="[A-Z]{2}" title="Devi inserire due lettere maiuscole!" value="${prodotto.lingua}" required></td>
                 </tr>
                 <tr>
-                    <td><h3>Path Trailer (url completo)</h3></td>
-                    <td><input type="url" class="textform" name="trailer" placeholder="http://ilmiosito.com" value="${prodotto.trailer}" required></td>
+                    <td><h3>Path Trailer</h3></td>
+                    <td><input type="url" class="textform" name="trailer" placeholder="http://youtube.com" value="${prodotto.trailer}" required></td>
                 </tr>
                 <tr>
                     <td><h3>Scegli la Categoria</h3></td>
@@ -60,43 +60,51 @@
                 <tr>
                     <td><input type="radio" name="cat" value="3"><label>Stand-Up</label></td>
                 </tr>
-            </table>
+                <tr>
+                    <table class="casttab"></table>
+                </tr>
 
             <c:if test="${operazione.equalsIgnoreCase('inserimento')}">
-                <table id="tright">
                     <tr>
                         <td><h3>Immagine</h3></td>
-                        <td><input type="file" name="foto" class="bottone"></td>
+                        <td><input type="file" name="foto"></td>
                     </tr>
+
                     <tr>
-                        <th>RUOLO</th>
-                        <th>ATTORE</th>
+                        <table class="casttab">
+                        <tr>
+                            <th>RUOLO</th>
+                            <th>ATTORE</th>
+                        </tr>
+                        <tr>
+                            <td>1.<input type="text" class="textform" name="r1" required></td>
+                            <td><input type="text" class="textform" name="n1" required></td>
+                        </tr>
+                        <tr>
+                            <td>2.<input type="text" class="textform" name="r2" required></td>
+                            <td><input type="text" class="textform" name="n2" required></td>
+                        </tr>
+                        <tr>
+                            <td>3.<input type="text" class="textform" name="r3" required></td>
+                            <td><input type="text" class="textform" name="n3" required></td>
+                        </tr>
+                        <tr>
+                            <td>4.<input type="text" class="textform" name="r4" required></td>
+                            <td><input type="text" class="textform" name="n4"></td>
+                        </tr>
+                        <tr>
+                            <td>5.<input type="text" class="textform" name="r5" required></td>
+                            <td><input type="text" class="textform" name="n5"></td>
+                        </tr>
+                        </table>
                     </tr>
+            </c:if>
                     <tr>
-                        <td>1.<input type="text" class="textform" name="r1" required></td>
-                        <td><input type="text" class="textform" name="n1" required></td>
-                    </tr>
-                    <tr>
-                        <td>2.<input type="text" class="textform" name="r2" required></td>
-                        <td><input type="text" class="textform" name="n2" required></td>
-                    </tr>
-                    <tr>
-                        <td>3.<input type="text" class="textform" name="r3" required></td>
-                        <td><input type="text" class="textform" name="n3" required></td>
-                    </tr>
-                    <tr>
-                        <td>4.<input type="text" class="textform" name="r4" required></td>
-                        <td><input type="text" class="textform" name="n4"></td>
-                    </tr>
-                    <tr>
-                        <td>5.<input type="text" class="textform" name="r5" required></td>
-                        <td><input type="text" class="textform" name="n5"></td>
+                        <td> <textarea name="trama" placeholder="Aggiungi una descrizione..." required>${prodotto.trama}</textarea></td>
                     </tr>
                 </table>
-            </c:if>
 
-            <h3>Trama</h3>
-            <textarea name="trama" placeholder="Aggiungi una descrizione..." required>${prodotto.trama}</textarea><br>
+
 
             <input style="margin-top: 30px; margin-left: 140px" type="submit" class="bottone" value="${operazione}"><br>
         </form>

@@ -77,6 +77,9 @@
                 </c:otherwise>
             </c:choose>
         </div>
+        <a href="javascript:void(0);" class="icon" onclick="sottomenu()">
+            <i class="material-icons md-36 md-light">menu</i>
+        </a>
     </nav>
 
     <button id="goup"><i class="material-icons md-48 md-light">keyboard_arrow_up</i></button>
@@ -88,6 +91,7 @@
             <h3>Ciao ${utente.nome}!</h3>
         </div>
     </c:if>
+
 
 </header>
 
