@@ -106,6 +106,16 @@ on update cascade
 on delete cascade
 );
 
+create table login (
+id char(36) not null,
+idutente int not null,
+token char(36) not null,
+time timestamp not null,
+primary key(id),
+constraint foreign key (idutente) references utente(idUser)
+);
+
+
 insert into categoria values
 (1, "Film"),
 (2, "Documentario"),
