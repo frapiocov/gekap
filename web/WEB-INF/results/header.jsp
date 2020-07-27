@@ -99,11 +99,13 @@
             <a href="servlet_preferiti">Wishlist</a>
             <c:choose>
                 <c:when test="${utente == null}">
-                    <form action="servlet_login" method="post" autocomplete="off">
-                        <input class="textform" type="text" name="username" placeholder="Username"><br>
-                        <input class="textform" type="password" name="password" placeholder="Password"><br>
-                        <input class="bottone" type="submit" value="Login">
-                    </form>
+                    <a>
+                        <form action="servlet_login" method="post" autocomplete="off">
+                            <input class="textform" type="text" name="username" placeholder="Username"><br>
+                            <input class="textform" type="password" name="password" placeholder="Password"><br>
+                            <input class="bottone" type="submit" value="Login">
+                        </form>
+                    </a>
                     <a href="servlet_registrazione">Registrati</a>
                 </c:when>
                 <c:otherwise>

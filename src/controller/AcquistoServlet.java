@@ -31,20 +31,30 @@ public class AcquistoServlet extends HttpServlet {
             throw new ServletException("Impossibile effettuare l'acquisto senza prodotti nel Carrello");
         }
 
-        int prezz = Integer.parseInt(request.getParameter("prezTot"));
-        String data = Timestamp.from(Instant.now()).toString();
-        Collection<Carrello.ProdottoQuantita> prodotti = c.getProdotti();
-        ArrayList<Integer> codP = new ArrayList<>();
+        String prezzo = request.getParameter("prezTot");
 
-        for (Carrello.ProdottoQuantita p:prodotti) {
-            codP.add(p.getProdotto().getCodice());
+        if(prezzo != null) {
+            int prezz = Integer.parseInt(prezzo);
+            String data = Timestamp.from(Instant.now()).toString();
+            Collection<Carrello.ProdottoQuantita> prodotti = c.getProdotti();
+            ArrayList<Integer> codP = new ArrayList<>();
+
+            for (Carrello.ProdottoQuantita p : prodotti) {
+                codP.add(p.getProdotto().getCodice());
+            }
+
+            odao.doSave(u.getIdUser(), data, prezz, codP);
+            request.getSession().removeAttribute("carrello");
+
+            RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/ordine.jsp");
+            disp.forward(request, response);
+        } else {
+            String dest = request.getHeader("referer");
+            if(dest == null || dest.contains("/servlet_acquisto") || dest.trim().isEmpty()){
+                dest = ".";
+            }
+            response.sendRedirect(dest);
         }
-
-        odao.doSave(u.getIdUser(), data , prezz, codP);
-        request.getSession().removeAttribute("carrello");
-
-        RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/ordine.jsp");
-        disp.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
