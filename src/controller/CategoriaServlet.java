@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CategoriaServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
         @SuppressWarnings("unchecked")
-        ArrayList<Categoria> categorie=(ArrayList<Categoria>) getServletContext().getAttribute("categorie");
+        ArrayList<Categoria> categorie=(ArrayList<Categoria>) getServletContext().getAttribute("categorie");    //prendiamo tutte le categorie salvate nel contesto dell'applicazione
         int cat;
         try{
             cat = Integer.parseInt(request.getParameter("categoria"));
@@ -27,7 +27,7 @@ public class CategoriaServlet extends HttpServlet {
 
         Categoria c=new Categoria();
         for (Categoria x : categorie) {
-            if (x.getIdCat() == cat)
+            if (x.getIdCat() == cat)        //controlliamo quale categoria è stata selezionata
                 c = x;
         }
         request.setAttribute("categoriaScelta",c);

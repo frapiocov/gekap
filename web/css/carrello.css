@@ -16,6 +16,7 @@
 
 #prodotti_carrello {
     display:inline;
+    /* mostra div come elemento inline */
     float:left;
     padding: 15px 25px 15px 30px;
     text-align:center;

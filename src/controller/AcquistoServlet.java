@@ -1,6 +1,5 @@
 package controller;
 
-import com.mysql.cj.CacheAdapter;
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -16,10 +15,8 @@ import java.util.Collection;
 
 @WebServlet("/servlet_acquisto")
 public class AcquistoServlet extends HttpServlet {
-
     OrdineDAO odao = new OrdineDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
         Carrello c = (Carrello) request.getSession().getAttribute("carrello");
         Utente u=(Utente) request.getSession().getAttribute("utente");
 
@@ -28,15 +25,16 @@ public class AcquistoServlet extends HttpServlet {
         }
 
         if(c == null){
-            throw new ServletException("Impossibile effettuare l'acquisto senza prodotti nel Carrello");
+            throw new ServletException("Impossibile effettuare l'acquisto senza prodotti nel Carrello.");
         }
 
         String prezzo = request.getParameter("prezTot");
 
         if(prezzo != null) {
             int prezz = Integer.parseInt(prezzo);
-            String data = Timestamp.from(Instant.now()).toString();
-            Collection<Carrello.ProdottoQuantita> prodotti = c.getProdotti();
+
+            String data = Timestamp.from(Instant.now()).toString();     //in data avremo la data del momento in cui l'utente schiaccia il bottone acquista
+            Collection<Carrello.ProdottoQuantita> prodotti = c.getProdotti();      //prendiamo tutti i prodotti dal carrello
             ArrayList<Integer> codP = new ArrayList<>();
 
             for (Carrello.ProdottoQuantita p : prodotti) {
@@ -44,14 +42,14 @@ public class AcquistoServlet extends HttpServlet {
             }
 
             odao.doSave(u.getIdUser(), data, prezz, codP);
-            request.getSession().removeAttribute("carrello");
+            request.getSession().removeAttribute("carrello");           //svuotiamo il carrello dopo l'acquisto
 
             RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/ordine.jsp");
             disp.forward(request, response);
-        } else {
-            String dest = request.getHeader("referer");
+        } else {        //dopo aver effettuato l'accesso
+            String dest = request.getHeader("referer");         //prendiamo dall'header della richiesta l'url corrente
             if(dest == null || dest.contains("/servlet_acquisto") || dest.trim().isEmpty()){
-                dest = ".";
+                dest = ".";     //la destinazione sarà l'homepage
             }
             response.sendRedirect(dest);
         }

@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td><h3>Lingua</h3></td>
-                    <td><input type="text" class="textform" name="lingua" placeholder="EN,IT" pattern="[A-Z]{2}" title="Devi inserire due lettere maiuscole!" value="${prodotto.lingua}" required></td>
+                    <td><input type="text" class="textform" name="lingua" placeholder="IT" pattern="[A-Z]{2}" title="Devi inserire due lettere maiuscole!" value="${prodotto.lingua}" required></td>
                 </tr>
                 <tr>
                     <td><h3>Path Trailer</h3></td>

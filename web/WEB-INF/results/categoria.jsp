@@ -25,10 +25,9 @@
     <c:if test="${empty prodottiCategoria}">
         <div style="padding: 10px">
             <i class="material-icons md-light md-48">sentiment_very_dissatisfied</i>
-            <h3>Nessun prodotto conforme alla ricerca.</h3>
+            <h3>Nessun prodotto presente nella categoria.</h3>
         </div>
     </c:if>
-
 </section>
 
 <%@include file="footer.html" %>

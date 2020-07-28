@@ -26,19 +26,18 @@ public class ProfiloServlet extends HttpServlet {
             throw new controller.ServletException("Utente non loggato");
         }
 
-        ArrayList<Ordine> ordiniUtente = odao.doRetrieveByUtenteAll(ut.getIdUser());
+        ArrayList<Ordine> ordiniUtente = odao.doRetrieveByUtenteAll(ut.getIdUser());    //prendiamo tutti gli ordini dell'utente
+
         if(ordiniUtente != null){
             for (Ordine e: ordiniUtente) {
-                ArrayList<Integer> codiciProdotti = new ArrayList<>();
-                codiciProdotti = odao.doRetrieveByOrdineAll(e.getId(), ut.getIdUser());
+                ArrayList<Integer> codiciProdotti = odao.doRetrieveByOrdineAll(e.getId(), ut.getIdUser());   //prendiamo i codici dei prodotti per ogni ordine
                 ArrayList<Prodotto> prodottiOrdini = new ArrayList<>();
 
-                for (Integer i:codiciProdotti) {
-                    Prodotto p = new Prodotto();
-                    p = pdao.doRetrieveById(i);
+                for (Integer i:codiciProdotti) {    //riempiamo l'array di prodotti con i prodotti relativi ai vari codici
+                    Prodotto p = pdao.doRetrieveById(i);
                     prodottiOrdini.add(p);
                 }
-                e.setProdotti(prodottiOrdini);
+                e.setProdotti(prodottiOrdini);  //aggiorniamo i prodotti relativi all'ordine, per ogni ordine
             }
         }
         request.setAttribute("ordini", ordiniUtente);

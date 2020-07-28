@@ -2,6 +2,7 @@
     width: 100%;
     height: 50px;
     position: fixed;
+    /* The element is positioned relative to the browser window l'elemento è posizionato relativamente alla finestra del browser (fissato) */
     top: 0;
     background-color: #212121;
 }
@@ -44,7 +45,9 @@
 #scelta_categorie {
     margin-top: 3px;
     position: relative;
+    /* elemento posizionato in base alla sua normale posizione */
     display: inline-block;
+    /* mostra elemento come un contenitore, formattato come un elemento inline ma al quale si possono applicare le proprietà width, height */
 }
 
 #bottonecategorie {
@@ -58,9 +61,11 @@
 .scelte_dropdown {
     display: none;
     position: absolute;
+    /* elemento posizionato relativamente alla posizione (non static) del suo primo antenato */
     background-color: #212121;
     min-width: 160px;
     z-index: 1;
+    /* determinare le eventuali sovrapposizioni degli elementi (più grande valore, più si trovano "in superficie") */
     border-radius: 4px;
 }
 
@@ -228,7 +233,6 @@ footer {
 }
 
 @media screen and (max-width: 700px) {
-
     #menu{display: block}
 
     .barra_responsive a {
@@ -251,9 +255,7 @@ footer {
 }
 
 @media screen and (max-width: 580px) {
-
     #i3{
         display: none;
     }
-
 }

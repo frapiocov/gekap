@@ -22,7 +22,7 @@
     <c:if test="${empty prodotti}">
         <div style="padding: 10px">
             <i class="material-icons md-light md-48">sentiment_very_dissatisfied</i>
-            <h3>Nessun prodotto conforme alla ricerca</h3>
+            <h3>Nessun prodotto conforme alla ricerca.</h3>
         </div>
     </c:if>
 </div>

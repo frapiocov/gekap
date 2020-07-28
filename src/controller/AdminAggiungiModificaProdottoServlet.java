@@ -37,7 +37,7 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
         String operazione="";
 
         String codice = request.getParameter("id"); //serve solo per la modifica
-        String listaImm = request.getParameter("listaIm"); //serve solo per la modifica
+        String listaImm = request.getParameter("listaIm"); //serve solo per l'inserimento
         String nome = request.getParameter("nome");
         String genere = request.getParameter("genere");
         String trama = request.getParameter("trama");
@@ -103,8 +103,8 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
             cast.add(a4);
             cast.add(a5);
 
-            pdao.doSave(p);
-            adao.doSave(cast,pdao.returnMaxCodice());
+            pdao.doSave(p); //salviamo il nuovo prodotto nel database
+            adao.doSave(cast,pdao.returnMaxCodice());   //salviamo il cast relativo al prodotto appena aggiunto nel database
 
             request.setAttribute("notifica", "Prodotto inserito con successo.");
         } else {    //aggiornamento prodotto
@@ -113,7 +113,7 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
             p.setCodice(Integer.parseInt(codice));
             p.setListaImmagini(listaImm);
 
-            pdao.doUpdate(p);
+            pdao.doUpdate(p);   //aggiorniamo il prodotto nel database
             request.setAttribute("notifica", "Prodotto modificato con successo.");
         }
 
@@ -123,7 +123,7 @@ public class AdminAggiungiModificaProdottoServlet extends HttpServlet {
     }
 
     private String aggiuntaFoto(HttpServletRequest request) throws IOException, ServletException {
-        String CARTELLA_UPLOAD = "images";
+        String CARTELLA_UPLOAD = "images";  //cartella in cui verranno salvate le immagini prese dal form
 
         Part filePart = request.getPart("foto");
         String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();

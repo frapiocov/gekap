@@ -6,9 +6,6 @@
 </jsp:include>
 
 <div id="contenitore_utenti">
-
-
-
     <div style="overflow-x: auto;">
     <table id="tutenti">
         <tr>
@@ -37,8 +34,11 @@
                 <td class="bordi">${utente.sesso}</td>
                 <td class="bordi">Via ${utente.via} ${utente.nCivico}, ${utente.citta} (${utente.provincia})</td>
                 <td class="bordi">${utente.admin ? "Si" : "No"}</td>
-                <td class="bordi"><a href="servlet_dettagli?idUtente=${utente.idUser}">
-                    <button class="bottone">Dettagli</button></a>
+                <td class="bordi">
+                    <form action="servlet_dettagli" method="get">
+                        <input type="hidden" name="idUtente" value="${utente.idUser}">
+                        <input type="submit" value="Dettagli" class="bottone">
+                    </form>
                 </td>
                 <td class="bordi">
                     <form action="servlet_rimuovi_utente" method="post">

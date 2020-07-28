@@ -156,5 +156,5 @@
         $("#menu").click(function () {
             $(".barra_responsive").toggle();
         });
-    })
+    });
 </script>

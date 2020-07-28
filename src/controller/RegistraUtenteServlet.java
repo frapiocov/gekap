@@ -69,6 +69,10 @@ public class RegistraUtenteServlet extends HttpServlet {
         }
 
         String cap = request.getParameter("cap");
+        if (!(cap != null && cap.trim().length() == 5 && prov.matches("/[0-9]/)"))) {
+            throw new controller.ServletException("Provincia non valido.");
+        }
+
         int nciv = Integer.parseInt(request.getParameter("nc"));
         String data = request.getParameter("ddn");
         String sex = request.getParameter("sex");
@@ -88,7 +92,7 @@ public class RegistraUtenteServlet extends HttpServlet {
         utente.setSesso(sex);
 
         dao.doSave(utente);
-        request.getSession().setAttribute("utente", utente);
+        request.getSession().setAttribute("utente", utente);    //aggiungiamo utente appena registrato nella sessione
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/results/profiloutente.jsp");
         requestDispatcher.forward(request, response);

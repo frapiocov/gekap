@@ -21,7 +21,6 @@ public class CookieLoginFilter extends HttpFilter {
     private final LoginDAO loginDAO = new LoginDAO();
 
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-
         String path = request.getRequestURI();
         if (!path.contains("/servlet_login") && !path.contains("/servlet_logout")) {
             HttpSession session = request.getSession();

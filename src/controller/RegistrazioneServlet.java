@@ -16,7 +16,7 @@ public class RegistrazioneServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.getSession().getAttribute("utente") != null){
-            throw new controller.ServletException("Utente Loggato");
+            throw new controller.ServletException("Utente Loggato.");
         }
 
         RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/registrazione.jsp");

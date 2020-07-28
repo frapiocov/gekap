@@ -1,7 +1,6 @@
 package controller;
 
 import model.LoginDAO;
-import model.Utente;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,18 +22,19 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().removeAttribute("utente");
 
-        if(request.getSession().getAttribute("carrello") != null){
+        if(request.getSession().getAttribute("carrello") != null){  //se l'utente che ha appena effettuato il logout aveva un carrello, lo rimuoviamo
             request.getSession().removeAttribute("carrello");
         }
 
-        Cookie cookies[] = request.getCookies();
+        Cookie cookies[] = request.getCookies();    //prendiamo i cookie dalla request
+
         if (cookies != null) {
-            // cookie con nome 'login' o null se non esiste
-            Cookie cookie = Arrays.stream(cookies).filter(c -> c.getName().equals("login")).findAny().orElse(null);
+            // cookie con nome 'login' o null se non esiste (non è mai stato eseguito l'accesso)
+            Cookie cookie = Arrays.stream(cookies).filter(c -> c.getName().equals("login")).findAny().orElse(null); //se trova il cookie con nome 'login' tra tutti i cookie lo restituisce, altrimenti restituisce null
             if (cookie != null) {
-                cookie.setMaxAge(0); // rimuove cookie
-                response.addCookie(cookie);
-                String id = cookie.getValue().split("_")[0];
+                cookie.setMaxAge(0); //cancella cookie
+                response.addCookie(cookie); //aggiorniamo il cookie nella risposta
+                String id = cookie.getValue().split("_")[0];    //prendiamo l'id del cookie
                 loginDAO.doDelete(id);
             }
         }

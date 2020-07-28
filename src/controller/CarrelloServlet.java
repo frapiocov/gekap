@@ -13,11 +13,9 @@ import java.io.IOException;
 
 @WebServlet("/servlet_carrello")
 public class CarrelloServlet extends HttpServlet {
-
     private final ProdottoDAO pdao = new ProdottoDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String codice = request.getParameter("codice_prodotto");
         String quantita = request.getParameter("quantity");
         HttpSession session = request.getSession();
@@ -41,11 +39,10 @@ public class CarrelloServlet extends HttpServlet {
                     carrello.put(pdao.doRetrieveById(prodId), addNum);
                 }
             } else { //rimuovo in quanto non ho la quantita
-
                 Carrello.ProdottoQuantita prodQuant = carrello.get(prodId);
 
-                if(prodQuant.getQuantita()>1) { //controllo se esiste già il prodotto nel carrello
-                    prodQuant.setQuantita(prodQuant.getQuantita() - 1);
+                if (prodQuant.getQuantita() > 1) {
+                    prodQuant.setQuantita(prodQuant.getQuantita() - 1);     //controllo se la quantità è maggiore di uno e la decremento
                 } else {
                     carrello.remove(prodId);
                 }

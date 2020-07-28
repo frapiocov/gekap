@@ -20,6 +20,7 @@ public class VerificaUsernameServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = request.getParameter("username");
         response.setContentType("text/xml");
+
         if(user != null && user.length() >= 6 && user.matches("^[0-9a-zA-Z]+$") && dao.doRetrieveByUsername(user) == null)
         {
            response.getWriter().append("<ok/>");

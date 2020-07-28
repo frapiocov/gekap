@@ -11,3 +11,4 @@
 /out/production/progetto_gekap/model/Attore.class
 /src/controller/AdminAggiungiServlet.class
 web/WEB-INF/results/registrazioneSuccesso.jsp
+/src/controller/AggiungiRimuoviCarrelloServlet.java

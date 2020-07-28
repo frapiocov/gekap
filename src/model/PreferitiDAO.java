@@ -42,6 +42,7 @@ public class PreferitiDAO {
             PreparedStatement ps = con.prepareStatement("DELETE FROM listaprodotto WHERE prodotto = ? AND lista = ?");
             ps.setInt(1, prodotto);
             ps.setInt(2, utente);
+
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("DELETE error.");
             }

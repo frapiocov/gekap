@@ -24,8 +24,8 @@ public class RicercaAjaxServlet extends HttpServlet {
         String query = request.getParameter("query");
 
         if(query != null) {
-            ArrayList<Prodotto> prodotti = dao.doRetrieveByNome(query + "*", 0,10);
-            for(Prodotto p:prodotti){   //creo array JSON
+            ArrayList<Prodotto> prodotti = dao.doRetrieveByNome(query + "*", 0,10);     //l'asterisco indica che ci possono essere altre lettere dopo query
+            for(Prodotto p:prodotti){   //creiamo array JSON, in cui salviamo i nomi di tutti i prodotti conformi alla ricerca
                 prodJson.put(p.getNome());
             }
         }

@@ -20,6 +20,7 @@ public class RendiAdminServlet extends HttpServlet {
         int codice = Integer.parseInt(request.getParameter("id"));
         UtenteDAO dao = new UtenteDAO();
         Utente u = dao.doRetrieveByUseId(codice);
+
         if(u != null){
             if(u.isAdmin()){
                 dao.updateAdmin(codice, false);

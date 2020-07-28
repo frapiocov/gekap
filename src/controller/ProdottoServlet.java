@@ -34,9 +34,10 @@ public class ProdottoServlet extends HttpServlet {
         if(prodotto == null){
             throw new controller.ServletException("Prodotto non trovato :(");
         }
+
         ArrayList<Attore> cast = dao.doRetrieveCastById(codice);
 
-        request.setAttribute("prodotto", prodotto);
+        request.setAttribute("prodotto", prodotto);         //settiamo nella richiesta il prodotto e il relativo cast
         request.setAttribute("cast", cast);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/prodotto.jsp");

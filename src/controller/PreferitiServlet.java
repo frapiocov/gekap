@@ -36,20 +36,22 @@ public class PreferitiServlet extends HttpServlet {
         if(codProdotto != null) {
             int idProdotto = Integer.parseInt(codProdotto);
 
-            if(prefdao.existProdotto(idUtente, idProdotto) == 0){
-                if (prefdao.ListaExist(idUtente) == 0) {
-                    prefdao.doSaveLista(idUtente);
+            if(prefdao.existProdotto(idUtente, idProdotto) == 0){//se il risultato è 0, il prodotto non è già stato inserito nei preferiti dall'utente in questione
+                if (prefdao.ListaExist(idUtente) == 0) {//se il risultato è 0, l'utente non ha ancora una sua lista nel database
+                    prefdao.doSaveLista(idUtente);  //creiamo la lista per l'utente
                 }
-                prefdao.doSaveProdotto(idProdotto, idUtente);
+                prefdao.doSaveProdotto(idProdotto, idUtente);   //la lista esiste già e aggiungiamo il prodotto selezionato
             }
         }
-        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(idUtente);
+        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(idUtente);    //prendiamo dal database la lista dell'utente
 
-        for (Integer i:lista) {
+        for (Integer i:lista) {     //per ogni codice salvato nella lista, prendiamo dal database i prodotti corrispondenti e li salviamo in un array
             Prodotto p = dao.doRetrieveById(i);
             preferiti.add(p);
         }
+
         request.setAttribute("preferiti", preferiti);
+
         RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/preferiti.jsp");
         disp.forward(request, response);
     }

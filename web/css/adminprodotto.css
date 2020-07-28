@@ -1,16 +1,18 @@
-#contenitore_admin{
+#contenitore_admin {
     padding: 20px;
     margin-top: 60px;
     text-align: left;
     float: left;
 }
 
-#contenitore_admin label{
+#contenitore_admin label {
     padding-bottom: 8px;
 }
 
-.textform{
+.textform {
     width: 160px;
+    box-sizing: border-box;
+    /* il valore di width fa riferimento al box nella sua interezza (comprendendo anche il padding e il bordo) */
     font-size: 16px;
     background-color: #212121;
     color: #cccccc;
@@ -18,7 +20,6 @@
     border-bottom: darkgoldenrod 1px solid;
     padding: 4px 6px;
     margin: 8px 0;
-    box-sizing: border-box;
 }
 
 textarea {
@@ -30,6 +31,7 @@ textarea {
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
+    /* non permette di cambiare le dimensioni dell'elemento textarea */
 }
 
 input[type="number"] {
@@ -44,41 +46,39 @@ input[type="number"] {
     margin: 4px;
 }
 
-#tleft{
+#tleft {
     float: left;
     width: 90%;
 }
 
 
-#registrami{
-    margin:20px 10px 10px 45%;
+#registrami {
+    margin: 20px 10px 10px 45%;
 }
 
 
 @media screen and (max-width: 700px) {
-    textarea{
+    textarea {
         width: 280px;
         height: 150px;
     }
 
-    #tleft{
+    #tleft {
         margin: 2%;
     }
 
-    .casttab{
+    .casttab {
         width: 90%;
     }
 
 }
 
 @media screen and (max-width: 580px) {
-
-    #i3{
+    #i3 {
         display: none;
     }
 
-    #tleft{
+    #tleft {
         width: 100%;
     }
-
 }

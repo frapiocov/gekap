@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 @WebServlet("/servlet_ricerca")
 public class RicercaServlet extends HttpServlet {
-
     private final ProdottoDAO dao = new ProdottoDAO();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,14 +21,13 @@ public class RicercaServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String parolaCercata = request.getParameter("query");
 
         if(parolaCercata.equals("")){
-            throw new controller.ServletException("Ehy! Non hai inserito nessuna parola...riprova");
+            throw new controller.ServletException("Ehy! Non hai inserito nessuna parola...riprova.");
         }
 
-        ArrayList<Prodotto> prodotti = dao.doRetrieveByNomeOrDescrizione( parolaCercata, 0, 10);
+        ArrayList<Prodotto> prodotti = dao.doRetrieveByNomeOrDescrizione(parolaCercata, 0, 10);
 
         request.setAttribute("parolaCercata", parolaCercata);
         request.setAttribute("prodotti", prodotti);

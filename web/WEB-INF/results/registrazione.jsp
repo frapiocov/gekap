@@ -8,7 +8,7 @@
 <div style="padding: 20px; margin-top: 50px">
     <h1>Registrazione utente</h1>
     <h3>Riempi tutti i campi!</h3>
-    <form name="registrazione" action="servlet_registra_utente" method="post">
+    <form action="servlet_registra_utente" name="registrazione" method="post">
         <table>
             <tr>
                 <td><label>Username (almeno 6 caratteri, solo lettere e numeri)</label></td>

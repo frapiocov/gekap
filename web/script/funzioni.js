@@ -41,7 +41,7 @@ function validaUsername() {
                 usernameOk = false;
             }
             cambiaStatoRegistrami();
-        }
+        };
         xmlHttpReq.open("GET", "servlet_verifica_username?username=" + encodeURIComponent(input.value), true);
         xmlHttpReq.send();
     } else {
@@ -77,7 +77,7 @@ function validaPassword() {
 function validaNome() {
     var input = document.forms['registrazione']['nome'];
     if (input.value.trim().length > 0
-        && input.value.match(/^[ a-zA-Z\u00C0-\u00ff]+$/)) {
+        && input.value.match(/^[ a-zA-Z\u00C0-\u00ff]+$/)) {    //escludiamo caratteri accentati, numeri e caratteri speciali
         input.style.border = borderOk;
         nomeOk = true;
     } else {
@@ -140,9 +140,8 @@ function validaProv() {
 
 function validaCap() {
     var input = document.forms['registrazione']['cap'];
-    if (input.value.trim().length > 0
-        && input.value.match(/[0-9]/)
-    && input.value.trim().length === 5) {
+    if (input.value.trim().length === 5
+        && input.value.match(/[0-9]/)) {
         input.style.border = borderOk;
         capOk = true;
     } else {
@@ -177,7 +176,7 @@ function validaEmail() {
 }
 
 function cambiaStatoRegistrami() {
-    if (usernameOk && passwordOk && nomeOk && emailOk && cognomeOk && viaOk && provOk && cittaOk && capOk && dateOk) {
+    if (usernameOk && passwordOk && nomeOk && emailOk && cognomeOk && viaOk && provOk && cittaOk && capOk) {
         document.getElementById('registrami').disabled = false;
         document.getElementById('registramimessaggio').innerHTML = '';
     } else {

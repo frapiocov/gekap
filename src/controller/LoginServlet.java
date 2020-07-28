@@ -33,20 +33,21 @@ public class LoginServlet extends HttpServlet {
         }
 
         if(utente == null){
-            throw new controller.ServletException("Username e/o Password non validi");
+            throw new controller.ServletException("Username e/o Password non validi.");
         }
+
         request.getSession().setAttribute("utente", utente);
  
         Login login = new Login();
         login.setIdutente(utente.getIdUser());
-        login.setToken(UUID.randomUUID().toString());
-        login.setTime(Timestamp.from(Instant.now()));
+        login.setToken(UUID.randomUUID().toString()); //settiamo il token in modo univoco e random associato all'utente che ha eseguito il login
+        login.setTime(Timestamp.from(Instant.now())); //settiamo la data attuale del momento in cui ho eseguito il login
 
-        ldao.doSave(login);
+        ldao.doSave(login);     //salviamo nella tabella login le informazioni
 
-        Cookie cookie = new Cookie("login", login.getId() + "_" + login.getToken());
-        cookie.setMaxAge(30 * 24 * 60 * 60); // 30 giorni
-        response.addCookie(cookie);
+        Cookie cookie = new Cookie("login", login.getId() + "_" + login.getToken()); //creiamo cookie relativo al login
+        cookie.setMaxAge(30 * 24 * 60 * 60); //cookie cancellato dopo 30 giorni
+        response.addCookie(cookie); //aggiungiamo cookie alla risposta
 
         String dest = request.getHeader("referer");
         if(dest == null || dest.contains("/servlet_login") || dest.trim().isEmpty()){

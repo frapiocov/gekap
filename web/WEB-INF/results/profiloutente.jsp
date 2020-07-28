@@ -7,18 +7,17 @@
 
 <div>
     <div id="profilo" style="margin-top: 50px; padding: 20px">
-
-            <h1>Benvenuta/o ${utente.nome}</h1>
-            <fieldset style="width: 90%">
-                <legend>DATI</legend>
-                <p style="font-size: 20px">Username: ${utente.username}<br>
-                    E-mail: ${utente.email}<br>
-                        ${utente.nome} ${utente.cognome}<br>
-                    Data di Nascita: ${utente.dataDiNascita}<br>
-                    Sesso: ${utente.sesso}<br>
-                    Indirizzo di spedizione : Via ${utente.via} ${utente.nCivico}, ${utente.citta}
-                    (${utente.provincia})</p>
-            </fieldset>
+        <h1>Benvenuta/o ${utente.nome}</h1>
+        <fieldset style="width: 90%">
+            <legend>DATI</legend>
+            <p style="font-size: 20px">Username: ${utente.username}<br>
+                E-mail: ${utente.email}<br>
+                ${utente.nome} ${utente.cognome}<br>
+                Data di Nascita: ${utente.dataDiNascita}<br>
+                Sesso: ${utente.sesso}<br>
+                Indirizzo di spedizione : Via ${utente.via} ${utente.nCivico}, ${utente.citta}
+                (${utente.provincia})</p>
+        </fieldset>
 
         <h2>ORDINI</h2>
         <table>
@@ -41,7 +40,7 @@
         </table>
 
         <c:if test="${empty ordini}">
-            <h3>Nessun ordine effettuato caro ${utente.nome}</h3>
+            <h3>Nessun ordine effettuato caro/a ${utente.nome}</h3>
         </c:if>
     </div>
 </div>

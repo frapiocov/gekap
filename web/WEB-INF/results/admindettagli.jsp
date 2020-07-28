@@ -13,7 +13,8 @@
                 <c:forEach items="${ordini}" var="ordine">
                     <tr>
                         <td>
-                            <p>Ordine numero ${ordine.id}, effettuato in data ${ordine.data}, costo: ${ordine.prezzoEuro} &euro;</p>
+                            <p>Ordine numero ${ordine.id}, effettuato in data ${ordine.data},
+                                costo: ${ordine.prezzoEuro} &euro;</p>
                         </td>
                     </tr>
                     <tr>
@@ -29,7 +30,7 @@
             </table>
 
             <c:if test="${empty ordini}">
-                <h3>Nessun ordine effettuato dall'utente scelto</h3>
+                <h3>Nessun ordine effettuato dall'utente scelto.</h3>
             </c:if>
         </fieldset>
     </div>

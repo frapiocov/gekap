@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -32,22 +31,24 @@ public class RimuoviPreferitiServlet extends HttpServlet {
 
         int codiceUtente = ut.getIdUser();
 
-        if(request.getParameter("svuota") != null) {
+        if(request.getParameter("svuota") != null) {    //se il parametro 'svuota' non è null, cancello la lista dei preferiti associata all'utente
           prefdao.doDeleteAll(codiceUtente);
         }
-        else{
+        else{      //si vuole effettuare la rimozione di un singolo prodotto dalla lista dei preferiti
             String codStringa = request.getParameter("codiceProdotto");
             int codiceProdotto = Integer.parseInt(codStringa);
             prefdao.doDeleteLista(codiceProdotto, codiceUtente);
-            }
+        }
 
-        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(codiceUtente);
+        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(codiceUtente); //prendiamo i codici dei prodotti che si trovano nella lista dei preferiti dell'utente
         ArrayList<Prodotto> preferiti = new ArrayList<>();
+
         for (Integer i:lista) {
             Prodotto p = dao.doRetrieveById(i);
             preferiti.add(p);
         }
-        request.setAttribute("preferiti", preferiti);
+        request.setAttribute("preferiti", preferiti);   //settiamo l'attributo della richiesta con la lista dei preferiti aggiornata
+
         RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/preferiti.jsp");
         disp.forward(request, response);
     }

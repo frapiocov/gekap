@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 public class Login {
     private String id;
     private int idutente;
-    private String token;
+    private String token;  //stringa che cambia ogni volta che viene eseguito il login
     private Timestamp time;
 
     public String getId() {

@@ -13,7 +13,7 @@
             <a href="servlet_prodotto?codice=<c:out value="${prodotto.codice}"/>">
                 <img class="imm_prod_index" src="images/${prodotto.listaImmagini}" alt="immagine prodotto">
             </a>
-            <form method="get" action="servlet_rimuovi_preferiti">
+            <form action="servlet_rimuovi_preferiti" method="get" >
                 <input type="hidden" name="codiceProdotto" value="${prodotto.codice}">
                 <input type="submit" class="bottone" value="Rimuovi">
             </form>
