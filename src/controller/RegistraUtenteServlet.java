@@ -92,7 +92,7 @@ public class RegistraUtenteServlet extends HttpServlet {
         utente.setSesso(sex);
 
         dao.doSave(utente);
-        request.getSession().setAttribute("utente", utente);    //aggiungiamo utente appena registrato nella sessione
+        request.getSession().setAttribute("utente", utente);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/results/profiloutente.jsp");
         requestDispatcher.forward(request, response);

@@ -37,7 +37,7 @@ public class ProdottoServlet extends HttpServlet {
 
         ArrayList<Attore> cast = dao.doRetrieveCastById(codice);
 
-        request.setAttribute("prodotto", prodotto);         //settiamo nella richiesta il prodotto e il relativo cast
+        request.setAttribute("prodotto", prodotto);
         request.setAttribute("cast", cast);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/prodotto.jsp");

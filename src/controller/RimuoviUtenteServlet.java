@@ -18,7 +18,7 @@ public class RimuoviUtenteServlet extends HttpServlet {
     private final UtenteDAO dao = new UtenteDAO();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));      //prendiamo il codice dell'utente da rimuovere
+        int id = Integer.parseInt(request.getParameter("id"));
         dao.doDelete(id);
 
         String dest = request.getHeader("referer");

@@ -43,9 +43,9 @@ public class PreferitiServlet extends HttpServlet {
                 prefdao.doSaveProdotto(idProdotto, idUtente);   //la lista esiste già e aggiungiamo il prodotto selezionato
             }
         }
-        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(idUtente);    //prendiamo dal database la lista dell'utente
+        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(idUtente);
 
-        for (Integer i:lista) {     //per ogni codice salvato nella lista, prendiamo dal database i prodotti corrispondenti e li salviamo in un array
+        for (Integer i:lista) {
             Prodotto p = dao.doRetrieveById(i);
             preferiti.add(p);
         }

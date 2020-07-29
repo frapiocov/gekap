@@ -26,8 +26,7 @@ public class LogoutServlet extends HttpServlet {
             request.getSession().removeAttribute("carrello");
         }
 
-        Cookie cookies[] = request.getCookies();    //prendiamo i cookie dalla request
-
+        Cookie cookies[] = request.getCookies();
         if (cookies != null) {
             // cookie con nome 'login' o null se non esiste (non è mai stato eseguito l'accesso)
             Cookie cookie = Arrays.stream(cookies).filter(c -> c.getName().equals("login")).findAny().orElse(null); //se trova il cookie con nome 'login' tra tutti i cookie lo restituisce, altrimenti restituisce null

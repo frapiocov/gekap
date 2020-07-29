@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.UUID;
 
-@WebFilter("/*")
+@WebFilter("/*")    //eseguita prima di tutte le servlet
 public class CookieLoginFilter extends HttpFilter {
 
     private static final long serialVersionUID = 1L;
@@ -22,6 +22,7 @@ public class CookieLoginFilter extends HttpFilter {
 
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         String path = request.getRequestURI();
+
         if (!path.contains("/servlet_login") && !path.contains("/servlet_logout")) {
             HttpSession session = request.getSession();
             Utente utente = (Utente) session.getAttribute("utente");
@@ -33,22 +34,22 @@ public class CookieLoginFilter extends HttpFilter {
 
                 if (loginCookie != null) {
                     String[] sp = loginCookie.getValue().split("_");
-                    String id = sp[0];
-                    String token = sp.length > 1 ? sp[1] : null;
+                    String id = sp[0]; //prendiamo l'id del cookie
+                    String token = sp.length > 1 ? sp[1] : null;    //prendiamo il token del cookie
 
                     Login login = loginDAO.doRetrieveById(id);
                     if (login != null && login.getToken().equals(token)) {
                         utente = utenteDAO.doRetrieveByUseId(login.getIdutente());
                         session.setAttribute("utente", utente);
 
-                        // per maggiore sicurezza genera nuovo token
+                        // per maggiore sicurezza genera nuovo token da sostituire a quello nel database
                         token = UUID.randomUUID().toString();
                         login.setToken(token);
                         loginDAO.doUpdate(login);
                         loginCookie.setValue(id + "_" + token);
                         loginCookie.setMaxAge(30 * 24 * 60 * 60); // 30 giorni
                         response.addCookie(loginCookie);
-                    } else {
+                    } else {   //login non esiste nel database oppure si riferisce a un token "vecchio"
                         loginCookie.setMaxAge(0);
                         response.addCookie(loginCookie);
                         if (login != null) {
@@ -63,5 +64,4 @@ public class CookieLoginFilter extends HttpFilter {
         response.setCharacterEncoding("UTF-8");
         chain.doFilter(request, response);
     }
-
 }

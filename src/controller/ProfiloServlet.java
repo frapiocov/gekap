@@ -33,7 +33,7 @@ public class ProfiloServlet extends HttpServlet {
                 ArrayList<Integer> codiciProdotti = odao.doRetrieveByOrdineAll(e.getId(), ut.getIdUser());   //prendiamo i codici dei prodotti per ogni ordine
                 ArrayList<Prodotto> prodottiOrdini = new ArrayList<>();
 
-                for (Integer i:codiciProdotti) {    //riempiamo l'array di prodotti con i prodotti relativi ai vari codici
+                for (Integer i:codiciProdotti) {
                     Prodotto p = pdao.doRetrieveById(i);
                     prodottiOrdini.add(p);
                 }

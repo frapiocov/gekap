@@ -27,13 +27,13 @@ public class AdminProdottoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = "";
 
-        Utente u = (Utente) request.getSession().getAttribute("utente");    //controlliamo se l'utente è un admin e se è autorizzato
+        Utente u = (Utente) request.getSession().getAttribute("utente");
         if (u == null || !u.isAdmin()) {
             throw new controller.ServletException("Utente non autorizzato.");
         }
 
         String codice = request.getParameter("id");     //prendiamo dalla richiesta il codice del prodotto
-        if (codice != null) {   //controllo se l'operazione è una modifica oppure una rimozione
+        if (codice != null) {   //controllo se l'operazione è una modifica, un inserimento o una rimozione
             if (request.getParameter("rimuovi") != null) {  //si tratta di una rimozione
                 pdao.doDelete(Integer.parseInt(codice));
 
