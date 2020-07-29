@@ -22,7 +22,7 @@ public class HomeServlet extends HttpServlet {
     public void init() throws ServletException {
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         List<Categoria> categorie = categoriaDAO.doRetrieveAll();
-        getServletContext().setAttribute("categorie", categorie);     //settiamo le categorie del database in un attributo nel contesto dell'applicazione
+        getServletContext().setAttribute("categorie", categorie);    //settiamo le categorie del database in un attributo nel contesto dell'applicazione
         super.init();
     }
 
@@ -36,10 +36,10 @@ public class HomeServlet extends HttpServlet {
         int max = prodottoDAO.returnMaxCodice() - 5;
         List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( max, 5);
 
-        request.setAttribute("prodotti", prodotti);                 //inseriamo nella request tutti i prodotti e i prodotti in evidenza
+        request.setAttribute("prodotti", prodotti);
         request.setAttribute("prodotti_evidenza", evidenza);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/index.jsp");
-        dispatcher.forward(request, response);                          //la jsp index si occuperà di scrivere e mostrare la risposta
+        dispatcher.forward(request, response);
     }
 }

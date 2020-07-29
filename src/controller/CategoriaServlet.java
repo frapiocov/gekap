@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class CategoriaServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException {
         @SuppressWarnings("unchecked")
-        ArrayList<Categoria> categorie=(ArrayList<Categoria>) getServletContext().getAttribute("categorie");    //prendiamo tutte le categorie salvate nel contesto dell'applicazione
+        ArrayList<Categoria> categorie=(ArrayList<Categoria>) getServletContext().getAttribute("categorie");//prendiamo tutte le categorie salvate nel contesto dell'applicazione
         int cat;
         try{
             cat = Integer.parseInt(request.getParameter("categoria"));

@@ -42,7 +42,7 @@ public class CarrelloServlet extends HttpServlet {
                 Carrello.ProdottoQuantita prodQuant = carrello.get(prodId);
 
                 if (prodQuant.getQuantita() > 1) {
-                    prodQuant.setQuantita(prodQuant.getQuantita() - 1);     //controllo se la quantità è maggiore di uno e la decremento
+                    prodQuant.setQuantita(prodQuant.getQuantita() - 1);
                 } else {
                     carrello.remove(prodId);
                 }

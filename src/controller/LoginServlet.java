@@ -43,11 +43,11 @@ public class LoginServlet extends HttpServlet {
         login.setToken(UUID.randomUUID().toString()); //settiamo il token in modo univoco e random associato all'utente che ha eseguito il login
         login.setTime(Timestamp.from(Instant.now())); //settiamo la data attuale del momento in cui ho eseguito il login
 
-        ldao.doSave(login);     //salviamo nella tabella login le informazioni
+        ldao.doSave(login);
 
         Cookie cookie = new Cookie("login", login.getId() + "_" + login.getToken()); //creiamo cookie relativo al login
         cookie.setMaxAge(30 * 24 * 60 * 60); //cookie cancellato dopo 30 giorni
-        response.addCookie(cookie); //aggiungiamo cookie alla risposta
+        response.addCookie(cookie);
 
         String dest = request.getHeader("referer");
         if(dest == null || dest.contains("/servlet_login") || dest.trim().isEmpty()){

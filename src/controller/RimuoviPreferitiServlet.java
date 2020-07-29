@@ -31,7 +31,7 @@ public class RimuoviPreferitiServlet extends HttpServlet {
 
         int codiceUtente = ut.getIdUser();
 
-        if(request.getParameter("svuota") != null) {    //se il parametro 'svuota' non è null, cancello la lista dei preferiti associata all'utente
+        if(request.getParameter("svuota") != null) {
           prefdao.doDeleteAll(codiceUtente);
         }
         else{      //si vuole effettuare la rimozione di un singolo prodotto dalla lista dei preferiti
@@ -40,7 +40,7 @@ public class RimuoviPreferitiServlet extends HttpServlet {
             prefdao.doDeleteLista(codiceProdotto, codiceUtente);
         }
 
-        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(codiceUtente); //prendiamo i codici dei prodotti che si trovano nella lista dei preferiti dell'utente
+        ArrayList<Integer> lista = prefdao.doRetrieveByUtente(codiceUtente);
         ArrayList<Prodotto> preferiti = new ArrayList<>();
 
         for (Integer i:lista) {

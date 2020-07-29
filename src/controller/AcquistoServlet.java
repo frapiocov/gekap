@@ -34,7 +34,7 @@ public class AcquistoServlet extends HttpServlet {
             int prezz = Integer.parseInt(prezzo);
 
             String data = Timestamp.from(Instant.now()).toString();     //in data avremo la data del momento in cui l'utente schiaccia il bottone acquista
-            Collection<Carrello.ProdottoQuantita> prodotti = c.getProdotti();      //prendiamo tutti i prodotti dal carrello
+            Collection<Carrello.ProdottoQuantita> prodotti = c.getProdotti();
             ArrayList<Integer> codP = new ArrayList<>();
 
             for (Carrello.ProdottoQuantita p : prodotti) {
@@ -42,7 +42,7 @@ public class AcquistoServlet extends HttpServlet {
             }
 
             odao.doSave(u.getIdUser(), data, prezz, codP);
-            request.getSession().removeAttribute("carrello");           //svuotiamo il carrello dopo l'acquisto
+            request.getSession().removeAttribute("carrello");
 
             RequestDispatcher disp = request.getRequestDispatcher("/WEB-INF/results/ordine.jsp");
             disp.forward(request, response);

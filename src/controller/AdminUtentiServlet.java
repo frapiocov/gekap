@@ -23,7 +23,7 @@ public class AdminUtentiServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Utente u = (Utente) request.getSession().getAttribute("utente");
-        if (u == null || !u.isAdmin()) {     //controlliamo se l'utente esiste e se è autorizzato (ovvero se è admin)
+        if (u == null || !u.isAdmin()) {
             throw new controller.ServletException("Utente non autorizzato");
         }
 
