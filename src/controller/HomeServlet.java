@@ -33,8 +33,8 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Prodotto> prodotti = prodottoDAO.doRetrieveAll(0,14);
 
-        int max = prodottoDAO.returnMaxCodice();
-        List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( max - 5, 5);
+        int max = prodottoDAO.returnMaxCodice() - 5;
+        List<Prodotto> evidenza = prodottoDAO.doRetrieveAll( max, 5);
 
         request.setAttribute("prodotti", prodotti);                 //inseriamo nella request tutti i prodotti e i prodotti in evidenza
         request.setAttribute("prodotti_evidenza", evidenza);

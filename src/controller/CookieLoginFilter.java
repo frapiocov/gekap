@@ -27,7 +27,7 @@ public class CookieLoginFilter extends HttpFilter {
             Utente utente = (Utente) session.getAttribute("utente");
 
             if (utente == null) {
-                Cookie cookies[] = request.getCookies();
+                Cookie[] cookies = request.getCookies();
                 // cookie con nome 'login' o null se non esiste
                 Cookie loginCookie = cookies == null ? null : Arrays.stream(cookies).filter(c -> c.getName().equals("login")).findAny().orElse(null);
 
