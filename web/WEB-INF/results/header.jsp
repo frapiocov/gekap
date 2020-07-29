@@ -79,7 +79,7 @@
         </div>
 
         <div style="float: left">
-            <button id="menu" onclick="apriMenu()"><i class="material-icons md-light md-36">menu</i></button>
+            <button id="menu"><i class="material-icons md-light md-36">menu</i></button>
         </div>
 
         <div class="barra_responsive">
