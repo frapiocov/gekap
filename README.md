@@ -1,4 +1,5 @@
 # gekap - Film & Co
 ![Logo Gekap](/web/images/logoNero.png)
-### Gekap è un'applicazione WEB di e-commerce sviluppata per il progetto di TSW.
-### E' un catalogo di film online che consente l'iscrizione con una gestione di una lista di preferiti 
+### Gekap is an e-commerce web application developed for TSW project.
+### Gekap is a catalog of films, documentaries and stand-up comedies that can be easily purchased online.
+### Gekap is what you are looking for.
