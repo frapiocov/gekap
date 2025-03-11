@@ -1,8 +1,49 @@
-# gekap - Film & Co
-![Logo Gekap](/web/images/logoNero.png)
+# 🛒 Gekap - Film & Co
+<p align="center">
+  <img src="/web/images/logoBianco.png" width="120"/>
+</p>
+TSW (Software Technology for Web) project developed with **Java**, **JavaScript**, **HTML**, and **CSS**.
 
-Gekap is an e-commerce web application developed for TSW project.
+## 🚀 Technologies Used
+- 🔹 **Backend**: Java (Spring Boot)
+- 🔹 **Frontend**: JavaScript, HTML, CSS
+- 🔹 **Database**: MySQL / PostgreSQL
+- 🔹 **Local Server**: Adobe
+- 🔹 **Version Control**: Git
 
-Gekap is a catalog of films, documentaries and stand-up comedies that can be easily purchased online.
+## ✨ Features
+✅ User registration and authentication 🔐  
+✅ Product management (add, edit, delete) 📦  
+✅ Shopping cart and checkout 🛍️  
+✅ Admin dashboard 📊  
 
-Gekap is what you are looking for.
+## 🛠️ Installation
+
+### 📌 Prerequisites
+- ☕ Java JDK 17+
+- 🗄️ MySQL
+- ⚙️ Maven
+- 🌐 Server for local environment
+
+### 🔧 Instructions
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/ecommerce.git
+   cd ecommerce
+   ```
+2. **Configure the database** 📂
+   - Create a database and update the `application.properties` file with the correct credentials.
+3. **Start the backend** 🚀
+   ```bash
+   mvn spring-boot:run
+   ```
+4. **Start the frontend** 🎨
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+   
+## 📜 License
+This project is distributed under the **MIT license**. 📄 For more details, see the `LICENSE` file.
+
