@@ -1,6 +1,6 @@
 # 🛒 Gekap - Film & Co
 <p align="center">
-  <img src="/web/images/logoBianco.png" width="120"/>
+  <img src="/web/images/logoBianco.png" width="180"/>
 </p>
 TSW (Software Technology for Web) project developed with **Java**, **JavaScript**, **HTML**, and **CSS**.
 
