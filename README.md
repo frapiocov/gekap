@@ -28,21 +28,11 @@ TSW (Software Technology for Web) project developed with **Java**, **JavaScript*
 ### 🔧 Instructions
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/ecommerce.git
+   git clone https://github.com/frapiocov/gekap.git
    cd ecommerce
    ```
 2. **Configure the database** 📂
    - Create a database and update the `application.properties` file with the correct credentials.
-3. **Start the backend** 🚀
-   ```bash
-   mvn spring-boot:run
-   ```
-4. **Start the frontend** 🎨
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
    
 ## 📜 License
 This project is distributed under the **MIT license**. 📄 For more details, see the `LICENSE` file.
